@@ -1,0 +1,66 @@
+﻿
+.section-div {
+        background-color: #DFF1F7;
+        color: black;
+        padding: 10px;
+        width:921px;
+        border-radius: 1px;
+        float: left;
+        border: 0.02px solid gray;
+    }
+
+div.section-div:hover {
+        text-decoration:none;
+ }
+a{
+        color:#181bc3;
+ }
+.xotenban{
+    background-color: #035497; 
+    color: #b3dde8;
+    width:944px;
+}
+.xotenban1{
+    background-color: #7cd3dc; 
+    color: #b3dde8;
+    width:944px;
+    margin-left:0px;
+}
+#iconthich{
+    margin-left:0px;
+}
+#ngdag{
+    text-decoration:none;
+    font-style:italic;
+    font-weight:bold;
+}
+/*Bỏ dầu gạch dưới khi di chuột đến */
+.section-div-ctiet a:hover{
+    text-decoration:none;
+    color:red;
+}
+.section-div-ctiet{
+        background-color: #DFF1F7;
+        color: black;
+        padding: 10px;  
+        width:921px;
+        border-radius: 1px;
+        float: left;
+        border: 0.02px solid gray;
+        margin-bottom:4px;
+ }
+.textbl{
+       border: 1px solid #d5d5d5;
+       width: 920px;
+       margin-bottom:5px;
+       padding-left:10px;
+       padding-right:10px;
+       min-height:50px;
+}
+
+.btnhuy{
+    margin-left:822px;
+}
+.aa{
+    margin-bottom:5px;
+}

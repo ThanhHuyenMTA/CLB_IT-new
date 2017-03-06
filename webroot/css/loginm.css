@@ -1,0 +1,24 @@
+.loginm {
+    border: 2px solid #9292ab;
+    width: 352px;
+    margin-left: 433px;
+    padding-left: 35px;
+    margin-top: 100px;
+}
+body {
+    background-color: #eee;
+}
+
+*[role="form"] {
+    max-width: 530px;
+    padding: 15px;
+    margin: 0 auto;
+    background-color: #fff;
+    border-radius: 0.3em;
+}
+
+*[role="form"] h2 {
+    margin-left: 5em;
+    margin-bottom: 1em;
+}
+
