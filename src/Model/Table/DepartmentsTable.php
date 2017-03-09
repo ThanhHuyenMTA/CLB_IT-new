@@ -13,6 +13,10 @@ class DepartmentsTable extends Table
         $this->hasmany('Articles', [
             'className'=>'Articles',       
         ]);
+
+        $this->hasMany('Embarks', [
+            'className'=> 'Embarks'
+        ]);
     } 
 }
 ?>

@@ -15,7 +15,13 @@ class UsersTable extends Table
 
         $this->hasMany('Articles', [
             'className'=> 'Articles'
-        ]);  
+        ]);
+
+        $this->hasMany('Embarks', [
+            'className'=> 'Embarks'
+        ]);
+
+
     }
     // phần check lỗi đăng ký
     public function validationDefault(Validator $validator)

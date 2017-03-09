@@ -5,19 +5,20 @@
 
 <h1 style="text-align:left;font-weight: bold;">Articles in menu...</h1>
     <?php foreach ($query as $totl): ?>
-    <div class="hometc">
-        <span style="font-weight: bold;">
+       <div class="hometc"> 
+        <strong>
            <?= $this->Html->link($totl->name,['action' => '../articles/view', $totl->id]) ?>
-        </span>
-        <br>
+        </strong><br>
         <?= substr( $totl->content,0,301);?>
         .......
         <br>
-        Time post:
-        <?= $totl->posted ?>
-        <br>
-        Views:
-        <?= $totl->views ?>
+            <strong>Views: </strong>
+                 <?= $totl->views ?>
+        <blockquote class="pull-right">
+            <strong>Time post:</strong>
+                <?= $totl->posted ?>
+            <br>......  <i class="icon-user"></i> ......
+        </blockquote>
     </div>
     <?php endforeach; ?>
 

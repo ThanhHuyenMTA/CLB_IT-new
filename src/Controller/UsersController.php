@@ -13,20 +13,21 @@ class UsersController extends AppController
 		 parent::initialize();
          //bỏ qua action initialize. cho phép truy nhập vào trang registration luôn
 		 $this->Auth->allow(['registration']);
+
 	}
 
     public function login()
     {	
     	$this->viewBuilder()->layout(false);
         if ($this->request->is('post')) {
-        	 // $email = new Email('gmail');
-          //       $email
-		        //      ->to('thanhhuyen010695@gmail.com')
-		        //      ->subject('Hello welcome to CLB IT From THANH HUYỀN @@@@@')
-		        //      ->send('My message test');
             $user = $this->Auth->identify();
             //pr($user); die();
             if ($user) {
+            	$email = new Email('gmail');
+                $email
+		             ->to('thanhhuyen010695@gmail.com')
+		             ->subject('Hello welcome to CLB IT From THANH HUYỀN @@@@@')
+		             ->send('My message test');
                 $this->Auth->setUser($user);
                 return $this->redirect($this->Auth->redirectUrl());
             }
@@ -71,7 +72,17 @@ class UsersController extends AppController
         $this->set('user', $user);  
         
 	}
-	
+
+	public function view()
+	{		
+	    $id= $this->request->session()->read("Auth.User.id");
+	    //pr($id);die();
+		$this->request->data['id'] = $id; 
+		$user= $this->Users->get($id);
+		//pr($user);die();
+		$this->set(compact('user'));		
+    }
+
 	public function edit($id)
 	{
 		$this->viewBuilder()->layout(false);	
@@ -91,13 +102,20 @@ class UsersController extends AppController
 	public function delete($id)
 	{
 	    $this->request->allowMethod(['post', 'delete']);
-
 	    $article = $this->Users->get($id);
 	    if ($this->Users->delete($article)) {
 	        $this->Flash->success(__('The article with id: {0} has been deleted.', h($id)));
 	        return $this->redirect(['action' => 'index']);
 	    }
 	}
-
+	 // Upload an image
+    public function upload($productId = null) 
+    {
+        if (!$this->request->is('get')) {
+            if ($this->Products->Images->upload($productId, $this->request->data)) {
+                $this->Session->set(__('Upload successful!'));
+            }
+        }
+    }
 }
 ?>

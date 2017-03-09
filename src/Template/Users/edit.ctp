@@ -22,6 +22,7 @@
      </legend>
       <?php echo $this->Form->create($article); ?>
       <?php echo $this->Form->input('name');?>
+      <?php  echo $this->Form->input('image');?>
       <?php  echo $this->Form->input('email');?>
       <?php echo $this->Form->input('password');?>
       

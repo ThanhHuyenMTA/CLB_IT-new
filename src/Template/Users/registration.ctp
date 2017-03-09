@@ -1,3 +1,18 @@
+<style>
+  input[type=checkbox], input[type=radio] {
+    margin: 4px 0 0;
+    margin-top: 1px\9;
+    line-height: normal;
+    width: 15px;
+}
+</style>
+
+
+
+
+
+
+
 <!DOCTYPE html>
 
 <html lang="en">
@@ -12,6 +27,7 @@
   <script src="js/jquery-1.11.1.min.js"></script>
 </head>
 <body>
+
 <div class="container">
  <h1 class="text-center"></h1>
  <div class="row">
@@ -43,14 +59,25 @@
         <?= $this->Form->label('password', 'Password'); ?>
             <?= $this->Form->input('password',array('class'=>'form-control','placeholder'=>'Password','type'=>'password','label'=>false,'required'=>false)) ?>
             <?= $this->Form->input('password',array('class'=>'form-control','placeholder'=>'Retype password', 'type'=>'password', 'label'=>false,'required'=>false)) ?>
-    
-        <div style="margin-left: 20px;float: left;"> 
-            <input name="sex" id="inlineCheckbox1" value="male" type="radio" required="false">Boy
+
+         <!-- <?=$this->Form->input('sex', array(
+                'type' => 'select',
+                'multiple' => 'checkbox',
+                'options' => array(
+                        'Value 1' => 'Label 1',
+                        'Value 2' => 'Label 2'
+                )
+            )); ?> -->
+       
+        <div style="height: 42px;width: 20px;float: left;"> <input name="sex" value="male" type="radio" required="false"> </div>
+       
+        <div style="height: 42px;width: 20px;float: left;margin-left: 20px;"><input name="sex" value="female" type="radio" required="false"></div>
+        <br><br><br>
+        <div>
+            <?= $this->Form->label('sex', 'Boy'); ?>
+            <?= $this->Form->label('sex', 'Girl'); ?>
         </div>
-        <div class="abc" style="margin-left: 20px;">
-            <input name="sex" id="inlineCheckbox2" value="female" type="radio" required="false">Girl 
-        </div>
-        <br>
+       
         <button class="btn btn-lg btn-primary btn-block" type="submit" r>Registration</button>
    <?php echo $this->Form->end();?>
   </div>

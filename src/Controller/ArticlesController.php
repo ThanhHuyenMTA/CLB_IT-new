@@ -12,9 +12,7 @@
 	    {
 	        parent::initialize();
 	        $this->Auth->allow();
-	        $this->loadModel('Department');
-	       
-	       
+	        $this->loadModel('Departments');      
 	    }
 
 		public function home()
@@ -51,6 +49,41 @@
 
 	    public function addarticle()
 	    {
+            $this->loadModel('Embarks');
+            $id_user= $this->request->session()->read('Auth.User.id');
+            $embark= $this->Embarks->find('all',['conditions' => ['Embarks.id_user' =>$id_user]])->contain(['Departments'])->toArray();
+             //pr($embark);die();
+            
+             $this->set(compact('embark')); 
+
+            // $department = $this->Departments->find('all')
+	           // ->innerJoin(['Embarks' =>$embark],['Embarks.id_depart = Departments.id'])
+	           // ->order(['Departments.name' => 'DESC']);
+	     
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	    	$Sessionname= $this->request->session()->read('Auth.User.username');
 	    	if($Sessionname) {
 	    		if ($this->request->is('post')) {

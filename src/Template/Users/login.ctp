@@ -7,7 +7,7 @@
 <div class="loginm">
     <h1 style="color:blue;text-align:center">Login</h1>
     
-    <?= $this->Form->create() ?>
+    <?= $this->Form->create(false,array('name'=>'formLogin','onsubmit'=>'return checkInput(this)')) ;?>
       <div class="form-group">
       
         <label for="email">Email:</label>
@@ -20,11 +20,28 @@
       <div class="checkbox">
         <label><input type="checkbox"> Remember me</label>
       </div>
-      <button style="float:left;" type="submit" class="btn btn-default">Login</button>
+      <button style="float:left;margin-left:20px;" type="submit" class="btn btn-default">Login</button>
       <!-- <span class="icon-repeat icon-4x"> </span> -->
       </br></br>
-      <?= $this->Flash->render() ?>
-   <?= $this->Form->end() ?>
-    </div>
+     <?= $this->Flash->render() ?>
+    <?= $this->Form->end() ?>
+</div>
+
+<script type=”text/javascript”>
+  function checkInput(){
+    if(document.formLogin.email.value==""){
+        alter("Invalid email,please enter your own Email");
+        document.formLogin.email.focus();
+        return false;
+    }
+    if(document.formLogin.password.value==""){
+        alter("Invalid password,please enter your own Password");
+        document.formLogin.password.focus();
+        return false;
+    }
+    return true;
+  }
+</script>
+
 
 

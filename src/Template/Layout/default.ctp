@@ -160,6 +160,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
                                               <?= $this->Html->link('Logout', ['action' => '../users/logout']) ?>
                                             </li>
                                             <li class="nav-header" style="margin-top: 0px;">
+
                                               <?= $this->Html->link('Profile', ['action' => '../users/view']) ?>
                                             </li>
                                             <li class="active" style="color: red; padding-left:28px" >

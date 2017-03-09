@@ -1,0 +1,17 @@
+   input, textarea, .uneditable-input {
+	    margin-left: 0;
+	    width: 900px;
+	    min-height:45px;
+	    padding-left:25px;
+	}  -->
+	.sumb {
+	    margin-left: 863px;
+	    color: blue;
+	    font-weight: bold;
+	    padding: 4px;
+	    margin-top: 4px;
+    }
+	[class^="icon-"], [class*=" icon-"] {
+    	width: 22px;
+    	height: 20px;
+    }

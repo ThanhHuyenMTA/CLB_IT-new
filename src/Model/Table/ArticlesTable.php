@@ -12,7 +12,7 @@ class ArticlesTable extends Table
         //lien ket
         $this->belongsTo('Departments', [
         	'className'=> 'Departments',
-            'foreignKey' => 'menu_id'
+            'foreignKey' => 'id_department'
         ]); 
 
         $this->hasMany('Comments', [
@@ -23,11 +23,14 @@ class ArticlesTable extends Table
             'className'=> 'Users',
             'foreignKey' => 'id_user'
         ]); 
+
+       
+        
     }
 
     public function findalldl($id)
     {
-        $query = $this->find('all',['conditions' => ['Articles.menu_id' =>$id]]);
+        $query = $this->find('all',['conditions' => ['Articles.id_department' =>$id]]);
         return $query;
     }
 }
