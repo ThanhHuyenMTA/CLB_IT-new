@@ -18,7 +18,7 @@
 	}
 </style>
 
-<?=$this->Form->create();?>
+<?=$this->Form->create();     ?>
  	<?= $this->Form->control('name', ['type' => 'name','placeholder'=>'Name']); ?>  
  	<br>
     <?= $this->Form->control('content', ['type' => 'textarea','placeholder'=>'Please write here content articles...']); ?>    
