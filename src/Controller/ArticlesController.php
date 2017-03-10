@@ -17,8 +17,8 @@
 
 		public function home()
 		{ 
-			$baidang = $this->Articles->find('all');	
-			 $this->set('baidang', $this->paginate($baidang,['limit' => 4,
+			$article = $this->Articles->find('all');	
+			$this->set('article', $this->paginate($article,['limit' => 4,
 	        'order' => [
 	            'Articles.id' => 'asc'
 	        ]]));
@@ -26,9 +26,10 @@
 
 		public function view($id)
 		{
+			
 			$this->request->data['id'] = $id; 
-			$viewAr= $this->Articles->get($id);
-			$this->set(compact('viewAr'));
+			$article= $this->Articles->get($id);
+			$this->set(compact('article'));
 			$this->request->session()->write('id_article',$id);
 			//propose comment
 			if($this->loadModel('Comments')) {
@@ -38,44 +39,31 @@
             }
         }
 
-		public function articlesinmenu($id)
+		public function listarticles($id)
 	    { 	
-	    	 $query = $this->Articles->findalldl($id); //function is called in model
-	    	 $this->set('query', $this->paginate($query,['limit' => 4,
+	    	 $this->loadModel('Users');
+	    	 $article = $this->Articles->findalldl($id)->contain(['Users']); //function is called in model
+	    	 //pr($article);die();
+	    	 $this->set('article', $this->paginate($article,['limit' => 4,
             'order' => [
                 'Articles.id' => 'asc'
-            ]]));
+            ]]));	    	
 	    }
 
 	    public function addarticle()
 	    {
             $this->loadModel('Embarks');
             $id_user= $this->request->session()->read('Auth.User.id');
-            $embark= $this->Embarks->find('all',['conditions' => ['Embarks.id_user' =>$id_user]])->contain(['Departments'])->toArray();
-             //pr($embark);die();
+            $embark= $this->Embarks->find('all',['conditions' => ['Embarks.id_user' =>$id_user],'valueField' => 'name'])->contain(['Departments'])->toArray();
+            //pr($embark);die();
             
-             $this->set(compact('embark')); 
+             $this->set(compact('embark->department->name','embark')); 
+
 
             // $department = $this->Departments->find('all')
-	           // ->innerJoin(['Embarks' =>$embark],['Embarks.id_depart = Departments.id'])
+	        	// ->innerJoin(['Embarks' =>$embark],['Embarks.id_depart = Departments.id'])
 	           // ->order(['Departments.name' => 'DESC']);
 	     
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -90,13 +78,15 @@
 	    			//find id_user
 	    				$id_user=$this->request->session()->read('Auth.User.id'); 
 	    				$this->request->data['id_user']=$id_user;
+	    				$this->request->data['id_department']=2;
 	    			//find end
 	    			$article  = $this->Articles->newEntity($this->request->data);
+	    			//pr($article);die();
 		            if($article->errors()){
 		            	$this->Flash->error(__('Unable to add your article.'));
 		        }else{
 		            	if ($this->Articles->save($article)) {
-			                return $this->redirect(['action' => '../']);
+			                return $this->redirect(['action' => '../articles/articlesinmenu/1']);
 		                }      
 		            }
 	    		}
@@ -121,7 +111,6 @@
 	    		  	  $moi=$this->Articles->newEntity($this->request->data);
 	                  if ($this->Articles->save($moi)) {
 	                  	 return $this->redirect('/articles/view/'.$id);
-
 	                  }
 	    		}
 		    }else{

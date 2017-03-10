@@ -1,12 +1,16 @@
 <?= $this->Html->css('view.css'); ?>
-<div><strong class="text-info"> <?= h($viewAr->name) ?> </strong></div><br>
+<div>
+	 <i class="icon-book"></i>
+	<strong class="text-info"> <?= h($article->name) ?> </strong>
+</div><br>
 <div class="text-align: justify;">
-	   <?= h($viewAr ->content) ?>
+	   <?=html_entity_decode($article->content) ?>
 </div>
 <strong>Time post:</strong>
-<?= h($viewAr ->posted) ?><br>
-<strong>Views:</strong> <?= h($viewAr ->views) ?> <br>
+<?= h($article ->posted) ?><br>
+<strong>Views:</strong> <?= h($article->views) ?> <br>
 <i class="icon-user "> </i>
+<?= h($article ->id_user) ?><br>
 </br>
   <?=  $this->Element('../articles/elelikes'); ?>    
   <?=  $this->Element('../articles/eledislikes'); ?>    

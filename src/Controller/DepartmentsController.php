@@ -13,7 +13,7 @@ class DepartmentsController extends AppController
          parent::initialize();
          $this->Auth->allow();
     }
-	public function listmenu()
+	public function listdepartment()
 	{
 		$menus = $this->Departments->Find('all');
 		$this->set(compact('menus'));

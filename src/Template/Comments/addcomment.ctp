@@ -8,8 +8,6 @@
    <h3>Comments</h3>
    <div style="width:100%;">
       <?= $this->Form->create(null, ['url' => ['controller' => 'Comments', 'action' => 'addcomment']]); ?>
-		    <!-- <?= $this->Form->control('content', ['type' => 'textarea','placeholder'=>'Please write here if you have comments...']); ?>  -->
-
          <?= $this->Form->textarea('content',array('class'=>'ckeditor','value'=>"")); ?>   
 			   <button class="sumb" type="submit" name="comment" >Comment</button>
 			   <?= $this->Flash->render() ?>

@@ -46,8 +46,9 @@ class PagesController extends AppController
     {   
         
         $this->loadModel('Articles'); //call model
-        $baidang = $this->Articles->find('all');
-         $this->set('baidang', $this->paginate($baidang,['limit' => 6,
+       // $this->loadModel('Users'); //call model
+        $article = $this->Articles->find('all')->contain(['Users']);;
+         $this->set('article', $this->paginate($article,['limit' => 6,
             'order' => [
                 'Articles.id' => 'asc'
             ]]));

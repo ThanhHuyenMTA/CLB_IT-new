@@ -4,22 +4,28 @@
 <!--end css-->
 
 <h1 style="text-align:left;font-weight: bold;">Articles in menu...</h1>
-    <?php foreach ($query as $totl): ?>
+    <?php foreach ($article as $value): ?>
+
        <div class="hometc"> 
+        <i class="icon-book"></i>
         <strong>
-           <?= $this->Html->link($totl->name,['action' => '../articles/view', $totl->id]) ?>
+           <?= $this->Html->link($value->name,['action' => '../articles/view', $value->id]) ?>
         </strong><br>
-        <?= substr( $totl->content,0,301);?>
-        .......
+        <?= substr( $value->content,0,301);?>
+        .......    
         <br>
             <strong>Views: </strong>
-                 <?= $totl->views ?>
+                 <?= $value->views ?>
         <blockquote class="pull-right">
             <strong>Time post:</strong>
-                <?= $totl->posted ?>
-            <br>......  <i class="icon-user"></i> ......
+                <?= $value->posted ?>
+            <br> <strong><i class="icon-user"> 
+                      <?= $this->Html->link($value->user->username,['action' =>'#']) ?>
+                  </i>
+                </strong>  
+
         </blockquote>
-    </div>
+      </div>
     <?php endforeach; ?>
 
 <!--Phan trang-->

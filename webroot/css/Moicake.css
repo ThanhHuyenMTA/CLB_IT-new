@@ -21,7 +21,7 @@
 .hometc{
     border: 1px solid rgba(100, 100, 105, 0.43);
     float: left ;
-    width: 450px;
+    width: 100%;
     margin-left: 10px;
     padding: 4px;
     margin-top: 10px;

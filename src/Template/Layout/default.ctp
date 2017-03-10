@@ -147,7 +147,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
                                     <ul class="dropdown-menu">
                                         <li class="nav-header">
                                            <a href="#">
-                                               <?=  $this->Element('../Departments/listmenu'); ?>    
+                                               <?=  $this->Element('../Departments/listdepartment'); ?>    
                                            </a>
                                         </li>
                                     </ul>
