@@ -38,10 +38,17 @@
 	            $this->set(compact('comments')); 
             }
         }
-
+ //chú ý
 		public function listarticles($id)
 	    { 	
 	    	 $this->loadModel('Users');
+	    	 $this->loadModel('Embarks');
+	    	 $id_user=$this->request->session()->read('Auth.User.id');
+	    	 //pr($id_user);die();
+	    	 $numberembark = $this->Embarks->find('all',['conditions'=> ['Embarks.id_user'=>$id_user ,'Embarks.id_depart'=>$id]])->count();
+	    	 //pr($numberembark);die();
+
+
 	    	 $article = $this->Articles->findalldl($id)->contain(['Users']); //function is called in model
 	    	 //pr($article);die();
 	    	 $this->set('article', $this->paginate($article,['limit' => 4,
@@ -64,11 +71,6 @@
 	        	// ->innerJoin(['Embarks' =>$embark],['Embarks.id_depart = Departments.id'])
 	           // ->order(['Departments.name' => 'DESC']);
 	     
-
-
-
-
-
 
 
 
@@ -144,5 +146,6 @@
 	    		return $this->redirect(['action' => '../users/login']);
 	        }
 	    }
+
     }
 ?>

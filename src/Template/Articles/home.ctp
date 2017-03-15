@@ -3,9 +3,8 @@
 <?= $this->Html->css('Moicake.css') ;?>
 <!--end css-->
 
-<h1 style="text-align:left;font-weight: bold;"> Newest Posts </h1>
+<h1> Newest Posts </h1>
     <?php foreach ($article as $value): ?>
-
     <div class="hometc"> 
         <i class="icon-book"></i>
         <strong >
@@ -25,7 +24,7 @@
                 </strong>
         </blockquote>
         </br>
-        
+          
     </div>
 
     <?php endforeach; ?>

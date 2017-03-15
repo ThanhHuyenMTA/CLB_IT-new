@@ -3,6 +3,8 @@
 <?= $this->Html->css('Moicake.css') ;?>
 <!--end css-->
 
+ <?=  $this->Element('../articles/embarkdepart'); ?>   
+
 <h1 style="text-align:left;font-weight: bold;">Articles in menu...</h1>
     <?php foreach ($article as $value): ?>
 
