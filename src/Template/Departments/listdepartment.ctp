@@ -1,3 +1,3 @@
-	<?php foreach ($menus as $totl): ?>
-	    <li><?= $this->Html->link($totl->name, ['action' => '../Articles/listarticles',$totl->id]) ?><?li>
+	<?php foreach ($department as $value): ?>
+	    <li><?= $this->Html->link($value->name, ['action' => '../Articles/listarticle',$value->id]) ?><?li>
 	<?php endforeach; ?>

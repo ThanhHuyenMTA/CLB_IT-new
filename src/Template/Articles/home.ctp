@@ -3,30 +3,22 @@
 <?= $this->Html->css('Moicake.css') ;?>
 <!--end css-->
 
-<h1> Newest Posts </h1>
-    <?php foreach ($article as $value): ?>
-    <div class="hometc"> 
-        <i class="icon-book"></i>
-        <strong >
-           <?= $this->Html->link($value->name,['action' => '../articles/view', $value->id]) ?>
-        </strong><br>
-        <?= substr( $value->content,0,301);?>
+<h1 style="text-align:left;font-weight: bold;"> Newest Posts </h1>
+    <?php foreach ($baidang as $totl): ?>
+    <div class="hometc">
+        <span style="font-weight: bold;">
+           <?= $this->Html->link($totl->name,['action' => '../articles/view', $totl->id]) ?>
+        </span>
+        <br>
+        <?= substr( $totl->content,0,301);?>
         .......
         <br>
-            <strong>Views: </strong>
-                 <?= $value->views ?>
-        <blockquote class="pull-right">
-            <strong>Time post:</strong>
-                <?= $value->posted ?>
-           <br> <strong><i class="icon-user"> 
-                      <?= $this->Html->link($value->user->username,['action' =>'#']) ?>
-                  </i>
-                </strong>
-        </blockquote>
-        </br>
-          
+        Time post:
+        <?= $totl->posted ?>
+        <br>
+        Views:
+        <?= $totl->views ?>
     </div>
-
     <?php endforeach; ?>
 
 <!--Phan trang-->

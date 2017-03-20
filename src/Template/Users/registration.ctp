@@ -1,82 +1,104 @@
-<style>
-  input[type=checkbox], input[type=radio] {
-    margin: 4px 0 0;
-    margin-top: 1px\9;
-    line-height: normal;
-    width: 15px;
-}
-</style>
 
-<!DOCTYPE html>
+<html>
+    <?= $this->Html->css('login.css'); ?>
+    <div class="overlay">
+        <div class="login-wrapper" style="width: 700px; ">
+            <div class="login-content">
+                <a class="close">x</a>
+                <center><h1>Sign up</h1></center>
+                <form method="post" action="#">
+                    <div class="row">
+                        <div id="main-content" class="col-md-4">
+                            <label for="username">
+                                Name:
+                                <input type="text" name="name" id="name" placeholder="Please enter name to !!! " required="required" />
+                            </label>
 
-<html lang="en">
-<head>
-  <title>Registration Users</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <?= $this->Html->css('Moicake.css') ;?>
-  <?= $this->fetch('css'); ?>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-  <script src="js/jquery-1.11.1.min.js"></script>
-</head>
-<body>
+                            <label for="phone">
+                                Phone:
+                                <input type="text" name="phone" placeholder="Please enter phone to !!! " required="required" />
+                            </label>
+                            <label for="birthday">
+                                Birthday:
+                                <input type="date" name="birthday" required="required" style="width: 172px;" />
+                            </label>
 
-<div class="container">
- <h1 class="text-center"></h1>
- <div class="row">
-  <div class="col-xs-12 col-sm-12 col-md-4 well well-sm col-md-offset-4">
-   <legend>
-       <a href="#"><i class="glyphicon glyphicon-globe"></i></a>Registration member!
-   </legend>
-   <?php echo $this->Form->create($user, array('require'));?>
-      <div class="row">
-        <div class="col-xs-6 col-md-6"> 
+                        </div>
+
+                        <div id="main-content" class="col-md-4">
+                            <label for="address">
+                                Address:
+                                <input type="text" name="address" placeholder="Please enter address to !!! " required="required" />
+                            </label>
+                            <label for="job">
+                                Job:
+                                <input type="text" name="job" placeholder="Please enter job to !!! " required="required" />
+                            </label>
+
+                            <label for="sex" style="float:left;">
+                                Boy 
+                                <input  type="checkbox" name="sex" value="male"/>
+                            </label>
+
+                            <label for="sex"style="float: left;margin-left: 5px;" >
+                                Girl
+                                <input type="checkbox" name="sex" value="femal" /> 
+                            </label>
+
+
+                        </div>
+
+                        <div id="main-content" class="col-md-4">
+
+                            <label for="email">
+                                Email:
+                                <input type="email" name="email"  placeholder="Please enter email to !!! " required="required" />
+                            </label>
+                            <label for="username">
+                                Username:
+                                <input type="text" name="username"  placeholder="Please enter username to !!! " required="required" />
+                            </label>
+
+                            <label for="password">
+                                Password:
+                                <input type="password" name="password"  placeholder="Please enter password to !!! " required="required" />
+                            </label>
+                        </div>
+                    </div>
+                    <button type="submit" style="margin-left:560px;">Sign-up</button>
+                </form>
+            </div>
         </div>
-      </div> 
-      <?= $this->Form->label('name', 'Name'); ?>
-          <?= $this->Form->input('name',array('class'=>'form-control','placeholder'=>'Name','type'=>'name','label'=>false,'required'=>false)) ?>
-      <?= $this->Form->label('birthday', 'Birthday'); ?>
-         <?= $this->Form->input('birthday',array('class'=>'form-control','type'=>'datetime-local','label'=>false,'required'=>false)) ?>
-      <?= $this->Form->label('phone', 'Phone Number'); ?>
-
-          <?= $this->Form->input('phone',array('class'=>'form-control','placeholder'=>'Phone number','type'=>'tel','label'=>false,'required'=>false)) ?>
-       <?= $this->Form->label('address', 'Address'); ?>
-          <?= $this->Form->
-          input('address',array('class'=>'form-control','placeholder'=>'Address','type'=>'name','label'=>false,'required'=>false)) ?>
-        <?= $this->Form->label('job', 'Job'); ?>
-           <?= $this->Form->input('job',array('class'=>'form-control','placeholder'=>'Job','type'=>'name','label'=>false,'required'=>false)) ?>
-        <?= $this->Form->label('username', 'Username'); ?>
-            <?= $this->Form->input('username',array('class'=>'form-control','placeholder'=>'Username','type'=>'name','label'=>false,'required'=>false)) ?>
-        <?= $this->Form->label('email', 'Email'); ?>
-            <?= $this->Form->input('email',array('class'=>'form-control','placeholder'=>'Email','type'=>'email','label'=>false,'required'=>false)) ?>
-        <?= $this->Form->label('password', 'Password'); ?>
-            <?= $this->Form->input('password',array('class'=>'form-control','placeholder'=>'Password','type'=>'password','label'=>false,'required'=>false)) ?>
-            <?= $this->Form->input('password',array('class'=>'form-control','placeholder'=>'Retype password', 'type'=>'password', 'label'=>false,'required'=>false)) ?>
-
-         <!-- <?=$this->Form->input('sex', array(
-                'type' => 'select',
-                'multiple' => 'checkbox',
-                'options' => array(
-                        'Value 1' => 'Label 1',
-                        'Value 2' => 'Label 2'
-                )
-            )); ?> -->
-       
-        <div style="height: 42px;width: 20px;float: left;"> <input name="sex" value="male" type="radio" required="false"> </div>
-       
-        <div style="height: 42px;width: 20px;float: left;margin-left: 20px;"><input name="sex" value="female" type="radio" required="false"></div>
-        <br><br><br>
-        <div>
-            <?= $this->Form->label('sex', 'Boy'); ?>
-            <?= $this->Form->label('sex', 'Girl'); ?>
-        </div>
-       
-        <button class="btn btn-lg btn-primary btn-block" type="submit" r>Registration</button>
-   <?php echo $this->Form->end();?>
-  </div>
- </div>
-</div>
-
-</body>
+    </div>
 </html>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#loginLink").click(function (event) {
+            event.preventDefault();
+            $(".overlay").fadeToggle("fast");
+        });
+
+        $(".overlayLink").click(function (event) {
+            event.preventDefault();
+            var action = $(this).attr('data-action');
+
+            $.get("ajax/" + action, function (data) {
+                $(".login-content").html(data);
+            });
+
+            $(".overlay").fadeToggle("fast");
+        });
+
+        $(".close").click(function () {
+            $(".overlay").fadeToggle("fast");
+        });
+
+        $(document).keyup(function (e) {
+            if (e.keyCode == 27 && $(".overlay").css("display") != "none") {
+                event.preventDefault();
+                $(".overlay").fadeToggle("fast");
+            }
+        });
+    });
+</script>

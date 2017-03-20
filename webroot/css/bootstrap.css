@@ -180,8 +180,6 @@ a:hover {
   -webkit-border-radius: 6px;
      -moz-border-radius: 6px;
           border-radius: 6px;
-          width: 130px;
-          height: 130px;
 }
 
 .img-polaroid {
@@ -1128,9 +1126,10 @@ textarea::-webkit-input-placeholder {
   color: #999999;
 }
 
-.radio, .checkbox {
-    min-height: 18px;
-    padding-left: 37px;
+.radio,
+.checkbox {
+  min-height: 18px;
+  padding-left: 18px;
 }
 
 .radio input[type="radio"],
@@ -4737,8 +4736,7 @@ input[type="submit"].btn.btn-mini {
   display: inline-block;
   *display: inline;
   margin-bottom: 0;
-  margin-left: 350px;
- margin-top: 24px;
+  margin-left: 0;
   -webkit-border-radius: 3px;
      -moz-border-radius: 3px;
           border-radius: 3px;

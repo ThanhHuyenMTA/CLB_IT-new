@@ -1,428 +1,341 @@
 <?php
 $cakeDescription = 'CakePHP: the rapid development php framework';
 ?>
+
 <!DOCTYPE html>
-<html>
-<head>
-    <?= $this->Html->charset(); ?>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>
-        <?= $cakeDescription ?>:<?= $this->fetch('title'); ?>
-    </title>
-    <?= $this->Html->meta('icon'); ?>
+<html lang="en">
+    <head>
+        <?= $this->Html->charset(); ?>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="Free Bootstrap Themes by 365Bootstrap dot com - Free Responsive Html5 Templates">
+        <meta name="author" content="http://www.365bootstrap.com">
 
-    <?= $this->Html->css('bootstrap.css'); ?>
-    <?= $this->Html->css('bootstrap-responsive.css'); ?>
-    <?= $this->Html->css('style.css'); ?>
-    <?= $this->Html->css('Themmoi.css'); ?>
-    <?= $this->Html->css('loginm.css') ;?>
+        <title>IT CLUB</title>
+        <?= $this->Html->meta('icon'); ?>
+        <!-- Bootstrap Core CSS -->
+        <?= $this->Html->css('bootstrap.min.css'); ?>
 
-    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Droid+Sans:400,700"/>
-    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Droid+Serif"/>
-    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Boogaloo"/>
-    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Economica:700,400italic"/>
-     
-   
+        <!-- Owl Carousel Assets -->
+        <?= $this->Html->css('owl.carousel.css'); ?>
+        <?= $this->Html->css('owl.theme.css'); ?>
+        <!-- Custom CSS -->
+        <?= $this->Html->css('style.css'); ?>
+        <?= $this->Html->css('bootstrap-datetimepicker.min.css'); ?>
+        <!-- Custom Fonts -->
 
-    <?= $this->Html->css('font.css'); ?>
-    <!-- end: CSS -->
-    <?= $this->Html->script('jquery-1.8.2'); ?>
-    <?= $this->Html->script('bootstrap'); ?>
-    <?= $this->Html->script('flexslider'); ?>
-    <?= $this->Html->script('carousel'); ?>
-    <?= $this->Html->script('custom'); ?>
+        <?= $this->Html->css('font-awesome.min.css'); ?>  <!-- loi khong hien thi -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" /> 
+        <!-- end font -->
 
-    <?= $this->fetch('meta'); ?>
-    <?= $this->fetch('css'); ?>
-    <?= $this->fetch('script');?>
-</head>
-<body>
-    <div id="wrapper">
+        <!-- jQuery and Modernizr-->
+        <?= $this->Html->script('jquery-2.1.1'); ?>
 
-        <!--start: Container -->
-        <div class="container">
+        <!-- Core JavaScript Files -->       
+        <?= $this->Html->script('bootstrap.min'); ?>
 
+        <?= $this->fetch('meta'); ?>
+        <?= $this->fetch('css'); ?>
+        <?= $this->fetch('script'); ?>
+    </head>
 
-            <!--start: Header -->
-            <header>
-
-                <!--start: Row -->
-                <div class="row">
-
-                    <!--start: Logo -->
-                    <div class="logo span4">
-                        <a class="brand" href="#"><?= $this->Html->image('/img/logo.png', array('alt' => 'CakePHP', 'style' => 'height: 61px; float:left;')); ?></a>
-                    </div>
-                    <!--end: Logo -->
-                    <!--start: Social Links -->
-                    <div class="span8">
-                        <div id="social-links">
-                            <ul class="social-small-grid">
+    <body>
+        <header>
+            <!--Top-->
+            <nav id="top">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <strong>Welcome to Us!</strong>
+                        </div>
+                        <div class="col-md-6">
+                            <ul class="list-inline top-link link">
                                 <li>
-                                    <div class="social-small-item">
-                                        <div class="social-small-info-wrap">
-                                            <div class="social-small-info">
-                                                <div class="social-small-info-front social-small-twitter">
-                                                    <a href="http://twitter.com"></a>
-                                                </div>
-                                                <div class="social-small-info-back social-small-twitter-hover">
-                                                    <a href="http://twitter.com"></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <i class="fa fa-home"></i>
+                                    <?= $this->Html->link('Home', ['action' => '../']) ?> 
                                 </li>
-                                <li>
-                                    <div class="social-small-item">
-                                        <div class="social-small-info-wrap">
-                                            <div class="social-small-info">
-                                                <div class="social-small-info-front social-small-facebook">
-                                                    <a href="http://facebook.com"></a>
-                                                </div>
-                                                <div class="social-small-info-back social-small-facebook-hover">
-                                                    <a href="http://facebook.com"></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="social-small-item">
-                                        <div class="social-small-info-wrap">
-                                            <div class="social-small-info">
-                                                <div class="social-small-info-front social-small-dribbble">
-                                                    <a href="http://dribbble.com"></a>
-                                                </div>
-                                                <div class="social-small-info-back social-small-dribbble-hover">
-                                                    <a href="http://dribbble.com"></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="social-small-item">
-                                        <div class="social-small-info-wrap">
-                                            <div class="social-small-info">
-                                                <div class="social-small-info-front social-small-flickr">
-                                                    <a href="http://flickr.com"></a>
-                                                </div>
-                                                <div class="social-small-info-back social-small-flickr-hover">
-                                                    <a href="http://flickr.com"></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
+                                <li><a href="contact.html"><i class="fa fa-comments"></i> Contact</a></li>
+                                <li><a href="#"><i class="fa fa-question-circle"></i> FAQ</a></li>
                             </ul>
                         </div>
                     </div>
                 </div>
-                    <!--end: Social Links -->
+            </nav>
 
+            <!--Navigation menu-->
+            <nav id="menu" class="navbar container">
+                <div class="navbar-header">
+                    <button type="button" class="btn btn-navbar navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse"><i class="fa fa-bars"></i></button>
+                    <a class="navbar-brand" href="#">
+                        <div class="logo"><span>Newspaper</span></div>
+                    </a>
                 </div>
-                <!--end: Row -->
-
-            </header>
-            <!--end: Header-->
-            <!--start: Navigation-->
-            <div class="navbar navbar-inverse">
-                <div class="navbar-inner">
-                    <div class="container">
-                        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </a>
-                        <div class="nav-collapse collapse">
-                            <ul class="nav">
-                                <li class="active">
-                                    <?= $this->Html->link('Home', ['action' => '../']) ?>
-                                </li>
-                                <li>
-                                    <?= $this->Html->link('Introduce', ['action' => '#']) ?>
-                                </li>
-                                <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Departments<b class="caret"></b></a>
-                                    <ul class="dropdown-menu">
-                                        <li class="nav-header">
-                                           <a href="#">
-                                               <?=  $this->Element('../Departments/listdepartment'); ?>    
-                                           </a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Account<b class="caret"></b></a>
-                                    <ul class="dropdown-menu">
-                                        <?php if($loggedIn) : ?>
-                                            <li class="nav-header">
-                                              <?= $this->Html->link('Logout', ['action' => '../users/logout']) ?>
-                                            </li>
-                                            <li class="nav-header" style="margin-top: 0px;">
-
-                                              <?= $this->Html->link('Profile', ['action' => '../users/view']) ?>
-                                            </li>
-                                            <li class="active" style="color: red; padding-left:28px" >
-                                               <?= $this->request->session()->read('Auth.User.username') ?>
+                <div class="collapse navbar-collapse navbar-ex1-collapse">
+                    <ul class="nav navbar-nav">
+                        <li> <?= $this->Html->link('Home', ['action' => '../']) ?> </li>
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Account <i class="fa fa-arrow-circle-o-down"></i></a>
+                            <div class="dropdown-menu">
+                                <div class="dropdown-inner">
+                                    <ul class="list-unstyled">
+                                        <?php if ($loggedIn) : ?>
+                                            <li> <?= $this->Html->link('Logout', ['action' => '../users/logout']) ?>  </li>
+                                            <li> <?= $this->Html->link('Profile', ['action' => '../users/view']) ?> </li>
+                                            <li>
+                                                <h5 style="color: red;margin-left: 20px;"><?= $this->request->session()->read('Auth.User.username') ?></h3>
                                             </li>
                                         <?php else : ?>
-                                             <li class="nav-header">
-                                               <?= $this->Html->link('Login',['action' => '../users/login']) ?>
-                                            </li>
-                                            <li class="nav-header"> 
-                                             <?= $this->Html->link('Registration',['action' => '../users/registration/']) ?>
+                                            <li> 
+                                                <?= $this->Html->link('Log-in', ['action' => '../users/login'], array('class' => 'overlayLink', 'data-action' => 'login-form.html')) ?>
                                             </li>
 
-                                        <?php endif  ?>
+                                            <li> 
+                                                <?= $this->Html->link('Sign-up', ['action' => '../users/registration'], array('class' => 'overlayLink', 'data-action' => 'login-form.html')) ?>
+                                            </li>
+                                        <?php endif ?>
 
                                     </ul>
-                                </li>
-                                <li >
-                                    <?= $this->Html->link('Post Articles', ['action' =>'../Articles/addarticle']) ?>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--end: Navigation-->
-
-        </div>
-        <!--end: Container-->
-        <!--start: Container -->
-
-
-        <div class="container">
-
-            <!-- start: Flexslider -->
-            <div class="slider">
-
-                <div class="flexslider">
-                    <ul class="slides">
-                        <li>
-                            <?= $this->Html->image('/img/slider/slider1.jpg', array('alt' => 'CakePHP', 'style' => 'height:300px;width: 968px;')); ?>
-                            <div class="slide-caption n hidden-phone">
-                                <h3>Câu lạc bộ Tin Học</h3>
-                                <p>
-                                    Câu lạc bộ tin học là nơi giao lưu, chia sẻ và học hỏi kiến thức với nhau. Hãy đăng ký thành viên và bắt đầu nào !
-                                </p>
+                                </div>
                             </div>
                         </li>
-                        <li>
-                            <?= $this->Html->image('/img/slider/slider2.jpg', array('alt' => 'CakePHP', 'style' => 'height:300px;width: 968px;')); ?>
-                            <div class="slide-caption hidden-phone">
-                                <h3>Câu lạc bộ Tin Học</h3>
-                                <p>
-                                    Câu lạc bộ tin học là nơi giao lưu, chia sẻ và học hỏi kiến thức với nhau. Hãy đăng ký thành viên và bắt đầu nào !
-                                </p>
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Department <i class="fa fa-arrow-circle-o-down"></i></a>
+                            <div class="dropdown-menu">
+                                <div class="dropdown-inner">
+                                    <ul class="list-unstyled">
+                                        <!-- load list department -->
+                                        <?= $this->Element('../Departments/listdepartment'); ?>   
+                                    </ul>
+                                </div> 
                             </div>
                         </li>
-                        <li>
-                            <?= $this->Html->image('/img/slider/slider3.jpg', array('alt' => 'CakePHP', 'style' => 'height:300px;width: 968px;')); ?>
-                            <div class="slide-caption n hidden-phone">
-                                <h3>Câu lạc bộ Tin Học</h3>
-                                <p>
-                                    Câu lạc bộ tin học là nơi giao lưu, chia sẻ và học hỏi kiến thức với nhau. Hãy đăng ký thành viên và bắt đầu nào !
-                                </p>
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Category <i class="fa fa-arrow-circle-o-down"></i></a>
+                            <div class="dropdown-menu" style="margin-left: -203.625px;">
+                                <div class="dropdown-inner">
+                                    <ul class="list-unstyled">
+                                        <li><a href="archive.html">Text 301</a></li>
+                                        <li><a href="archive.html">Text 302</a></li>
+                                        <li><a href="archive.html">Text 303</a></li>
+                                        <li><a href="archive.html">Text 304</a></li>
+                                        <li><a href="archive.html">Text 305</a></li>
+                                    </ul>
+                                    <ul class="list-unstyled">
+                                        <li><a href="archive.html">Text 306</a></li>
+                                        <li><a href="archive.html">Text 307</a></li>
+                                        <li><a href="archive.html">Text 308</a></li>
+                                        <li><a href="archive.html">Text 309</a></li>
+                                        <li><a href="archive.html">Text 310</a></li>
+                                    </ul>
+
+                                </div>
                             </div>
                         </li>
+                        <li> <?= $this->Html->link('Post Articles', ['action' => '../articles/addarticle'], array('class' => 'fa fa-cubes')); ?> </li>
+                        <li><a href="../Pages/home"><i class="fa fa-envelope"></i> Contact </a></li>
+                    </ul>
+                    <ul class="list-inline navbar-right top-social">
+                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+                        <li><a href="#"><i class="fa fa-google-plus-square"></i></a></li>
+                        <li><a href="#"><i class="fa fa-youtube"></i></a></li>
                     </ul>
                 </div>
-
-            </div>
-            <hr>
-            <!--start: Container -->
-            <?= $this->Flash->render(); ?>
-            <div class="container">
-               <?= $this->fetch('content');?>
-            </div>
-            <!--end: Container-->
-            <hr>
-
-
-            <!--start: Container -->
-            <div class="container">
-                <!-- start: Footer Menu -->
-                <div id="footer-menu" class="hidden-tablet hidden-phone">
-                    <!-- start: Container -->
-                    <div class="container">
-
-                        <!-- start: Row -->
-                        <div class="row">
-                            <!-- start: Footer Menu Logo -->
-                            <div class="span1">
-                                <div id="footer-menu-logo">
-                                    <a href="#"><?= $this->Html->image('/img/logo-footer-menu.png', array('alt' => 'CakePHP')); ?></a>  
-                                </div>
+            </nav>
+        </header>   
+        <!-- Slider -->
+        <div class="featured container">
+            <div class="row">
+                <div class="col-sm-8">
+                    <!-- Carousel -->
+                    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                        <!-- Indicators -->
+                        <ol class="carousel-indicators">
+                            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                            <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                            <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                        </ol>
+                        <!-- Wrapper for slides -->
+                        <div class="carousel-inner">
+                            <div class="item active">
+                                <?= $this->Html->image('/img/new/1.jpg', array('alt' => 'CakePHP', 'style' => 'height:420px;width:750px;')); ?>
+                                <!-- Static Header -->
+                                <div class="header-text hidden-xs">
+                                    <div class="col-md-12 text-center">
+                                        <h2>Welcome to Us! </h2>
+                                        <br>
+                                        <h5 style="color:black;">The informatics club is a place where exchange, sharing and learning with each other.Let's register to join us !!!</h5>
+                                        <br>
+                                    </div>
+                                </div><!-- /header-text -->
                             </div>
-                            <!-- end: Footer Menu Logo -->
-                            <!-- start: Footer Menu Links-->
-                            <div class="span10">
-
-                                <div id="footer-menu-links">
-                                    <ul id="footer-nav">
-                                        <li><a href="index.html">Start</a></li>
-                                        <li><a href="about.html">About</a></li>
-                                        <li><a href="services.html">Services</a></li>
-                                        <li><a href="pricing.html">Pricing</a></li>
-                                        <li><a href="contact.html">Contact</a></li>
-                                    </ul>
-                                </div>
-
+                            <div class="item">
+                                <?= $this->Html->image('/img/new/2.jpg', array('alt' => 'CakePHP', 'style' => 'height:420px;width:750px;')); ?>
+                                <!-- Static Header -->
+                                <div class="header-text hidden-xs">
+                                    <div class="col-md-12 text-center">
+                                        <h2>Welcome to Us!</h2>
+                                        <br>
+                                        <h5 style="color:black;">The informatics club is a place where exchange, sharing and learning with each other.Let's register to join us !!!</h5>
+                                        <br>
+                                    </div>
+                                </div><!-- /header-text -->
                             </div>
-                            <!-- end: Footer Menu Links-->
-                            <!-- start: Footer Menu Back To Top -->
-                            <div class="span1">
-
-                                <div id="footer-menu-back-to-top">
-                                    <a href="#"></a>
-                                </div>
-
+                            <div class="item">
+                                <?= $this->Html->image('/img/new/3.jpg', array('alt' => 'CakePHP', 'style' => 'height:420px;width:750px;')); ?>
+                                <!-- Static Header -->
+                                <div class="header-text hidden-xs">
+                                    <div class="col-md-12 text-center">
+                                        <h2>Welcome to Us!</h2>
+                                        <br>
+                                        <h5 style="color:black;">The informatics club is a place where exchange, sharing and learning with each other.Let's register to join us !!!</h5>
+                                        <br>
+                                    </div>
+                                </div><!-- /header-text -->
                             </div>
-                            <!-- end: Footer Menu Back To Top -->
-
                         </div>
-                        <!-- end: Row -->
-
-                    </div>
-                    <!-- end: Container  -->
+                        <!-- Controls -->
+                        <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+                            <span class="fa fa-angle-left" style="font-size:48px;margin-top: 167px;color:red;"></span>
+                        </a>
+                        <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+                            <span class="fa fa-angle-right" style="font-size:48px;color:red;margin-top: 167px;margin-left: -30px;"></span>
+                        </a>
+                    </div><!-- /carousel -->
                 </div>
-                <!-- end: Footer Menu -->
-                <!-- start: Footer -->
-                <div id="footer">
+                <div class="col-sm-4" >
+                    <div id="owl-demo-1" class="owl-carousel">
+                        <?= $this->Html->image('/img/new/4.jpg', array('alt' => 'CakePHP', 'style' => 'height:207px;width:368px;')); ?>
+                        <?= $this->Html->image('/img/new/5.jpg', array('alt' => 'CakePHP', 'style' => 'height:207px;width:368px;')); ?>
+                        <?= $this->Html->image('/img/new/6.jpg', array('alt' => 'CakePHP', 'style' => 'height:207px;width:368px;')); ?>
+                    </div>
+                    <?= $this->Html->image('/img/new/7.jpg', array('alt' => 'CakePHP', 'style' => 'height:142px;width:360px;')); ?>
+                </div>
+            </div>
+        </div>
 
-                    <!-- start: Container -->
-                    <div class="container">
+        <!-- /////////////////////////////////////////Content -->
+        <div id="page-content" class="index-page container">
+            <?= $this->fetch('content'); ?>
+        </div>
 
-                        <!-- start: Row -->
-                        <div class="row">
-                            <!-- start: About -->
-                            <div class="span3">
-
-                                <h3>About Us</h3>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-                                </p>
-
-                            </div>
-                            <!-- end: About -->
-                            <!-- start: Photo Stream -->
-                            <div class="span3">
-
-                                <h3>Photo Stream</h3>
-                                <div class="flickr-widget">
-                                    <script type="text/javascript" src="http://www.flickr.com/badge_code_v2.gne?count=9&display=latest&size=s&layout=x&source=user&user=29609591@N08"></script>
-                                    <div class="clear"></div>
-                                </div>
-
-                            </div>
-                            <!-- end: Photo Stream -->
-
-                            <div class="span6">
-
-                                <!-- start: Follow Us -->
-                                <h3>Follow Us!</h3>
-                                <ul class="social-grid">
-                                    <li>
-                                        <div class="social-item">
-                                            <div class="social-info-wrap">
-                                                <div class="social-info">
-                                                    <div class="social-info-front social-twitter">
-                                                        <a href="http://twitter.com"></a>
-                                                    </div>
-                                                    <div class="social-info-back social-twitter-hover">
-                                                        <a href="http://twitter.com"></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="social-item">
-                                            <div class="social-info-wrap">
-                                                <div class="social-info">
-                                                    <div class="social-info-front social-facebook">
-                                                        <a href="http://facebook.com"></a>
-                                                    </div>
-                                                    <div class="social-info-back social-facebook-hover">
-                                                        <a href="http://facebook.com"></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="social-item">
-                                            <div class="social-info-wrap">
-                                                <div class="social-info">
-                                                    <div class="social-info-front social-dribbble">
-                                                        <a href="http://dribbble.com"></a>
-                                                    </div>
-                                                    <div class="social-info-back social-dribbble-hover">
-                                                        <a href="http://dribbble.com"></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="social-item">
-                                            <div class="social-info-wrap">
-                                                <div class="social-info">
-                                                    <div class="social-info-front social-flickr">
-                                                        <a href="http://flickr.com"></a>
-                                                    </div>
-                                                    <div class="social-info-back social-flickr-hover">
-                                                        <a href="http://flickr.com"></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ul>
-                                <!-- end: Follow Us -->
-                                <!-- start: Newsletter -->
-                                <form id="newsletter">
-                                    <h3>Newsletter</h3>
-                                    <p>Please leave us your email</p>
-                                    <label for="newsletter_input"></label>
-                                    <input type="text" id="newsletter_input" />
-                                    <input type="submit" id="newsletter_submit" value="submit">
+        <footer>
+            <div class="wrap-footer">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-4 col-footer footer-1">
+                            <div class="footer-heading"><h1><span style="color: #fff;">IT CLUB</span></h1></div>
+                            <div class="content">
+                                <p>Never missed any post published in our site. Subscribe to our daly newsletter now.</p>
+                                <strong>Email address:</strong>
+                                <form action="#" method="post">
+                                    <input type="text" name="your-name" value="" size="40" placeholder="Your Email" />
+                                    <input type="submit" value="SUBSCRIBE" class="btn btn-3" />
                                 </form>
-                                <!-- end: Newsletter -->
-
                             </div>
-
                         </div>
-                        <!-- end: Row -->
-
+                        <div class="col-md-4 col-footer footer-2">
+                            <div class="footer-heading"><h4>Tags</h4></div>
+                            <div class="content">
+                                <a href="#">animals</a>
+                                <a href="#">cooking</a>
+                                <a href="#">countries</a>
+                                <a href="#">city</a>
+                                <a href="#">children</a>
+                                <a href="#">home</a>
+                                <a href="#">likes</a>
+                                <a href="#">photo</a>
+                                <a href="#">link</a>
+                                <a href="#">law</a>
+                                <a href="#">shopping</a>
+                                <a href="#">skate</a>
+                                <a href="#">scholl</a>
+                                <a href="#">video</a>
+                                <a href="#">travel</a>
+                                <a href="#">images</a>
+                                <a href="#">love</a>
+                                <a href="#">lists</a>
+                                <a href="#">makeup</a>
+                                <a href="#">media</a>
+                                <a href="#">password</a>
+                                <a href="#">pagination</a>
+                                <a href="#">wildlife</a>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-footer footer-3">
+                            <div class="footer-heading"><h4>Link List</h4></div>
+                            <div class="content">
+                                <ul>
+                                    <li><a href="#">MOST VISITED COUNTRIES</a></li>
+                                    <li><a href="#">5 PLACES THAT MAKE A GREAT HOLIDAY</a></li>
+                                    <li><a href="#">PEBBLE TIME STEEL IS ON TRACK TO SHIP IN JULY</a></li>
+                                    <li><a href="#">STARTUP COMPANY’S CO-FOUNDER TALKS ON HIS NEW PRODUCT</a></li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
-                    <!-- end: Container  -->
                 </div>
-                <!-- end: Footer -->
-
             </div>
-            <!-- end: Container  -->
-        </div>
-
-
-        <!-- end: Wrapper  -->
-        <!-- start: Copyright -->
-        <div id="copyright">
-
-            <!-- start: Container -->
-            <div class="container">
-
-                <p>
-                    &copy; 2013, creativeLabs. <a href="http://bootstrapmaster.com" alt="Bootstrap Themes">Bootstrap Themes</a> Designed by BootstrapMaster in Poland 
-                    <?= $this->Html->image('/img/poland.png', array('alt' => 'CakePHP', 'style' => 'margin-top:-4px')); ?>
-                </p>
-
+            <div class="copy-right">
+                <p>Copyright 2015 - <a href="http://www.365bootstrap.com" target="_blank" rel="nofollow">Bootstrap Themes</a> Designed by 365Bootstrap.com</p>
             </div>
-            <!-- end: Container  -->
+        </footer>
+        <!-- Footer -->
 
-        </div>
-        </div>
+        <!-- JS -->
+        <script src="owl-carousel/owl.carousel.js"></script>
+        <?= $this->Html->script('owl.carousel'); ?>
+        <script>
+            $(document).ready(function () {
+                $("#owl-demo-1").owlCarousel({
+                    autoPlay: 3000,
+                    items: 1,
+                    itemsDesktop: [1199, 1],
+                    itemsDesktopSmall: [400, 1]
+                });
+                $("#owl-demo-2").owlCarousel({
+                    autoPlay: 3000,
+                    items: 3,
+                });
+            });
+        </script>
+
+        <?= $this->Html->script('bootstrap-datetimepicker'); ?>
+        <?= $this->Html->script('bootstrap-datetimepicker.fr'); ?>
+        <?= $this->fetch('meta'); ?>
+        <?= $this->fetch('css'); ?>
+        <?= $this->fetch('script'); ?>
+        <script type="text/javascript">
+            $('.form_datetime').datetimepicker({
+                //language:  'fr',
+                weekStart: 1,
+                todayBtn: 1,
+                autoclose: 1,
+                todayHighlight: 1,
+                startView: 2,
+                forceParse: 0,
+                showMeridian: 1
+            });
+            $('.form_date').datetimepicker({
+                language: 'fr',
+                weekStart: 1,
+                todayBtn: 1,
+                autoclose: 1,
+                todayHighlight: 1,
+                startView: 2,
+                minView: 2,
+                forceParse: 0
+            });
+            $('.form_time').datetimepicker({
+                language: 'fr',
+                weekStart: 1,
+                todayBtn: 1,
+                autoclose: 1,
+                todayHighlight: 1,
+                startView: 1,
+                minView: 0,
+                maxView: 1,
+                forceParse: 0
+            });
+        </script>
     </body>
 </html>

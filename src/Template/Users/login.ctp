@@ -1,47 +1,54 @@
-  
-  <?= $this->Html->css('bootstrap.css'); ?>
-  <?= $this->Html->css('bootstrap-responsive.css'); ?>
-  <?= $this->Html->css('style.css'); ?>
-  <?= $this->Html->css('loginm.css') ;?>
-  
-<div class="loginm">
-    <h1 style="color:blue;text-align:center">Login</h1>
-    
-    <?= $this->Form->create(false,array('name'=>'formLogin','onsubmit'=>'return checkInput(this)')) ;?>
-      <div class="form-group">
-      
-        <label for="email">Email:</label>
-        <?= $this->Form->input('email',array('class'=>'form-control','placeholder'=>'Email','type'=>'email','label'=>false,'required'=>false)) ?>
+<html>
+<?= $this->Html->css('login.css'); ?>
 
-        <label for="pwd">Password:</label>
-        <?= $this->Form->input('password',array('class'=>'form-control','placeholder'=>'Password','type'=>'password','label'=>false,'required'=>false)) ?>
+    <div class="overlay">
+        <div class="login-wrapper">
+            <div class="login-content">
+                <a class="close">x</a>
+                 <center><h1>Sign in</h1></center>
+                <form method="post" action="#">
+                    <label for="username">
+                        Username:
+                        <input type="text" name="email" style="email" id="username" placeholder="Please enter email to !!! " required="required" />
+                    </label>
+                    <label for="password">
+                        Password:
+                        <input type="password" name="password" id="password" placeholder="Password must contain 1 uppercase, lowercase and number" required="required" />
+                    </label>
+                    <button type="submit">Sign in</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</html>
 
-      </div>
-      <div class="checkbox">
-        <label><input type="checkbox"> Remember me</label>
-      </div>
-      <button style="float:left;margin-left:20px;" type="submit" class="btn btn-default">Login</button>
-      <!-- <span class="icon-repeat icon-4x"> </span> -->
-      </br></br>
-     <?= $this->Flash->render() ?>
-    <?= $this->Form->end() ?>
-</div>
-
-<script type=”text/javascript”>
-  function checkInput(){
-    if(document.formLogin.email.value==""){
-        alter("Invalid email,please enter your own Email");
-        document.formLogin.email.focus();
-        return false;
-    }
-    if(document.formLogin.password.value==""){
-        alter("Invalid password,please enter your own Password");
-        document.formLogin.password.focus();
-        return false;
-    }
-    return true;
-  }
+<script type="text/javascript">
+    $(document).ready(function() {
+    $("#loginLink").click(function( event ){
+        event.preventDefault();
+        $(".overlay").fadeToggle("fast");
+    });
+     
+    $(".overlayLink").click(function(event){
+        event.preventDefault();
+        var action = $(this).attr('data-action');
+         
+        $.get( "ajax/" + action, function( data ) {
+            $( ".login-content" ).html( data );
+        }); 
+         
+        $(".overlay").fadeToggle("fast");
+    });
+     
+    $(".close").click(function(){
+        $(".overlay").fadeToggle("fast");
+    });
+     
+    $(document).keyup(function(e) {
+        if(e.keyCode == 27 && $(".overlay").css("display") != "none" ) { 
+            event.preventDefault();
+            $(".overlay").fadeToggle("fast");
+        }
+    });
+});
 </script>
-
-
-
