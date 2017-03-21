@@ -44,14 +44,41 @@ class PagesController extends AppController
      */
     public function display()
     {   
-        
-        $this->loadModel('Articles'); //call model
-        $baidang = $this->Articles->find('all');
-         $this->set('baidang', $this->paginate($baidang,['limit' => 6,
+         $this->loadModel('Articles'); //call model
+        //load articles new
+        $baidang = $this->Articles->find('all',['condition'=>['Articles.views >='=>10]]);
+        $this->set('baidang', $this->paginate($baidang,['limit' => 6,
             'order' => [
                 'Articles.id' => 'asc'
             ]]));
+        //load article in department
+         $article1 = $this->Articles->find('all',[
+             'condition'=>['Articles.id_department'=>1],
+             'order'=>['Articles.views' => 'asc'],
+             'limit'=>2]);
+         $this->set(compact('article1'));
+         
+         $article2 = $this->Articles->find('all',[
+             'condition'=>['Articles.id_department'=>2],
+             'order'=>['Articles.views' => 'asc'],
+             'limit'=>2]);
+         $this->set(compact('article2'));
+         
+         $article3 = $this->Articles->find('all',[
+             'condition'=>['Articles.id_department'=>3],
+             'order'=>['Articles.views' => 'asc'],
+             'limit'=>2]);
+         $this->set(compact('article3'));
+         $article4 = $this->Articles->find('all',[
+             'condition'=>['Articles.id_department'=>4],
+             'order'=>['Articles.views' => 'asc'],
+             'limit'=>2]);
+         $this->set(compact('article4'));
+         
+         //end load 
+         
        
+         
         $path = func_get_args();
 
         $count = count($path);

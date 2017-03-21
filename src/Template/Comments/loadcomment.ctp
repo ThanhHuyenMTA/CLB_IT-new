@@ -2,8 +2,8 @@
     <div class="widget wid-comment">
         <div class="content">
             <div class="post">
-                <a href="single.html">
-                    <?= $this->Html->image('/img/new/29.jpg', array('alt' => 'CakePHP', 'style' => 'height:50px;width:50px; border-radius: 50%;')); ?>
+                <a href="#">
+                    <?= $this->Html->image('new/'.$row->user['image'], array('alt' => 'CakePHP', 'style' => 'height:50px;width:50px; border-radius: 50%;')); ?>
                 </a>
                 <div class="wrapper">
                     <a href="#" ><h5 style="color:#365899;"><?= h($row->user->username) ?></h5></a>

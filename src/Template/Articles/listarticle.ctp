@@ -2,16 +2,18 @@
     <div class="">
         <div class="row">
             <div id="main-content" class="col-md-8">
-                
+
                 <?php foreach ($article as $value): ?>
                     <div class="box">
                         <h2><?= $this->Html->link($value->name, ['action' => '../articles/view', $value->id]) ?> </h2>
                         <div class="info">
-                            <h5>By <a href="#">Kelvin</a></h5>
+                            <h5>By <a href="#"><?= $value->user->username ?></a>
+                                <?= $this->Html->image('new/' . $value->user['image'], array('alt' => 'CakePHP', 'style' => 'height:20px;width:20px; border-radius: 50%;')); ?>
+                            </h5>
                             <span><i class="fa fa-calendar"></i><?= $value->posted ?></span> 
                             <span><i class="fa fa-comment"></i> 0 Comments</span>
                             <span><i class="fa fa-heart"></i> <?= $value->views ?></span>
-                            <?= $this->request->session()->write('id_department',$value->id_department); ?>
+                            <?= $this->request->session()->write('id_department', $value->id_department); ?>
                             <ul class="list-inline">
                                 <li><a href="#">Rate</a></li>
                                 <li> - </li>
@@ -39,7 +41,7 @@
                 <?php endforeach; ?>
 
                 <!-- phan trang -->
-                
+
                 <div class="box">
                     <center>
                         <ul class="pagination">
@@ -50,7 +52,7 @@
                     </center>
                 </div>
             </div>
-            
+
             <div id="sidebar" class="col-md-4">
                 <!---- Start Widget ---->
                 <div class="widget wid-follow">

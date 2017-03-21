@@ -11,10 +11,10 @@
                 <div class="row">
                     <!-- load image -->
                     <div class="col-xs-4">
-                        <?= $this->Html->image($user['image'], array('alt' => 'CakePHP', 'style' => 'height:150px;width:150px;')); ?><br><br>
+                        <?= $this->Html->image('new/'.$user['image'], array('alt' => 'CakePHP', 'style' => 'height:150px;width:150px;')); ?><br><br>
                         <!-- edit picture user -->
                         <?php echo $this->Form->create(null, ['type' => 'file']); ?>
-                            <label class="btn btn-primary" for="my-file-selector" style="color: black;background-color: #eff3f6;font-weight: bold;">
+                            <label class="btn btn-primary" f or="my-file-selector" style="color: black;background-color: #eff3f6;font-weight: bold;">
                                 <input id="my-file-selector" type="file" style="display:none;" name='uploadfile' multiple='multiple' onchange="$('#upload-file-info').html($(this).val());">
                                 <i class="fa fa-arrow-circle-o-up"></i> Upload new picture !
                             </label>
