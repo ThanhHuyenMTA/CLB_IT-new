@@ -46,8 +46,12 @@
                             <?php foreach ($article1 as $value): ?>
                                 <div class="col-md-6">
                                     <?= $this->Html->image('/img/new/1.jpg', array('alt' => 'CakePHP', 'style' => 'height:148px;width:250px;')); ?>
-                                    <h3><a href="#"> <?= $value->name ?> </a></h3>
+                                    <h3><?= $this->Html->link($value->name, ['action' => '../articles/view', $value->id]) ?> </h3>
+                                    <p>By <a href="#"><?= $value->user->username ?></a>
+                                        <?= $this->Html->image('new/' . $value->user['image'], array('alt' => 'CakePHP', 'style' => 'height:20px;width:20px; border-radius: 50%;')); ?>
+                                    </p>
                                     <span><i class="fa fa-heart"></i>  <?= $value->likes ?> / <i class="fa fa-calendar"></i>  <?= $value->posted ?> / <i class="fa fa-comment-o"> / </i> 10 <i class="fa fa-eye"></i> <?= $value->views ?></span>
+                                    <br> 
                                     <span class="rating">
                                         <i class="fa fa-star"></i>
                                         <i class="fa fa-star"></i>
@@ -55,7 +59,8 @@
                                         <i class="fa fa-star"></i>
                                         <i class="fa fa-star-half"></i>
                                     </span>
-                                    <p> <?= substr($value->content, 0, 200); ?></p>
+                                    <p> <?= substr($value->content, 0, 200); ?>...</p>
+                                    <?= $this->request->session()->write('id_department', $value->id_department); ?>
                                 </div>
                             <?php endforeach ?>
                         </div>
@@ -72,8 +77,12 @@
                             <?php foreach ($article2 as $value): ?>
                                 <div class="col-md-6">
                                     <?= $this->Html->image('/img/new/2.jpg', array('alt' => 'CakePHP', 'style' => 'height:148px;width:250px;')); ?>
-                                    <h3><a href="#"> <?= $value->name ?> </a></h3>
+                                    <h3><?= $this->Html->link($value->name, ['action' => '../articles/view', $value->id]) ?> </h3>
+                                    <p>By <a href="#"><?= $value->user->username ?></a>
+                                        <?= $this->Html->image('new/' . $value->user['image'], array('alt' => 'CakePHP', 'style' => 'height:20px;width:20px; border-radius: 50%;')); ?>
+                                    </p>
                                     <span><i class="fa fa-heart"></i>  <?= $value->likes ?> / <i class="fa fa-calendar"></i>  <?= $value->posted ?> / <i class="fa fa-comment-o"> / </i> 10 <i class="fa fa-eye"></i> <?= $value->views ?></span>
+                                    <br> 
                                     <span class="rating">
                                         <i class="fa fa-star"></i>
                                         <i class="fa fa-star"></i>
@@ -81,7 +90,8 @@
                                         <i class="fa fa-star"></i>
                                         <i class="fa fa-star-half"></i>
                                     </span>
-                                    <p> <?= substr($value->content, 0, 200); ?></p>
+                                    <p> <?= substr($value->content, 0, 200); ?> ...</p>
+
                                 </div>
                             <?php endforeach ?>
                         </div>
@@ -98,8 +108,12 @@
                             <?php foreach ($article3 as $value): ?>
                                 <div class="col-md-6">
                                     <?= $this->Html->image('/img/new/3.jpg', array('alt' => 'CakePHP', 'style' => 'height:148px;width:250px;')); ?>
-                                    <h3><a href="#"> <?= $value->name ?> </a></h3>
+                                    <h3><?= $this->Html->link($value->name, ['action' => '../articles/view', $value->id]) ?> </h3>
+                                    <p>By <a href="#"><?= $value->user->username ?></a>
+                                        <?= $this->Html->image('new/' . $value->user['image'], array('alt' => 'CakePHP', 'style' => 'height:20px;width:20px; border-radius: 50%;')); ?>
+                                    </p>
                                     <span><i class="fa fa-heart"></i>  <?= $value->likes ?> / <i class="fa fa-calendar"></i>  <?= $value->posted ?> / <i class="fa fa-comment-o"> / </i> 10 <i class="fa fa-eye"></i> <?= $value->views ?></span>
+                                    <br> 
                                     <span class="rating">
                                         <i class="fa fa-star"></i>
                                         <i class="fa fa-star"></i>
@@ -107,7 +121,8 @@
                                         <i class="fa fa-star"></i>
                                         <i class="fa fa-star-half"></i>
                                     </span>
-                                    <p> <?= substr($value->content, 0, 200); ?></p>
+                                    <p> <?= substr($value->content, 0, 200); ?> ...</p>
+
                                 </div>
                             <?php endforeach ?>
                         </div>
@@ -124,8 +139,12 @@
                             <?php foreach ($article4 as $value): ?>
                                 <div class="col-md-6">
                                     <?= $this->Html->image('/img/new/4.jpg', array('alt' => 'CakePHP', 'style' => 'height:148px;width:250px;')); ?>
-                                    <h3><a href="#"> <?= $value->name ?> </a></h3>
+                                    <h3><?= $this->Html->link($value->name, ['action' => '../articles/view', $value->id]) ?> </h3>
+                                    <p>By <a href="#"><?= $value->user->username ?></a>
+                                        <?= $this->Html->image('new/' . $value->user['image'], array('alt' => 'CakePHP', 'style' => 'height:20px;width:20px; border-radius: 50%;')); ?>
+                                    </p>
                                     <span><i class="fa fa-heart"></i>  <?= $value->likes ?> / <i class="fa fa-calendar"></i>  <?= $value->posted ?> / <i class="fa fa-comment-o"> / </i> 10 <i class="fa fa-eye"></i> <?= $value->views ?></span>
+                                    <br> 
                                     <span class="rating">
                                         <i class="fa fa-star"></i>
                                         <i class="fa fa-star"></i>
@@ -133,22 +152,23 @@
                                         <i class="fa fa-star"></i>
                                         <i class="fa fa-star-half"></i>
                                     </span>
-                                    <p> <?= substr($value->content, 0, 200); ?></p>
+                                    <p> <?= substr($value->content, 0, 200); ?> ...</p>
+
                                 </div>
                             <?php endforeach ?>
                         </div>
                     </div>
                 </div>
 
-
             </div>
-
 
         </div>
 
         <div id="sidebar">
+
             <div class="col-md-4">
-                <!---- Start Widget ---->
+
+                <!---- Start Widget search---->
                 <div class="widget wid-tags">
                     <div class="heading"><h4>Search</h4></div>
                     <div class="content">
@@ -157,22 +177,13 @@
                         </form>
                     </div>
                 </div>
-                <!---- Start Widget ---->
+
+                <!---- Start Widget top comment ---->
                 <div class="widget wid-comment">
                     <div class="heading"><h4>Top Comments</h4></div>
                     <div class="content">
-                        <div class="post">
-                            <a href="single.html">
-                                <?= $this->Html->image('/img/new/29.jpg', array('alt' => 'CakePHP', 'style' => 'height:50px;width:50px; border-radius: 50%;')); ?>
-                            </a>
-                            <div class="wrapper">
-                                <a href="#"><h5>Curabitur tincidunt porta lorem.</h5></a>
-                                <ul class="list-inline">
-                                    <li><i class="fa fa-calendar"></i>25/3/2015</li> 
-                                    <li><i class="fa fa-thumbs-up"></i>1,200</li>
-                                </ul>
-                            </div>
-                        </div>
+
+
                         <div class="post">
                             <a href="single.html">
                                 <?= $this->Html->image('/img/new/28.jpg', array('alt' => 'CakePHP', 'style' => 'height:50px;width:50px; border-radius: 50%;')); ?>
@@ -185,33 +196,26 @@
                                 </ul>
                             </div>
                         </div>
+
                         <div class="post">
-                            <a href="single.html">
-                                <?= $this->Html->image('/img/new/27.jpg', array('alt' => 'CakePHP', 'style' => 'height:50px;width:50px; border-radius: 50%;')); ?>
-                            </a>
-                            <div class="wrapper">
-                                <a href="#"><h5>Curabitur tincidunt porta lorem.</h5></a>
-                                <ul class="list-inline">
-                                    <li><i class="fa fa-calendar"></i>25/3/2015</li> 
-                                    <li><i class="fa fa-thumbs-up"></i>1,200</li>
-                                </ul>
-                            </div>
+                            <?php foreach ($comment as $value): ?>
+                                <a href="#">
+                                    <?= $this->Html->image('new/' . $value->user['image'], array('alt' => 'CakePHP', 'style' => 'height:50px;width:50px; border-radius: 50%;')); ?>
+                                </a>
+                                <div class="wrapper">
+                                    <a href="#"><h5><?= html_entity_decode($value->content); ?>...</h5></a>
+                                    <ul class="list-inline">
+                                        <li><i class="fa fa-calendar"></i><?= h($value->created) ?></li> 
+                                        <li><i class="fa fa-thumbs-up"></i><?= h($value->likes) ?></li>
+                                    </ul>
+                                </div>
+                            <?php endforeach; ?>
                         </div>
-                        <div class="post">
-                            <a href="single.html">
-                                <?= $this->Html->image('/img/new/26.jpg', array('alt' => 'CakePHP', 'style' => 'height:50px;width:50px; border-radius: 50%;')); ?>
-                            </a>
-                            <div class="wrapper">
-                                <a href="#"><h5>Curabitur tincidunt porta lorem.</h5></a>
-                                <ul class="list-inline">
-                                    <li><i class="fa fa-calendar"></i>25/3/2015</li> 
-                                    <li><i class="fa fa-thumbs-up"></i>1,200</li>
-                                </ul>
-                            </div>
-                        </div>
+
                     </div>
                 </div>
-                <!---- Start Widget ---->
+
+                <!---- Start Widget video---->
                 <div class="widget wid-vid">
                     <div class="heading">
                         <h4>Videos</h4>
@@ -466,31 +470,28 @@
                         </div>
                     </div>
                 </div>
-                <!---- Start Widget ---->
+
+                <!---- Start Widget top articles new ---->  
                 <div class="widget wid-new-post">
                     <div class="heading"><h4>New Posts</h4></div>
                     <div class="content">
-                        <h6>Lorem Ipsum is simply dummy</h6>
-                        <?= $this->Html->image('/img/new/21.jpg', array('alt' => 'CakePHP', 'style' => 'height:153px;width:230px;')); ?>
-                        <ul class="list-inline">
-                            <li><i class="fa fa-calendar"></i>25/3/2015</li> 
-                            <li><i class="fa fa-comments"></i>1,200</li>
-                        </ul>
-                        <p>Title should not overflow the content area A few things to check for: Non-breaking text in the...</p>
-                        <h6>Lorem Ipsum is simply dummy</h6>
-                        <?= $this->Html->image('/img/new/22.jpg', array('alt' => 'CakePHP', 'style' => 'height:153px;width:230px;')); ?>
-                        <ul class="list-inline">
-                            <li><i class="fa fa-calendar"></i>25/3/2015</li> 
-                            <li><i class="fa fa-comments"></i>1,200</li>
-                        </ul>
-                        <p>Title should not overflow the content area A few things to check for: Non-breaking text in the...</p>
-                        <h6>Lorem Ipsum is simply dummy</h6>
-                        <?= $this->Html->image('/img/new/20.jpg', array('alt' => 'CakePHP', 'style' => 'height:153px;width:230px;')); ?>
-                        <ul class="list-inline">
-                            <li><i class="fa fa-calendar"></i>25/3/2015</li> 
-                            <li><i class="fa fa-comments"></i>1,200</li>
-                        </ul>
-                        <p>Title should not overflow the content area A few things to check for: Non-breaking text in the...</p>
+                        <?php foreach ($articleview as $value): ?>
+                            <h6><?= $this->Html->link($value->name, ['action' => '../articles/view', $value->id]) ?> </h6>
+                            <?= $this->Html->image('/img/new/21.jpg', array('alt' => 'CakePHP', 'style' => 'height:153px;width:230px;')); ?>
+                            <ul class="list-inline">
+                                <li>
+                                    <p>By <a href="#" style="color:red;"><?= $value->user->username ?></a>
+                                        <?= $this->Html->image('new/' . $value->user['image'], array('alt' => 'CakePHP', 'style' => 'height:20px;width:20px; border-radius: 50%;')); ?>
+                                    </p>
+                                </li><br>
+                                <li><i class="fa fa-calendar"></i> <?= h($value->posted) ?></li> 
+                                <li><i class="fa fa-comments"></i> 1,200</li>
+                                <li><i class="fa fa-eye"></i> <?= h($value->views) ?></li><br>
+                                <p><?= html_entity_decode(substr($value->content, 0, 100)); ?>...</p>
+                            </ul>
+
+
+                        <?php endforeach; ?>
                     </div>
                 </div>
 

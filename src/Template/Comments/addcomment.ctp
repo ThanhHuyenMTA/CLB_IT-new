@@ -1,4 +1,4 @@
-<?php echo $this->Html->script('ckeditor/ckeditor');?>
+<?php echo $this->Html->script('ckeditor/ckeditor'); ?>
 <style>
     label{
         display: none;
@@ -9,7 +9,9 @@
     }
 </style>
 <div style="font-weight: bold;">
-    <h3>Comments</h3>
+    <div class="box-header header-natural">
+        <h2>Comments</h2>
+    </div>
     <div style="width:100%;">
         <?= $this->Form->create(null, ['url' => ['controller' => 'Comments', 'action' => 'addcomment']]); ?>   
         <textarea class="ckeditor" value="" name="content"></textarea>

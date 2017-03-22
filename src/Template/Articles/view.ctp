@@ -38,7 +38,9 @@
 
             <!-- RELATED ARTICLES -->
             <div class="box">
-                <h2 style="text-align: center;">RELATED ARTICLES</h2>
+                <div class="box-header header-natural">
+                    <h2>RELATED ARTICLES</h2>
+                </div>
                 <?= $this->Element('../articles/relatedarticle'); ?>  
             </div>
             <hr class="line">

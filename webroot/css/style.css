@@ -5,7 +5,7 @@
 /* ---------------------------------------------------------------------------- */
 /* ------------------------------------Html-Body------------------------------- */
 /* ---------------------------------------------------------------------------- */
-body {font-family: 'Ek Mukta', sans-serif;color: #666;background: url(../images/bg2.jpg) fixed ;font-size: 15px;line-height: 1.6em;font-weight: 400;}
+body {font-family: 'Ek Mukta', sans-serif;color: #666;background: url(../img/bg2.jpg) fixed ;font-size: 15px;line-height: 1.6em;font-weight: 400;}
 html, body {width:100%; padding:0; margin:0;}
 
 ::-moz-selection{background:#000;color:#fff;text-shadow:none}
@@ -174,9 +174,9 @@ header{}
 .box .info a:hover {color:#FFFFFF;text-shadow: none;border-bottom: 1px solid #000;box-shadow: inset 0 -1.3em 0 #000;text-decoration: none;}
 .box h2 {font-size: 30px;margin:0;}
 
-.box .box-header.header-photo{background: url(../images/title-picture.png) repeat-x center center;margin-bottom: 20px;}
-.box .box-header.header-natural{background: url(../images/title-natural.png) repeat-x center center;margin-bottom: 20px;}
-.box .box-header.header-vimeo{background: url(../images/title-vimeo.png) repeat-x center center;margin-bottom: 20px;}
+.box .box-header.header-photo{background: url(../img/title-picture.png) repeat-x center center;margin-bottom: 20px;}
+.box .box-header.header-natural{background: url(../img/title-natural.png) repeat-x center center;margin-bottom: 20px;}
+.box .box-header.header-vimeo{background: url(../img/title-vimeo.png) repeat-x center center;margin-bottom: 20px;}
 .box .box-header h2{font-size: 25px;padding: 0px 8px;background-color: #fff;display: inline-block;margin-left: 15px;color: #333;}
 
 .box .box-content {margin-top: 30px;}
@@ -214,7 +214,7 @@ ul.pagination li a{color: #444;}
 .widget{background: #fff;padding:10px 20px;}
 .widget:after, .widget:before{clear: both; content: '\0020'; display: block; visibility: hidden; width: 0; height: 0;}
 .widget ul li{list-style:none;}
-.widget .heading{background: url(../images/title.png) repeat-x center center;}
+.widget .heading{background: url(../img/title.png) repeat-x center center;}
 .widget .heading h4{font-size: 22px;padding: 0px 8px;background-color: #fff;display: inline-block;margin-left: 15px;color: #333;text-transform: uppercase;}
 .widget .content {}
 

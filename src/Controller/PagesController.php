@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
  * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
@@ -12,6 +13,7 @@
  * @since     0.2.9
  * @license   http://www.opensource.org/licenses/mit-license.php MIT License
  */
+
 namespace App\Controller;
 
 use Cake\Core\Configure;
@@ -26,12 +28,11 @@ use Cake\View\Exception\MissingTemplateException;
  *
  * @link http://book.cakephp.org/3.0/en/controllers/pages-controller.html
  */
-class PagesController extends AppController
-{
-    public function initialize()
-    {
-         parent::initialize();
-         $this->Auth->allow();
+class PagesController extends AppController {
+
+    public function initialize() {
+        parent::initialize();
+        $this->Auth->allow();
     }
 
     /**
@@ -42,43 +43,58 @@ class PagesController extends AppController
      * @throws \Cake\Network\Exception\NotFoundException When the view file could not
      *   be found or \Cake\View\Exception\MissingTemplateException in debug mode.
      */
-    public function display()
-    {   
-         $this->loadModel('Articles'); //call model
+    public function display() {
+        $this->loadModel('Articles'); //call model
         //load articles new
-        $baidang = $this->Articles->find('all',['condition'=>['Articles.views >='=>10]]);
-        $this->set('baidang', $this->paginate($baidang,['limit' => 6,
-            'order' => [
-                'Articles.id' => 'asc'
-            ]]));
+        $articleview = $this->Articles->find('all', [
+                    'condition' => ['Articles.views >=' => 10],
+                    'order' => ['Articles.views' => 'DESC'],
+                    'limit' => 4
+                ])->contain(['Users']);
+        $this->set(compact('articleview'));
+
         //load article in department
-         $article1 = $this->Articles->find('all',[
-             'condition'=>['Articles.id_department'=>1],
-             'order'=>['Articles.views' => 'asc'],
-             'limit'=>2]);
-         $this->set(compact('article1'));
-         
-         $article2 = $this->Articles->find('all',[
-             'condition'=>['Articles.id_department'=>2],
-             'order'=>['Articles.views' => 'asc'],
-             'limit'=>2]);
-         $this->set(compact('article2'));
-         
-         $article3 = $this->Articles->find('all',[
-             'condition'=>['Articles.id_department'=>3],
-             'order'=>['Articles.views' => 'asc'],
-             'limit'=>2]);
-         $this->set(compact('article3'));
-         $article4 = $this->Articles->find('all',[
-             'condition'=>['Articles.id_department'=>4],
-             'order'=>['Articles.views' => 'asc'],
-             'limit'=>2]);
-         $this->set(compact('article4'));
-         
-         //end load 
-         
-       
-         
+        $article1 = $this->Articles->find('all')
+                ->where(['Articles.id_department' => 1])
+                ->order(['Articles.views' => 'DESC'])
+                ->limit(2)
+                ->contain(['Users']);
+        $this->set(compact('article1'));
+
+        $article2 = $this->Articles->find('all')
+                ->where(['Articles.id_department' => 2])
+                ->order(['Articles.views' => 'DESC'])
+                ->limit(2)
+                ->contain(['Users']);
+        $this->set(compact('article2'));
+
+        $article3 = $this->Articles->find('all')
+                ->where(['Articles.id_department' => 3])
+                ->order(['Articles.views' => 'DESC'])
+                ->limit(2)
+                ->contain(['Users']);
+        $this->set(compact('article3'));
+
+        $article4 = $this->Articles->find('all')
+                ->where(['Articles.id_department' => 4])
+                ->order(['Articles.views' => 'DESC'])
+                ->limit(2)
+                ->contain(['Users']);
+        $this->set(compact('article4'));
+
+        //end load 
+        //
+        //load top comment
+        $this->loadModel('Comments');
+        $comment= $this->Comments->find('all')
+                ->where(['Comments.likes >=' => 10])
+                ->order(['Comments.likes' => 'DESC'])
+                ->limit(4)
+                ->contain(['Users']);
+        $this->set(compact('comment'));
+        //end load
+
+
         $path = func_get_args();
 
         $count = count($path);
@@ -107,4 +123,5 @@ class PagesController extends AppController
             throw new NotFoundException();
         }
     }
+
 }

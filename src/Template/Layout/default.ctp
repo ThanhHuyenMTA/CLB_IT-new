@@ -24,16 +24,15 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
         <?= $this->Html->css('style.css'); ?>
         <?= $this->Html->css('bootstrap-datetimepicker.min.css'); ?>
         <!-- Custom Fonts -->
-
-        <?= $this->Html->css('font-awesome.min.css'); ?>  <!-- loi khong hien thi -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" /> 
+        <?= $this->Html->css('font-awesome.min.css'); ?> 
         <!-- end font -->
-
+        
         <!-- jQuery and Modernizr-->
         <?= $this->Html->script('jquery-2.1.1'); ?>
 
         <!-- Core JavaScript Files -->       
         <?= $this->Html->script('bootstrap.min'); ?>
+         <?= $this->Html->script('owl.carousel'); ?>
 
         <?= $this->fetch('meta'); ?>
         <?= $this->fetch('css'); ?>
@@ -233,32 +232,13 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
                                 </form>
                             </div>
                         </div>
-                        <div class="col-md-4 col-footer footer-2">
-                            <div class="footer-heading"><h4>Tags</h4></div>
+                        <div class="col-md-4 col-footer footer-1">
+                            <div class="footer-heading"><h4>Content</h4></div>
                             <div class="content">
-                                <a href="#">animals</a>
-                                <a href="#">cooking</a>
-                                <a href="#">countries</a>
-                                <a href="#">city</a>
-                                <a href="#">children</a>
-                                <a href="#">home</a>
-                                <a href="#">likes</a>
-                                <a href="#">photo</a>
-                                <a href="#">link</a>
-                                <a href="#">law</a>
-                                <a href="#">shopping</a>
-                                <a href="#">skate</a>
-                                <a href="#">scholl</a>
-                                <a href="#">video</a>
-                                <a href="#">travel</a>
-                                <a href="#">images</a>
-                                <a href="#">love</a>
-                                <a href="#">lists</a>
-                                <a href="#">makeup</a>
-                                <a href="#">media</a>
-                                <a href="#">password</a>
-                                <a href="#">pagination</a>
-                                <a href="#">wildlife</a>
+                                <a href="#">JVB</a><br>
+                                <a href="#">HVKTQS</a><br>
+                                <a href="#">Article</a><br>
+                                <a href="#">Department</a><br>
                             </div>
                         </div>
                         <div class="col-md-4 col-footer footer-3">
@@ -276,13 +256,13 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
                 </div>
             </div>
             <div class="copy-right">
-                <p>Copyright 2015 - <a href="http://www.365bootstrap.com" target="_blank" rel="nofollow">Bootstrap Themes</a> Designed by 365Bootstrap.com</p>
+                <p>Good lucky 2017 _ Thanks for watching</p>
             </div>
         </footer>
         <!-- Footer -->
 
         <!-- JS -->
-        <script src="owl-carousel/owl.carousel.js"></script>
+        
         <?= $this->Html->script('owl.carousel'); ?>
         <script>
             $(document).ready(function () {

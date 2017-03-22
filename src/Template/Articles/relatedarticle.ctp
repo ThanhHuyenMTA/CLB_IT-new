@@ -1,34 +1,21 @@
-<?php foreach ($relatedarticle as $value): ?>
-    <div class="box">
-        <h2><?= $this->Html->link($value->name, ['action' => '../articles/view', $value->id]) ?> </h2>
-        <div class="info">
-            <h5>By <a href="#">Kelvin</a></h5>
-            <span><i class="fa fa-calendar"></i><?= $value->posted ?></span> 
-            <span><i class="fa fa-comment"></i> 0 Comments</span>
-            <span><i class="fa fa-heart"></i> <?= $value->views ?></span>
-            <ul class="list-inline">
-                <li><a href="#">Rate</a></li>
-                <li> - </li>
-                <li>
+<div class="box">
+    <div class="box-content">
+        <div class="row">
+            <?php foreach ($relatedarticle as $value): ?>
+            <div class="col-md-6" style="height: 380px;">
+                    <?= $this->Html->image('/img/new/3.jpg', array('alt' => 'CakePHP', 'style' => 'height:148px;width:250px;')); ?>
+                    <h3><?= $this->Html->link($value->name, ['action' => '../articles/view', $value->id]) ?> </h3>
+                    <span><i class="fa fa-heart"></i>  <?= $value->likes ?> / <i class="fa fa-calendar"></i>  <?= $value->posted ?> / <i class="fa fa-comment-o"> / </i> 10 <i class="fa fa-eye"></i> <?= $value->views ?></span>
                     <span class="rating">
                         <i class="fa fa-star"></i>
                         <i class="fa fa-star"></i>
                         <i class="fa fa-star"></i>
                         <i class="fa fa-star"></i>
-                        <i class="fa fa-star-half-o"></i>
+                        <i class="fa fa-star-half"></i>
                     </span>
-                </li>
-            </ul>
-        </div>
-
-        <div class="wrap-vid">
-            <div class="zoom-container">
-                <div class="zoom-caption">
+                    <p> <?= substr($value->content, 0, 200); ?></p>
                 </div>
-                <?= $this->Html->image('/img/new/12.jpg', array('alt' => 'CakePHP', 'style' => 'height:141px;width:250px;')); ?>
-            </div>
+            <?php endforeach ?>
         </div>
-
     </div>
-    <hr class="line">
-<?php endforeach; ?>
+</div>

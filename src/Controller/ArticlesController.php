@@ -17,8 +17,9 @@ class ArticlesController extends AppController {
 
     public function home() {
         $article = $this->Articles->find('all');
-        $this->set('article', $this->paginate($article, ['limit' => 4,
-                    'order' => [
+        $this->set('article', $this->paginate($article, [
+            'limit' => 4,
+            'order' => [
                         'Articles.id' => 'asc'
         ]]));
     }
@@ -42,7 +43,9 @@ class ArticlesController extends AppController {
         //related articles
 
         $id_department = $this->request->session()->read('id_department');
-        $relatedarticle = $this->Articles->find('all', ['conditions' => ['Articles.id_department' => $id_department, 'Articles.id <>' => $id]]);
+        $relatedarticle = $this->Articles->find('all', [
+            'conditions' => ['Articles.id_department' => $id_department, 'Articles.id <>' => $id]])->toArray();
+//        pr($relatedarticle);die();
         $this->set(compact('relatedarticle'));
     }
 
