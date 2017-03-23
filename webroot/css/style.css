@@ -337,6 +337,23 @@ footer .footer-3 ul li a:hover{color: #666;}
 #ff .sendButton {border: none;cursor:pointer;background-color: #FD0005;-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px;;width:100px;color:#ffffff;}
 #ff .sendButton:hover {background-color: #000;}
 
+
+#ff .sendemailButton{
+    border: none;cursor:pointer;
+    background-color: #FD0005;
+    -webkit-border-radius:3px;
+    -moz-border-radius:3px;
+    border-radius:3px;
+    width:100px;
+    color:#ffffff;
+    margin-left: 930px;
+}
+#ff .sendemailButton:hover {background-color: #000;}
+
+
+
+
+
 .message{text-align: center;}
 .message .wrap{	padding: 50px; background: #ffffff; border: 1px solid #333333;display: inline-block;border-radius: 5px;	-webkit-border-radius: 5px; -moz-border-radius: 5px;-khtml-border-radius: 5px;}
 .message .text{font-size: 35px;	margin-bottom: 30px;}
@@ -466,4 +483,11 @@ footer .footer-3 ul li a:hover{color: #666;}
 }
 .pagination {
     font-weight: bold;
+}
+
+.inbox :hover a{
+    color: red; 
+}
+.sentmail :hover a{
+    color: red; 
 }

@@ -26,13 +26,13 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
         <!-- Custom Fonts -->
         <?= $this->Html->css('font-awesome.min.css'); ?> 
         <!-- end font -->
-        
+
         <!-- jQuery and Modernizr-->
         <?= $this->Html->script('jquery-2.1.1'); ?>
 
         <!-- Core JavaScript Files -->       
         <?= $this->Html->script('bootstrap.min'); ?>
-         <?= $this->Html->script('owl.carousel'); ?>
+        <?= $this->Html->script('owl.carousel'); ?>
 
         <?= $this->fetch('meta'); ?>
         <?= $this->fetch('css'); ?>
@@ -54,7 +54,8 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
                                     <i class="fa fa-home"></i>
                                     <?= $this->Html->link('Home', ['action' => '../']) ?> 
                                 </li>
-                                <li><a href="contact.html"><i class="fa fa-comments"></i> Contact</a></li>
+                                <i class="fa fa-comments"></i>
+                                <li><?= $this->Html->link('Gmail', ['action' => '../letters/gmail']) ?></li>
                                 <li><a href="#"><i class="fa fa-question-circle"></i> FAQ</a></li>
                             </ul>
                         </div>
@@ -72,31 +73,10 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
                 </div>
                 <div class="collapse navbar-collapse navbar-ex1-collapse">
                     <ul class="nav navbar-nav">
-                        <li> <?= $this->Html->link('Home', ['action' => '../']) ?> </li>
-                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Account <i class="fa fa-arrow-circle-o-down"></i></a>
-                            <div class="dropdown-menu">
-                                <div class="dropdown-inner">
-                                    <ul class="list-unstyled">
-                                        <?php if ($loggedIn) : ?>
-                                            <li> <?= $this->Html->link('Logout', ['action' => '../users/logout']) ?>  </li>
-                                            <li> <?= $this->Html->link('Profile', ['action' => '../users/view']) ?> </li>
-                                            <li>
-                                                <h5 style="color: red;margin-left: 20px;"><?= $this->request->session()->read('Auth.User.username') ?></h3>
-                                            </li>
-                                        <?php else : ?>
-                                            <li> 
-                                                <?= $this->Html->link('Log-in', ['action' => '../users/login'], array('class' => 'overlayLink', 'data-action' => 'login-form.html')) ?>
-                                            </li>
-
-                                            <li> 
-                                                <?= $this->Html->link('Sign-up', ['action' => '../users/registration'], array('class' => 'overlayLink', 'data-action' => 'login-form.html')) ?>
-                                            </li>
-                                        <?php endif ?>
-
-                                    </ul>
-                                </div>
-                            </div>
+                        <li> 
+                            <?= $this->Html->link('Home', ['action' => '../']) ?> 
                         </li>
+
                         <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Department <i class="fa fa-arrow-circle-o-down"></i></a>
                             <div class="dropdown-menu">
                                 <div class="dropdown-inner">
@@ -107,29 +87,48 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
                                 </div> 
                             </div>
                         </li>
-                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Category <i class="fa fa-arrow-circle-o-down"></i></a>
-                            <div class="dropdown-menu" style="margin-left: -203.625px;">
-                                <div class="dropdown-inner">
-                                    <ul class="list-unstyled">
-                                        <li><a href="archive.html">Text 301</a></li>
-                                        <li><a href="archive.html">Text 302</a></li>
-                                        <li><a href="archive.html">Text 303</a></li>
-                                        <li><a href="archive.html">Text 304</a></li>
-                                        <li><a href="archive.html">Text 305</a></li>
-                                    </ul>
-                                    <ul class="list-unstyled">
-                                        <li><a href="archive.html">Text 306</a></li>
-                                        <li><a href="archive.html">Text 307</a></li>
-                                        <li><a href="archive.html">Text 308</a></li>
-                                        <li><a href="archive.html">Text 309</a></li>
-                                        <li><a href="archive.html">Text 310</a></li>
-                                    </ul>
 
-                                </div>
-                            </div>
+                        <li> 
+                            <?= $this->Html->link(' Post Articles', ['action' => '../articles/addarticle'], array('class' => 'fa fa-cubes')); ?> 
                         </li>
-                        <li> <?= $this->Html->link('Post Articles', ['action' => '../articles/addarticle'], array('class' => 'fa fa-cubes')); ?> </li>
-                        <li><a href="../Pages/home"><i class="fa fa-envelope"></i> Contact </a></li>
+
+                        <li>
+                            <?= $this->Html->link(' Gmail', ['action' => '../letters/gmail'], array('class' => 'fa fa-envelope')) ?></li>
+                        <?php if ($loggedIn): ?>
+                            <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <?= $this->Html->image('new/' . $image, array('alt' => 'CakePHP', 'style' => 'height:20px;width:20px; border-radius: 50%;')); ?>     
+                                    <i class="fa fa-arrow-circle-o-down"></i></a>
+                                <div class="dropdown-menu">
+                                    <div class="dropdown-inner">
+                                        <ul class="list-unstyled">
+                                            <li style="margin-left: 20px;">Sign in as</li>
+                                            <li  style="color:black;margin-left: 20px;"><?php echo $username?></li>
+                                            <li> <?= $this->Html->link('Logout', ['action' => '../users/logout']) ?>  </li>
+                                            <li> <?= $this->Html->link('Profile', ['action' => '../users/profile']) ?> </li>
+                                           
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>          
+                            <?php else : ?>
+                            <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Account <i class="fa fa-arrow-circle-o-down"></i></a>
+                                <div class="dropdown-menu">
+                                    <div class="dropdown-inner">
+                                        <ul class="list-unstyled">
+                                            <li> 
+                                                <?= $this->Html->link('Log-in', ['action' => '../users/login'], array('class' => 'overlayLink', 'data-action' => 'login-form.html')) ?>
+                                            </li>
+
+                                            <li> 
+                                                <?= $this->Html->link('Sign-up', ['action' => '../users/registration'], array('class' => 'overlayLink', 'data-action' => 'login-form.html')) ?>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                        <?php endif ?>
+
+                        </li>
                     </ul>
                     <ul class="list-inline navbar-right top-social">
                         <li><a href="#"><i class="fa fa-facebook"></i></a></li>
@@ -262,7 +261,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
         <!-- Footer -->
 
         <!-- JS -->
-        
+
         <?= $this->Html->script('owl.carousel'); ?>
         <script>
             $(document).ready(function () {

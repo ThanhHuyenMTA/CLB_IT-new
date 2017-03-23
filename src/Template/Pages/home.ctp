@@ -182,35 +182,20 @@
                 <div class="widget wid-comment">
                     <div class="heading"><h4>Top Comments</h4></div>
                     <div class="content">
-
-
-                        <div class="post">
-                            <a href="single.html">
-                                <?= $this->Html->image('/img/new/28.jpg', array('alt' => 'CakePHP', 'style' => 'height:50px;width:50px; border-radius: 50%;')); ?>
-                            </a>
-                            <div class="wrapper">
-                                <a href="#"><h5>Curabitur tincidunt porta lorem.</h5></a>
-                                <ul class="list-inline">
-                                    <li><i class="fa fa-calendar"></i>25/3/2015</li> 
-                                    <li><i class="fa fa-thumbs-up"></i>1,200</li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div class="post">
-                            <?php foreach ($comment as $value): ?>
+                        <?php foreach ($comment as $value): ?>
+                            <div class="post">
                                 <a href="#">
                                     <?= $this->Html->image('new/' . $value->user['image'], array('alt' => 'CakePHP', 'style' => 'height:50px;width:50px; border-radius: 50%;')); ?>
-                                </a>
+                                </a>                     
                                 <div class="wrapper">
                                     <a href="#"><h5><?= html_entity_decode($value->content); ?>...</h5></a>
                                     <ul class="list-inline">
-                                        <li><i class="fa fa-calendar"></i><?= h($value->created) ?></li> 
+                                        <li><i class="fa fa-calendar"></i>  <?= h($value->created) ?></li> 
                                         <li><i class="fa fa-thumbs-up"></i><?= h($value->likes) ?></li>
                                     </ul>
                                 </div>
-                            <?php endforeach; ?>
-                        </div>
+                            </div>
+                        <?php endforeach; ?>
 
                     </div>
                 </div>
@@ -220,6 +205,7 @@
                     <div class="heading">
                         <h4>Videos</h4>
                     </div>
+
                     <div class="content">
                         <ul class="nav nav-tabs">
                             <li class="active"><a data-toggle="tab" href="#most">Most Plays</a></li>

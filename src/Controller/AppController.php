@@ -90,7 +90,12 @@ class AppController extends Controller
         //check login user 
         if($this->request->session()->read('Auth.User')){
             $this->set('loggedIn',true);
-          // $name= $this->request->session()->read('Auth.User.name');
+            $image=$this->request->session()->read('Auth.User.image');
+            $this->set(compact('image'));
+           // pr($image);die();
+           $username= $this->request->session()->read('Auth.User.username');
+           $this->set(compact('username'));
+            // pr($username);die();
         }else{
             $this->set('loggedIn',false);
         }

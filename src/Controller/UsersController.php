@@ -70,7 +70,7 @@ class UsersController extends AppController {
         $this->set('user', $user);
     }
 
-    public function view() {
+    public function profile() {
         $id = $this->request->session()->read("Auth.User.id");
         //pr($id);die();
         $this->request->data['id'] = $id;
