@@ -86,15 +86,15 @@ class PagesController extends AppController {
         //
         //load top comment
         $this->loadModel('Comments');
-        $comment= $this->Comments->find('all')
+        $comment = $this->Comments->find('all')
                 ->where(['Comments.likes >=' => 10])
                 ->order(['Comments.likes' => 'DESC'])
                 ->limit(4)
                 ->contain(['Users']);
         $this->set(compact('comment'));
         //end load
-
-
+       
+        
         $path = func_get_args();
 
         $count = count($path);

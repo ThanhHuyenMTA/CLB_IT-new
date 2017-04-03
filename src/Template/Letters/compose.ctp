@@ -1,11 +1,11 @@
 <?php echo $this->Html->script('ckeditor/ckeditor'); ?>
 <p class="newletter">New letter</p>
 
-<?= $this->Form->create('Letters',['id'=>'ff'],
-        ['url' => ['../letters/compose']]);?>
-     <label>                                
+<?= $this->Form->create('Letters',['id'=>'ff']);?>
+     <label>         
         <span>Enter name receiver:</span>
         <input type="email" name="email" id="email" required="" placeholder="To: ">
+         <?=$this->Form->hidden('created', ['value' => date('Y-m-d H:i:s')])?>
     </label>
     <label>
         <span>Enter name letter:</span>
@@ -17,8 +17,6 @@
     </label>
     <input class="sendemailButton" type="submit" name="Submit" value="Send">
 <?=$this->Form->end();?>
-
-
 <script type=”text/javascript”>
     CKEDITOR.replace('content', {
         language: 'vi',

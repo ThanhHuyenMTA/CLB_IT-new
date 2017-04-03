@@ -5,7 +5,7 @@
             <div class="col-md-6" style="height: 380px;">
                     <?= $this->Html->image('/img/new/3.jpg', array('alt' => 'CakePHP', 'style' => 'height:148px;width:250px;')); ?>
                     <h3><?= $this->Html->link($value->name, ['action' => '../articles/view', $value->id]) ?> </h3>
-                    <span><i class="fa fa-heart"></i>  <?= $value->likes ?> / <i class="fa fa-calendar"></i>  <?= $value->posted ?> / <i class="fa fa-comment-o"> / </i> 10 <i class="fa fa-eye"></i> <?= $value->views ?></span>
+                    <span><i class="fa fa-heart"></i>  <?= $value->likes ?> / <i class="fa fa-calendar"></i>  <?= $value->created ?> / <i class="fa fa-comment-o"> / </i> 10 <i class="fa fa-eye"></i> <?= $value->views ?></span>
                     <span class="rating">
                         <i class="fa fa-star"></i>
                         <i class="fa fa-star"></i>

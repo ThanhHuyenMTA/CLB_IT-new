@@ -9,6 +9,7 @@ class UsersTable extends Table
     public function initialize(array $config)
     {
         $this->addBehavior('Timestamp');
+        //lien ket
         $this->hasMany('Comments', [
             'className'=> 'Comments'
         ]);  
@@ -20,6 +21,17 @@ class UsersTable extends Table
         $this->hasMany('Embarks', [
             'className'=> 'Embarks'
         ]);
+        
+         $this->hasMany('Letters', [
+            'className'=> 'Letters',
+              'foreignKey' => 'id_sender'
+        ]);
+         
+         $this->hasMany('Transactions', [
+            'className'=> 'Transactions',
+              'foreignKey' => 'id_receiver'
+        ]);
+        
 
 
     }

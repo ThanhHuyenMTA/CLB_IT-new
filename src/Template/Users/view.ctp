@@ -4,57 +4,15 @@
             display: none;
         }
     </style>
-    <?php echo $this->Html->script('ckeditor/ckeditor'); ?>
     <div class="">
         <div class="row">
             <div id="main-content" class="col-md-8">
-                <div class="row">
-                    <!-- load image -->
-                    <div class="col-xs-4">
-                        <?= $this->Html->image('new/' . $user['image'], array('alt' => 'CakePHP', 'style' => 'height:150px;width:150px;')); ?><br><br>
-                        <!-- edit picture user -->
-                        <?php echo $this->Form->create(null, ['type' => 'file']); ?>
-                        <label class="btn btn-primary" f or="my-file-selector" style="color: black;background-color: #eff3f6;font-weight: bold;">
-                            <input id="my-file-selector" type="file" style="display:none;" name='uploadfile' multiple='multiple' onchange="$('#upload-file-info').html($(this).val());">
-                            <i class="fa fa-arrow-circle-o-up"></i> Upload new picture !
-                        </label>
-                        <span class='label label-info ' id="upload-file-info"></span>
-                        <!-- <?= $this->Form->file('uploadfile', ['multiple']); ?> -->
-                        <!-- <?= $this->Form->button('submit', ['type' => 'submit']); ?> -->
-                        <?php echo $this->Form->end(); ?>
-                        <!-- end edit picture user -->
-                        <br>
-                    </div>
-                    <!-- function user -->
-                    <div class="col-xs-8">
-                        <div class="widget wid-follow">
-                            <div class="content">
-                                <ul class="list-inline">
-                                    <li>
-                                        <a href="#">
-                                            <div class="box-facebook" style="width:130px; height:40px;" >
-                                                <span class="fa fa-edit fa-1x icon"> Edit profile!</span>
-                                            </div>
-                                        </a>
-                                        <p class="mt-3"><strong>ProTip!</strong> Updating your profile with your name, location, and a profile picture helps other GitHub users get to know you.</p>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <div class="box-google" style="width:130px; height:40px;">
-                                                <span class="fa fa-envelope fa-1x icon">  Send mail!</span>
-
-                                            </div>
-                                        </a>
-                                        <p class="mt-3"><strong>ProTip!</strong> Please send the best news to your friends !!!</p>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>	
-                <!-- load profile -->
+             
                 <div class="row" style="color:white;">
-                    <div class="col-md-12">
+                      <div class="col-xs-3">
+                        <?= $this->Html->image('new/' . $user['image'], array('alt' => 'CakePHP', 'style' => 'height:150px;width:150px;')); ?><br><br>
+                    </div>
+                    <div class="col-md-9">
                         <table class="table table-condensed">
                             <thead>
                                 <tr>
@@ -141,11 +99,4 @@
             </div>
         </div>
     </div>
-
-    <script type=”text/javascript”>
-        CKEDITOR.replace('content', {
-            language: 'vi',
-        });
-    </script>
-
 </html>

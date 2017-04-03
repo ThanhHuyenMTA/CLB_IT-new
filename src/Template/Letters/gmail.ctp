@@ -17,9 +17,11 @@
 <div id="Inbox" class="tabcontent">
     <?=$this->Element('../letters/inbox');?>
 </div>
-
 <div id="SentMail" class="tabcontent">
    <?=$this->Element('../letters/sentmail');?>
+</div>
+ <div id="Viewmail" class="tabcontent">
+       <?= $this->Element('../letters/view'); ?>
 </div>
 <script>
     function openCity(evt, cityName) {

@@ -44,7 +44,6 @@ class AppController extends Controller
         $this->loadComponent('RequestHandler');
         $this->loadComponent('Flash');
         $this->loadComponent('Paginator');
-         
          $this->loadComponent('Auth', [
             'loginAction' => [
                 'controller' => 'Users',
@@ -104,6 +103,12 @@ class AppController extends Controller
              $department = $this->Departments->Find('all');
              $this->set(compact('department'));  
         }
+      
+        
+        
+        
+        
+        
 
     }
 }

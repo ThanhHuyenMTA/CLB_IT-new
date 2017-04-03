@@ -52,3 +52,8 @@
     });
 });
 </script>
+<style>
+    #top{
+        position: inherit;
+    }
+</style>

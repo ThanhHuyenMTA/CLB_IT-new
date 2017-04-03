@@ -45,17 +45,21 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
             <nav id="top">
                 <div class="container">
                     <div class="row">
-                        <div class="col-md-6">
-                            <strong>Welcome to Us!</strong>
+                        <div class="col-md-8">
+                            <div style="float: left;"><strong>Welcome to Us!</strong></div>
+                            <form method="post" action="/NewCLB/finds/findarticle" name="_method" value="POST">
+                                <input type="text" placeholder="Enter Search Keywords" value="" name="v_search" id="v_search" class="form-control" style="width: 300px;margin-left: 200px;float: left;margin-bottom: 4px;">
+                                <input type="submit" name="ok" value="search" style="margin-top: 2px;margin-left: 5px;">
+                            </form>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <ul class="list-inline top-link link">
                                 <li>
                                     <i class="fa fa-home"></i>
                                     <?= $this->Html->link('Home', ['action' => '../']) ?> 
                                 </li>
                                 <i class="fa fa-comments"></i>
-                                <li><?= $this->Html->link('Gmail', ['action' => '../letters/gmail']) ?></li>
+                                <li><?= $this->Html->link('Letter', ['action' => '../letters/gmail']) ?></li>
                                 <li><a href="#"><i class="fa fa-question-circle"></i> FAQ</a></li>
                             </ul>
                         </div>
@@ -74,7 +78,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
                 <div class="collapse navbar-collapse navbar-ex1-collapse">
                     <ul class="nav navbar-nav">
                         <li> 
-                            <?= $this->Html->link('Home', ['action' => '../']) ?> 
+                            <?= $this->Html->link(' Home', ['action' => '../'], array('class' => 'fa fa-home')); ?>
                         </li>
 
                         <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Department <i class="fa fa-arrow-circle-o-down"></i></a>
@@ -87,30 +91,32 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
                                 </div> 
                             </div>
                         </li>
-
-                        <li> 
-                            <?= $this->Html->link(' Post Articles', ['action' => '../articles/addarticle'], array('class' => 'fa fa-cubes')); ?> 
-                        </li>
-
                         <li>
-                            <?= $this->Html->link(' Gmail', ['action' => '../letters/gmail'], array('class' => 'fa fa-envelope')) ?></li>
+                            <?= $this->Html->link(' Letter', ['action' => '../letters/gmail'], array('class' => 'fa fa-envelope')) ?></li>
                         <?php if ($loggedIn): ?>
                             <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <?= $this->Html->image('new/' . $image, array('alt' => 'CakePHP', 'style' => 'height:20px;width:20px; border-radius: 50%;')); ?>     
+                                    <?php if ($image): ?>
+                                        <?= $this->Html->image('new/' . $image, array('alt' => 'CakePHP', 'style' => 'height:20px;width:20px; border-radius: 50%;')); ?>     
+                                    <?php else: ?>
+                                        <?= $this->Html->image('new/39.png', array('alt' => 'CakePHP', 'style' => 'height:20px;width:20px;border-radius: 50%;')); ?>     
+                                    <?php endif; ?>
+
+
+
                                     <i class="fa fa-arrow-circle-o-down"></i></a>
                                 <div class="dropdown-menu">
                                     <div class="dropdown-inner">
                                         <ul class="list-unstyled">
                                             <li style="margin-left: 20px;">Sign in as</li>
-                                            <li  style="color:black;margin-left: 20px;"><?php echo $username?></li>
+                                            <li  style="color:black;margin-left: 20px;"><?php echo $username ?></li>
                                             <li> <?= $this->Html->link('Logout', ['action' => '../users/logout']) ?>  </li>
                                             <li> <?= $this->Html->link('Profile', ['action' => '../users/profile']) ?> </li>
-                                           
+
                                         </ul>
                                     </div>
                                 </div>
                             </li>          
-                            <?php else : ?>
+                        <?php else : ?>
                             <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Account <i class="fa fa-arrow-circle-o-down"></i></a>
                                 <div class="dropdown-menu">
                                     <div class="dropdown-inner">
@@ -129,13 +135,14 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
                         <?php endif ?>
 
                         </li>
+                        <li><?= $this->Html->link(' Introduce', ['action' => '../Pages/introduce'], array('class' => 'fa fa-group')); ?>
                     </ul>
                     <ul class="list-inline navbar-right top-social">
-                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                        <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
-                        <li><a href="#"><i class="fa fa-google-plus-square"></i></a></li>
-                        <li><a href="#"><i class="fa fa-youtube"></i></a></li>
+                        <li><a href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="https://twitter.com/?lang=vi"><i class="fa fa-twitter"></i></a></li>
+                        <li><a href="https://www.google.com/maps"><i class="fa fa-pinterest"></i></a></li>
+                        <li><a href="https://www.google.com.vn/?gfe_rd=cr&ei=EHrcWIGeIoPfoAOsnL64Aw"><i class="fa fa-google-plus-square"></i></a></li>
+                        <li><a href="https://www.youtube.com/"><i class="fa fa-youtube"></i></a></li>
                     </ul>
                 </div>
             </nav>
@@ -315,6 +322,22 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
                 maxView: 1,
                 forceParse: 0
             });
+            
+            
+            
+            
+            //demo ajax
+            $(document).ready(function () {
+                $.ajax({
+                    type: "POST",
+                    url: url,
+                    data: dataString,
+                    success: function (data) {
+                        alert('success');
+                        return false;
+                    }
+                });
+            })
         </script>
     </body>
 </html>

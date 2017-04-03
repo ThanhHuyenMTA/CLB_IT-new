@@ -1,180 +1,210 @@
 <html>
     <div class="row">
+        <!--   khung 8 -->
 
-        <div id="main-content"><!-- background not working -->
-            <!--   khung 6 -->
-
-            <div class="col-md-8">
-                <!--photo-->
-                <div class="box">
-                    <div class="box-header header-photo">
-                        <h2>Photos</h2>
-                    </div>
-                    <div class="box-content">
-                        <div id="owl-demo-2" class="owl-carousel">
-                            <div class="item">
-                                <?= $this->Html->image('/img/new/1.jpg', array('alt' => 'CakePHP', 'style' => 'height:98px;width:175px;')); ?>
-                                <?= $this->Html->image('/img/new/2.jpg', array('alt' => 'CakePHP', 'style' => 'height:98px;width:175px;')); ?>
-                            </div>
-                            <div class="item">
-                                <?= $this->Html->image('/img/new/3.jpg', array('alt' => 'CakePHP', 'style' => 'height:98px;width:175px;')); ?>
-                                <?= $this->Html->image('/img/new/4.jpg', array('alt' => 'CakePHP', 'style' => 'height:98px;width:175px;')); ?>
-                            </div>
-                            <div class="item">
-                                <?= $this->Html->image('/img/new/5.jpg', array('alt' => 'CakePHP', 'style' => 'height:98px;width:175px;')); ?>
-                                <?= $this->Html->image('/img/new/6.jpg', array('alt' => 'CakePHP', 'style' => 'height:98px;width:175px;')); ?>
-                            </div>
-                            <div class="item">
-                                <?= $this->Html->image('/img/new/7.jpg', array('alt' => 'CakePHP', 'style' => 'height:98px;width:175px;')); ?>
-                                <?= $this->Html->image('/img/new/8.jpg', array('alt' => 'CakePHP', 'style' => 'height:98px;width:175px;')); ?>
-                            </div>
-                            <div class="item">
-                                <?= $this->Html->image('/img/new/9.jpg', array('alt' => 'CakePHP', 'style' => 'height:98px;width:175px;')); ?>
-                                <?= $this->Html->image('/img/new/10.png', array('alt' => 'CakePHP', 'style' => 'height:98px;width:175px;')); ?>
-                            </div>
+        <div class="col-md-8">
+            <!--photo-->
+            <div class="box">
+                <div class="box-header header-photo">
+                    <h2>Photos</h2>
+                </div>
+                <div class="box-content">
+                    <div id="owl-demo-2" class="owl-carousel">
+                        <div class="item">
+                            <?= $this->Html->image('/img/new/1.jpg', array('alt' => 'CakePHP', 'style' => 'height:98px;width:175px;')); ?>
+                            <?= $this->Html->image('/img/new/2.jpg', array('alt' => 'CakePHP', 'style' => 'height:98px;width:175px;')); ?>
+                        </div>
+                        <div class="item">
+                            <?= $this->Html->image('/img/new/3.jpg', array('alt' => 'CakePHP', 'style' => 'height:98px;width:175px;')); ?>
+                            <?= $this->Html->image('/img/new/4.jpg', array('alt' => 'CakePHP', 'style' => 'height:98px;width:175px;')); ?>
+                        </div>
+                        <div class="item">
+                            <?= $this->Html->image('/img/new/5.jpg', array('alt' => 'CakePHP', 'style' => 'height:98px;width:175px;')); ?>
+                            <?= $this->Html->image('/img/new/6.jpg', array('alt' => 'CakePHP', 'style' => 'height:98px;width:175px;')); ?>
+                        </div>
+                        <div class="item">
+                            <?= $this->Html->image('/img/new/7.jpg', array('alt' => 'CakePHP', 'style' => 'height:98px;width:175px;')); ?>
+                            <?= $this->Html->image('/img/new/8.jpg', array('alt' => 'CakePHP', 'style' => 'height:98px;width:175px;')); ?>
+                        </div>
+                        <div class="item">
+                            <?= $this->Html->image('/img/new/9.jpg', array('alt' => 'CakePHP', 'style' => 'height:98px;width:175px;')); ?>
+                            <?= $this->Html->image('/img/new/10.png', array('alt' => 'CakePHP', 'style' => 'height:98px;width:175px;')); ?>
                         </div>
                     </div>
                 </div>
-
-                <!-- next -->
-                <div class="box">
-                    <div class="box-header header-natural">
-                        <h2>Lập trình C</h2>
-                    </div>
-                    <div class="box-content">
-                        <div class="row">
-                            <?php foreach ($article1 as $value): ?>
-                                <div class="col-md-6">
-                                    <?= $this->Html->image('/img/new/1.jpg', array('alt' => 'CakePHP', 'style' => 'height:148px;width:250px;')); ?>
-                                    <h3><?= $this->Html->link($value->name, ['action' => '../articles/view', $value->id]) ?> </h3>
-                                    <p>By <a href="#"><?= $value->user->username ?></a>
-                                        <?= $this->Html->image('new/' . $value->user['image'], array('alt' => 'CakePHP', 'style' => 'height:20px;width:20px; border-radius: 50%;')); ?>
-                                    </p>
-                                    <span><i class="fa fa-heart"></i>  <?= $value->likes ?> / <i class="fa fa-calendar"></i>  <?= $value->posted ?> / <i class="fa fa-comment-o"> / </i> 10 <i class="fa fa-eye"></i> <?= $value->views ?></span>
-                                    <br> 
-                                    <span class="rating">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star-half"></i>
-                                    </span>
-                                    <p> <?= substr($value->content, 0, 200); ?>...</p>
-                                    <?= $this->request->session()->write('id_department', $value->id_department); ?>
-                                </div>
-                            <?php endforeach ?>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- next -->
-                <div class="box">
-                    <div class="box-header header-natural">
-                        <h2>Lập trình Java</h2>
-                    </div>
-                    <div class="box-content">
-                        <div class="row">
-                            <?php foreach ($article2 as $value): ?>
-                                <div class="col-md-6">
-                                    <?= $this->Html->image('/img/new/2.jpg', array('alt' => 'CakePHP', 'style' => 'height:148px;width:250px;')); ?>
-                                    <h3><?= $this->Html->link($value->name, ['action' => '../articles/view', $value->id]) ?> </h3>
-                                    <p>By <a href="#"><?= $value->user->username ?></a>
-                                        <?= $this->Html->image('new/' . $value->user['image'], array('alt' => 'CakePHP', 'style' => 'height:20px;width:20px; border-radius: 50%;')); ?>
-                                    </p>
-                                    <span><i class="fa fa-heart"></i>  <?= $value->likes ?> / <i class="fa fa-calendar"></i>  <?= $value->posted ?> / <i class="fa fa-comment-o"> / </i> 10 <i class="fa fa-eye"></i> <?= $value->views ?></span>
-                                    <br> 
-                                    <span class="rating">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star-half"></i>
-                                    </span>
-                                    <p> <?= substr($value->content, 0, 200); ?> ...</p>
-
-                                </div>
-                            <?php endforeach ?>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- next --> 
-                <div class="box">
-                    <div class="box-header header-natural">
-                        <h2>Bảo trì ứng dụng</h2>
-                    </div>
-                    <div class="box-content">
-                        <div class="row">
-                            <?php foreach ($article3 as $value): ?>
-                                <div class="col-md-6">
-                                    <?= $this->Html->image('/img/new/3.jpg', array('alt' => 'CakePHP', 'style' => 'height:148px;width:250px;')); ?>
-                                    <h3><?= $this->Html->link($value->name, ['action' => '../articles/view', $value->id]) ?> </h3>
-                                    <p>By <a href="#"><?= $value->user->username ?></a>
-                                        <?= $this->Html->image('new/' . $value->user['image'], array('alt' => 'CakePHP', 'style' => 'height:20px;width:20px; border-radius: 50%;')); ?>
-                                    </p>
-                                    <span><i class="fa fa-heart"></i>  <?= $value->likes ?> / <i class="fa fa-calendar"></i>  <?= $value->posted ?> / <i class="fa fa-comment-o"> / </i> 10 <i class="fa fa-eye"></i> <?= $value->views ?></span>
-                                    <br> 
-                                    <span class="rating">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star-half"></i>
-                                    </span>
-                                    <p> <?= substr($value->content, 0, 200); ?> ...</p>
-
-                                </div>
-                            <?php endforeach ?>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- next -->
-                <div class="box">
-                    <div class="box-header header-natural">
-                        <h2>Cơ sở dữ liệu</h2>
-                    </div>
-                    <div class="box-content">
-                        <div class="row">
-                            <?php foreach ($article4 as $value): ?>
-                                <div class="col-md-6">
-                                    <?= $this->Html->image('/img/new/4.jpg', array('alt' => 'CakePHP', 'style' => 'height:148px;width:250px;')); ?>
-                                    <h3><?= $this->Html->link($value->name, ['action' => '../articles/view', $value->id]) ?> </h3>
-                                    <p>By <a href="#"><?= $value->user->username ?></a>
-                                        <?= $this->Html->image('new/' . $value->user['image'], array('alt' => 'CakePHP', 'style' => 'height:20px;width:20px; border-radius: 50%;')); ?>
-                                    </p>
-                                    <span><i class="fa fa-heart"></i>  <?= $value->likes ?> / <i class="fa fa-calendar"></i>  <?= $value->posted ?> / <i class="fa fa-comment-o"> / </i> 10 <i class="fa fa-eye"></i> <?= $value->views ?></span>
-                                    <br> 
-                                    <span class="rating">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star-half"></i>
-                                    </span>
-                                    <p> <?= substr($value->content, 0, 200); ?> ...</p>
-
-                                </div>
-                            <?php endforeach ?>
-                        </div>
-                    </div>
-                </div>
-
             </div>
+
+            <!-- next -->
+            <div class="box">
+                <div class="box-header header-natural">
+                    <h2>Lập trình C</h2>
+                </div>
+                <div class="box-content">
+                    <div class="row">
+                        <?php foreach ($article1 as $value): ?>
+                            <div class="col-md-6">
+                                <?= $this->Html->image('/img/new/1.jpg', array('alt' => 'CakePHP', 'style' => 'height:148px;width:250px;')); ?>
+                                <h3><?= $this->Html->link($value->name, ['action' => '../articles/view', $value->id]) ?> </h3>
+                                <p>By <?= $this->Html->link($value->user->username, ['action' => '../users/view', $value->user->id], array('style' => 'color:red')) ?>
+                                    <?= $this->Html->image('new/' . $value->user['image'], array('alt' => 'CakePHP', 'style' => 'height:20px;width:20px; border-radius: 50%;')); ?>
+                                </p>
+                                <span><i class="fa fa-calendar"></i>  <?= $value->created ?> / <i class="fa fa-eye"></i> <?= $value->views ?></span>
+                                <?= $this->Form->create(null, ['url' => ['action' => '../Articles/likeArticle', $value->id]]); ?>
+                                <button class="fa fa-thumbs-o-up" style="font-size:16px;background-color: white;" name="likeA" id="likes"> </button>
+                                <span> <?= $value->likes ?> </span>
+                                <?php echo $this->Form->hidden('likes', ['value' => $value->likes]) ?>
+                                <button class="fa fa-thumbs-o-down" style="font-size:16px;background-color: white;" name="dislikeA" id="likes"> </button>
+                                <span> <?= $value->dislikes ?> </span>
+                                <?php echo $this->Form->hidden('dislikes', ['value' => $value->dislikes]) ?>
+                                <?= $this->Form->end(); ?>
+                                <span class="rating">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star-half"></i>
+                                </span>
+                                <p> <?= substr($value->content, 0, 200); ?>...</p>
+                                <?= $this->request->session()->write('id_department', $value->id_department); ?>
+                            </div>
+                        <?php endforeach ?>
+                    </div>
+                </div>
+            </div>
+
+            <!-- next -->
+            <div class="box">
+                <div class="box-header header-natural">
+                    <h2>Lập trình Java</h2>
+                </div>
+                <div class="box-content">
+                    <div class="row">
+                        <?php foreach ($article2 as $value): ?>
+                            <div class="col-md-6">
+                                <?= $this->Html->image('/img/new/2.jpg', array('alt' => 'CakePHP', 'style' => 'height:148px;width:250px;')); ?>
+                                <h3><?= $this->Html->link($value->name, ['action' => '../articles/view', $value->id]) ?> </h3>
+                                <p>By <?= $this->Html->link($value->user->username, ['action' => '../users/view', $value->user->id], array('style' => 'color:red')) ?>
+                                    <?= $this->Html->image('new/' . $value->user['image'], array('alt' => 'CakePHP', 'style' => 'height:20px;width:20px; border-radius: 50%;')); ?>
+                                </p>
+                                <span><i class="fa fa-calendar"></i>  <?= $value->created ?> / <i class="fa fa-eye"></i> <?= $value->views ?></span>
+                                <?= $this->Form->create(null, ['url' => ['action' => '../Articles/likeArticle', $value->id]]); ?>
+                                <button class="fa fa-thumbs-o-up" style="font-size:16px;background-color: white;" name="likeA" id="likes"> </button>
+                                <span> <?= $value->likes ?> </span>
+                                <?php echo $this->Form->hidden('likes', ['value' => $value->likes]) ?>
+                                <button class="fa fa-thumbs-o-down" style="font-size:16px;background-color: white;" name="dislikeA" id="likes"> </button>
+                                <span> <?= $value->dislikes ?> </span>
+                                <?php echo $this->Form->hidden('dislikes', ['value' => $value->dislikes]) ?>
+                                <?= $this->Form->end(); ?>
+                                <span class="rating">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star-half"></i>
+                                </span>
+                                <p> <?= substr($value->content, 0, 200); ?> ...</p>
+
+                            </div>
+                        <?php endforeach ?>
+                    </div>
+                </div>
+            </div>
+
+            <!-- next --> 
+            <div class="box">
+                <div class="box-header header-natural">
+                    <h2>Bảo trì ứng dụng</h2>
+                </div>
+                <div class="box-content">
+                    <div class="row">
+                        <?php foreach ($article3 as $value): ?>
+                            <div class="col-md-6">
+                                <?= $this->Html->image('/img/new/3.jpg', array('alt' => 'CakePHP', 'style' => 'height:148px;width:250px;')); ?>
+                                <h3><?= $this->Html->link($value->name, ['action' => '../articles/view', $value->id]) ?> </h3>
+                                <p>By <?= $this->Html->link($value->user->username, ['action' => '../users/view', $value->user->id], array('style' => 'color:red')) ?>
+                                    <?= $this->Html->image('new/' . $value->user['image'], array('alt' => 'CakePHP', 'style' => 'height:20px;width:20px; border-radius: 50%;')); ?>
+                                </p>
+                                <span><i class="fa fa-calendar"></i>  <?= $value->created ?> / <i class="fa fa-eye"></i> <?= $value->views ?></span>
+                                <?= $this->Form->create(null, ['url' => ['action' => '../Articles/likeArticle', $value->id]]); ?>
+                                <button class="fa fa-thumbs-o-up" style="font-size:16px;background-color: white;" name="likeA" id="likes"> </button>
+                                <span> <?= $value->likes ?> </span>
+                                <?php echo $this->Form->hidden('likes', ['value' => $value->likes]) ?>
+                                <button class="fa fa-thumbs-o-down" style="font-size:16px;background-color: white;" name="dislikeA" id="likes"> </button>
+                                <span> <?= $value->dislikes ?> </span>
+                                <?php echo $this->Form->hidden('dislikes', ['value' => $value->dislikes]) ?>
+                                <?= $this->Form->end(); ?>
+                                <span class="rating">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star-half"></i>
+                                </span>
+                                <p> <?= substr($value->content, 0, 200); ?> ...</p>
+
+                            </div>
+                        <?php endforeach ?>
+                    </div>
+                </div>
+            </div>
+
+            <!-- next -->
+            <div class="box">
+                <div class="box-header header-natural">
+                    <h2>Cơ sở dữ liệu</h2>
+                </div>
+                <div class="box-content">
+                    <div class="row">
+                        <?php foreach ($article4 as $value): ?>
+                            <div class="col-md-6">
+                                <?= $this->Html->image('/img/new/4.jpg', array('alt' => 'CakePHP', 'style' => 'height:148px;width:250px;')); ?>
+                                <h3><?= $this->Html->link($value->name, ['action' => '../articles/view', $value->id]) ?> </h3>
+                                <p>By <?= $this->Html->link($value->user->username, ['action' => '../users/view', $value->user->id], array('style' => 'color:red')) ?>
+                                    <?= $this->Html->image('new/' . $value->user['image'], array('alt' => 'CakePHP', 'style' => 'height:20px;width:20px; border-radius: 50%;')); ?>
+                                </p>
+                                <span><i class="fa fa-calendar"></i>  <?= $value->created ?> / <i class="fa fa-eye"></i> <?= $value->views ?></span>
+
+                                <?= $this->Form->create(null, ['url' => ['action' => '../Articles/likeArticle', $value->id]]); ?>
+                                <button class="fa fa-thumbs-o-up" style="font-size:16px;background-color: white;" name="likeA" id="likes"> </button>
+                                <span> <?= $value->likes ?> </span>
+                                <?php echo $this->Form->hidden('likes', ['value' => $value->likes]) ?>
+                                <button class="fa fa-thumbs-o-down" style="font-size:16px;background-color: white;" name="dislikeA" id="likes"> </button>
+                                <span> <?= $value->dislikes ?> </span>
+                                <?php echo $this->Form->hidden('dislikes', ['value' => $value->dislikes]) ?>
+                                <?= $this->Form->end(); ?>
+
+
+
+                                <span class="rating">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star-half"></i>
+                                </span>
+                                <p> <?= substr($value->content, 0, 200); ?> ...</p>
+
+                            </div>
+                        <?php endforeach ?>
+                    </div>
+                </div>
+            </div>
+
 
         </div>
 
         <div id="sidebar">
-
             <div class="col-md-4">
-
                 <!---- Start Widget search---->
                 <div class="widget wid-tags">
                     <div class="heading"><h4>Search</h4></div>
                     <div class="content">
-                        <form role="form" class="form-horizontal" method="post" action="">
-                            <input type="text" placeholder="Enter Search Keywords" value="" name="v_search" id="v_search" class="form-control">
-                        </form>
+                        <?= $this->Form->create('', ['url' => ['controller' => 'Finds', 'action' => 'findarticle'], array('class' => 'form-horizontal')]); ?>
+                        <!--<form role="form" class="form-horizontal" method="post" action="../Finds/findarticle">-->
+                        <input type="text" placeholder="Enter Search Keywords" value="" name="v_search" id="v_search" class="form-control">
+                        <input type="submit" name="ok" value="search" style="margin-left: 270px; margin-top: 5px;" />
+                        <!--</form>-->
+                        <?= $this->Form->end; ?>
                     </div>
                 </div>
 
@@ -466,11 +496,11 @@
                             <?= $this->Html->image('/img/new/21.jpg', array('alt' => 'CakePHP', 'style' => 'height:153px;width:230px;')); ?>
                             <ul class="list-inline">
                                 <li>
-                                    <p>By <a href="#" style="color:red;"><?= $value->user->username ?></a>
+                                    <p>By <?= $this->Html->link($value->user->username, ['action' => '../users/view', $value->user->id], array('style' => 'color:red')) ?>
                                         <?= $this->Html->image('new/' . $value->user['image'], array('alt' => 'CakePHP', 'style' => 'height:20px;width:20px; border-radius: 50%;')); ?>
                                     </p>
                                 </li><br>
-                                <li><i class="fa fa-calendar"></i> <?= h($value->posted) ?></li> 
+                                <li><i class="fa fa-calendar"></i> <?= h($value->created) ?></li> 
                                 <li><i class="fa fa-comments"></i> 1,200</li>
                                 <li><i class="fa fa-eye"></i> <?= h($value->views) ?></li><br>
                                 <p><?= html_entity_decode(substr($value->content, 0, 100)); ?>...</p>
@@ -481,9 +511,28 @@
                     </div>
                 </div>
 
-
             </div>
         </div>
     </div>
 
 </html>
+
+<script>
+    $(document).ready(function () {
+        $(".voteup").click(function () {
+            var Id = $(this).children("p").text();
+            $(this).children("#article_thumbsUp").load("/posts/voteup/" + Id);
+        });
+    });
+    
+    
+    
+    
+    
+    
+     
+    
+    
+    
+</script>
+

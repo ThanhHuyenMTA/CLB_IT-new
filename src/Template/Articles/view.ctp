@@ -6,9 +6,10 @@
                 <h2 class="vid-name"><?= h($article->name) ?></h2>
                 <div class="info">
                     <h5>By <a href="#">Kelvin</a></h5>
-                    <span><i class="fa fa-calendar"></i><?= h($article->posted) ?></span> 
+                    <span><i class="fa fa-calendar"></i><?= h($article->created) ?></span> 
                     <span><i class="fa fa-comment"></i> 0 Comments</span>
                     <span><i class="fa fa-heart"></i> <?= $article->views ?></span>
+                   
                     <ul class="list-inline">
                         <li><a href="#">Rate</a></li>
                         <li> - </li>

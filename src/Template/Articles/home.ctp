@@ -14,7 +14,7 @@
         .......
         <br>
         Time post:
-        <?= $totl->posted ?>
+        <?= $totl->created ?>
         <br>
         Views:
         <?= $totl->views ?>

@@ -11,7 +11,11 @@
                 <div class="row">
                     <!-- load image -->
                     <div class="col-xs-4">
-                        <?= $this->Html->image('new/' . $user['image'], array('alt' => 'CakePHP', 'style' => 'height:150px;width:150px;')); ?><br><br>
+                        <?php if ($user->image): ?>
+                            <?= $this->Html->image('new/' . $user['image'], array('alt' => 'CakePHP', 'style' => 'height:150px;width:150px;')); ?><br><br>
+                        <?php else: ?>
+                            <?= $this->Html->image('new/39.png', array('alt' => 'CakePHP', 'style' => 'height:150px;width:150px;')); ?><br><br>
+                        <?php endif; ?>
                         <!-- edit picture user -->
                         <?php echo $this->Form->create(null, ['type' => 'file']); ?>
                         <label class="btn btn-primary" f or="my-file-selector" style="color: black;background-color: #eff3f6;font-weight: bold;">
@@ -39,12 +43,9 @@
                                         <p class="mt-3"><strong>ProTip!</strong> Updating your profile with your name, location, and a profile picture helps other GitHub users get to know you.</p>
                                     </li>
                                     <li>
-                                        <a href="#">
-                                            <div class="box-google" style="width:130px; height:40px;">
-                                                <span class="fa fa-envelope fa-1x icon">  Send mail!</span>
-
-                                            </div>
-                                        </a>
+                                        <div class="box-google" style="width:130px; height:40px;">
+                                            <?= $this->Html->link(' Send mail!', ['action' => '../letters/gmail'], array('class' => 'fa fa-envelope fa-1x icon', 'style' => 'color:white;')) ?>
+                                        </div>
                                         <p class="mt-3"><strong>ProTip!</strong> Please send the best news to your friends !!!</p>
                                     </li>
                                 </ul>
@@ -100,7 +101,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <div id="sidebar" class="col-md-4">
                 <!---- Start Widget ---->
                 <div class="widget wid-follow">
@@ -141,11 +142,10 @@
             </div>
         </div>
     </div>
-
     <script type=”text/javascript”>
         CKEDITOR.replace('content', {
             language: 'vi',
         });
+        
     </script>
-
 </html>

@@ -2,7 +2,7 @@
 <html>
     <?= $this->Html->css('login.css'); ?>
     <div class="overlay">
-        <div class="login-wrapper" style="width: 700px; ">
+        <div class="login-wrapper" style="width: 1000px; ">
             <div class="login-content">
                 <a class="close">x</a>
                 <center><h1>Sign up</h1></center>
@@ -20,7 +20,7 @@
                             </label>
                             <label for="birthday">
                                 Birthday:
-                                <input type="date" name="birthday" required="required" style="width: 172px;" />
+                                <input type="date" name="birthday" required="required" style="width: 175px;font-size: 15px;" />
                             </label>
 
                         </div>
@@ -65,7 +65,7 @@
                             </label>
                         </div>
                     </div>
-                    <button type="submit" style="margin-left:560px;">Sign-up</button>
+                    <button type="submit" style="margin-left:845px;">Sign-up</button>
                 </form>
             </div>
         </div>

@@ -78,6 +78,14 @@ class UsersController extends AppController {
         //pr($user);die();
         $this->set(compact('user'));
     }
+    //chu y
+    public function view($id) {
+         $this->request->data['id'] = $id;
+       //  pr($id);die();
+        $user = $this->Users->get($id);
+        //pr($user);die();
+        $this->set(compact('user'));
+    }
 
     public function edit($id) {
         $this->viewBuilder()->layout(false);
