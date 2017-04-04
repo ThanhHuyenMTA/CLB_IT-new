@@ -15,17 +15,16 @@ class LettersController extends AppController {
         $this->loadModel('Transactions');
     }
 
-    public function gmail() {
-
-//compose_soan mail
+    //compose mail
+    public function composemail() {
         if ($this->request->is('post')) {
             $id_sender = $this->request->session()->read('Auth.User.id');
-//find id_user
+            //find id_user
             $this->request->data['id_sender'] = $id_sender;
-//profile sender (sent)
+            //profile sender (sent)
             $lettersender = $this->Letters->newEntity($this->request->data);
-//pr($lettersender);die();
-//profile receiver (nhan)
+            //pr($lettersender);die();
+            //profile receiver (nhan)
             if ($lettersender->errors()) {
                 $this->Flash->error(__('Unable to add your article.'));
             } else {
@@ -47,12 +46,14 @@ class LettersController extends AppController {
                 }
             }
         }
-//end compose
+    }
 
-
+    //end compose
+    //thư nhận 
+    public function inbox() {
         $id_user = $this->request->session()->read('Auth.User.id');
-//thư nhận 
-// đưa ra những thư mà Auth.User.id đã nhận  (đưa ra gmail người gửi đến, và thư)
+
+        // đưa ra những thư mà Auth.User.id đã nhận  (đưa ra gmail người gửi đến, và thư)
         $letterReceiver = $this->Transactions->find('all')
                 ->autofields(false)
                 ->where(['Transactions.id_receiver' => $id_user])
@@ -62,12 +63,14 @@ class LettersController extends AppController {
                     ]
                 ])
                 ->all();
-// pr($letterReceiver);
+        // pr($letterReceiver);
         $this->set(compact('letterReceiver'));
+    }
 
-
-//thư gửi
-// đưa ra những thư mà Auth.User.id gửi đi  (đưa ra gmail người nhận, và thư)
+    public function sentmail() {
+        $id_user = $this->request->session()->read('Auth.User.id');
+        //thư đã gửi
+        // đưa ra những thư mà Auth.User.id gửi đi  (đưa ra gmail người nhận, và thư)
         $letterSender = $this->Letters->find('all')
                 ->autofields(false)
                 ->where(['Letters.id_sender' => $id_user])
@@ -77,15 +80,42 @@ class LettersController extends AppController {
                     ]
                 ])
                 ->all();
-//        pr($letterSender);die();
+        //pr($letterSender);die();
         $this->set(compact('letterSender'));
-
-// view letter     
     }
+
+    // view letter receiver   
     public function view($id) {
-        $letter = $this->Letters->get($id);
+        $id_user = $this->request->session()->read('Auth.User.id');
+        $letter = $this->Transactions->find('all')
+                ->autofields(false)
+                ->where(['Transactions.id_receiver' => $id_user, 'Letters.id' => $id])
+                ->contain([
+                    'Letters' => [
+                        'Users'
+                    ]
+                ])
+                ->all();
+        // pr($letter); die();
         $this->set(compact('letter'));
     }
+
+    // view letter sender 
+    public function viewsender($id,$id_receiver) {
+       // pr($id);//thu gui
+        //pr($id_receiver);die();//nguoi nhan
+        
+        //$id _ id in transaction 
+        $id_user = $this->request->session()->read('Auth.User.id');
+        $letter = $this->Letters->get($id,[
+             'contain' => ['Users']]);
+       // pr($letter);die();
+        $this->set(compact('letter'));
+        $leteruser= $this->Users->get($id_receiver);
+         $this->set(compact('leteruser'));
+       // pr($leteruser);die();
+    }
+
 }
 
 ?>

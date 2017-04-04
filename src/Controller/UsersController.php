@@ -78,28 +78,31 @@ class UsersController extends AppController {
         //pr($user);die();
         $this->set(compact('user'));
     }
+
     //chu y
     public function view($id) {
-         $this->request->data['id'] = $id;
-       //  pr($id);die();
+        $this->request->data['id'] = $id;
+        //  pr($id);die();
         $user = $this->Users->get($id);
         //pr($user);die();
         $this->set(compact('user'));
     }
 
-    public function edit($id) {
-        $this->viewBuilder()->layout(false);
-        $article = $this->Users->get($id);
+    public function editprofile() {
+        $id = $this->request->session()->read('Auth.User.id');
+        $user = $this->Users->get($id);
         if ($this->request->is(['post', 'put'])) {
             $this->request->data['id'] = $id; //lấy id
             $moi = $this->Users->newEntity($this->request->data);
+            //pr($moi);die();
             if ($this->Users->save($moi)) {
-                $this->Flash->success(__('Your article has been updated.'));
-                return $this->redirect(['action' => 'index']);
+                $this->Flash->success(__('Your user has been updated.'));
+                return $this->redirect(['action' => '../users/profile']);
+            } else {
+                $this->Flash->error(__('Unable to update your user.'));
             }
-            $this->Flash->error(__('Unable to update your article.'));
         }
-        $this->set('article', $article);
+        $this->set('user', $user);
     }
 
     public function delete($id) {
@@ -112,27 +115,22 @@ class UsersController extends AppController {
     }
 
     // Upload an image
-    public function uploadm($productId = null) {
-        if (!$this->request->is('get')) {
-            if ($this->Products->Images->upload($productId, $this->request->data)) {
-                $this->Session->set(__('Upload successful!'));
+    public function uploadimage() {
+        $user = $this->Users->newEntity();
+        if ($this->request->is('post')) {
+            $user = $this->Users->patchEntity($user,$this->request->data);
+            $data = $this->request->data['image'];
+            //var_dump($this->request->data);
+            if (!$data['image_path']['name']) {
+                unset($data['image_path']);
             }
-        }
-    }
-
-    public function upload() {
-        if (!empty($this->request->data)) {
-            $this->Upload->send($this->request->data['uploadfile']);
-            $user = $this->Users->get($id);
-            if ($this->request->is(['post', 'put'])) {
-                $moi = $this->Users->newEntity($this->request->data);
-                if ($this->Users->save($moi)) {
-                    $this->Flash->success(__('Your article has been updated.'));
-                    return $this->redirect(['action' => 'index']);
-                }
-                $this->Flash->error(__('Unable to update your article.'));
+            // var_dump($this->request->data);
+            if ($this->Users->save($user)) {
+                $this->Flash->success('The image has been saved.');
+                return $this->redirect(['action' => '../users/profile']);
+            } else {
+                $this->Flash->error('The image could not be saved. Please, try again.');
             }
-            $this->set('user',$user);
         }
     }
 

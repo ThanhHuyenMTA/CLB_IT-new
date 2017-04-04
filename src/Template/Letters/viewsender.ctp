@@ -13,13 +13,11 @@
             <?= $this->Html->link('SentMail', ['action' => '../Letters/sentmail']) ?>
         </div>
         <div class="col-sm-10">
-            <?php foreach ($letter as $value): ?>
-            <strong>From:</strong>
-            <?=$value->letter->user->username;?>
-            (  <?=$value->letter->user->email;?> )------- <?=$value->datesender;?>
+            <strong>To:</strong>
+            <?=$leteruser->username;?>
+            (  <?=$leteruser->email;?> )------- <?=$letter->created;?>
             <br><br>
-            <?=  html_entity_decode($value->letter->content);?>
-            <?php endforeach; ?>
+            <?=  html_entity_decode($letter->content);?>
         </div>
     </div>
 </div>

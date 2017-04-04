@@ -92,7 +92,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
                             </div>
                         </li>
                         <li>
-                            <?= $this->Html->link(' Letter', ['action' => '../letters/gmail'], array('class' => 'fa fa-envelope')) ?></li>
+                            <?= $this->Html->link(' Letter', ['action' => '../letters/inbox'], array('class' => 'fa fa-envelope')) ?></li>
                         <?php if ($loggedIn): ?>
                             <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                     <?php if ($image): ?>

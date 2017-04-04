@@ -36,9 +36,11 @@ class ArticlesController extends AppController {
 //        $views+=1;
 //        $this->request->data['views']=$views;
         //pr($this->request->data);die();
-        $articlenew = $this->Articles->newEntity($this->request->data);
-        $this->Articles->save($articlenew);
+       // $articlenew = $this->Articles->newEntity($this->request->data);
+       // $this->Articles->save($articlenew);
+       // 
         //propose comment
+        
         if ($this->loadModel('Comments')) {
             $id = $this->request->data['id'];
             $comment = $this->Comments->find('all', ['conditions' => ['Comments.id_article' => $id]])->contain(['Users']);
@@ -46,7 +48,7 @@ class ArticlesController extends AppController {
                         'order' => [
                             'Comments.id' => 'asc'
             ]]));
-        }
+        }                                                                              
 
         //related articles
 

@@ -6,10 +6,17 @@ div.tab {
     float: left;
     border: 1px solid #ccc;
     background-color: #f1f1f1;
-    width: 10%;
+    width: 10%; 
     height: 600px;
 }
-
+a{
+    font-weight: bold;
+}
+a:active{
+    background-color: #ccc;
+    color: red;
+    font-weight: bold;
+}
 /* Style the buttons inside the tab */
 div.tab button {
     display: block;
@@ -51,13 +58,13 @@ div.tab button.active {
 }
 
 #mail{
-   font-weight: bold;
-   color: black;
+    font-weight: bold;
+    color: black;
 }
 .newletter{
     background-color:#151515;
     margin-left: -12px;
-    width: 1052px;
+    width: 972px;
     color: white;
     padding-left: 10px;
 }

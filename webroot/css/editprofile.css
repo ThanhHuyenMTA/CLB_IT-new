@@ -1,0 +1,17 @@
+.featured {
+    display: none;
+}
+label{
+    width:100px;
+    margin-bottom: 15px;
+}
+.radio+.radio, .checkbox+.checkbox {
+    margin-top: 9px; 
+}
+.radio, .checkbox {
+    width: 100px;
+    float: left;
+}
+button{
+    margin-left: 445px;
+}
