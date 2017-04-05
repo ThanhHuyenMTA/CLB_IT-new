@@ -39,7 +39,7 @@
                             <div class="content">
                                 <ul class="list-inline">
                                     <li>
-                                        <a href="/editnew/users/editprofile">
+                                        <a href="/NewCLB/users/editprofile">
                                             <div class="box-facebook" style="width:130px; height:40px;" >
                                                 <span class="fa fa-edit fa-1x icon"> Edit profile!</span>
                                             </div>

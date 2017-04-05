@@ -524,15 +524,5 @@
             $(this).children("#article_thumbsUp").load("/posts/voteup/" + Id);
         });
     });
-    
-    
-    
-    
-    
-    
-     
-    
-    
-    
 </script>
 

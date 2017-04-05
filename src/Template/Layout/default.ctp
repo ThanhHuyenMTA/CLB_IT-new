@@ -135,7 +135,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
                         <?php endif ?>
 
                         </li>
-                        <li><?= $this->Html->link(' Introduce', ['action' => '../Pages/introduce'], array('class' => 'fa fa-group')); ?>
+                        <li><?= $this->Html->link(' Introduce', ['action' => '../Pages/introduce'], array('class' => 'fa fa-group')); ?></li>
                     </ul>
                     <ul class="list-inline navbar-right top-social">
                         <li><a href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a></li>
@@ -322,12 +322,13 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
                 maxView: 1,
                 forceParse: 0
             });
-            
-            
-            
-            
+
+
+
+
             //demo ajax
             $(document).ready(function () {
+
                 $.ajax({
                     type: "POST",
                     url: url,

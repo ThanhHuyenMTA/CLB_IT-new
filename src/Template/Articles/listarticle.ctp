@@ -17,18 +17,18 @@
                                 <span><i class="fa fa-calendar"></i><?= $value->created ?></span> 
                                 <span><i class="fa fa-comment"></i> 0 Comments</span>
                                 <span ><i class="fa fa-heart"></i><?= $value->views ?></span>
-                                
+
                                 <?= $this->Form->create(null, ['url' => ['action' => '../Articles/likeArticle', $value->id]]); ?>
-                                    <button class="fa fa-thumbs-o-up" style="font-size:16px;background-color: white;" name="likeA" id="likes"> </button>
-                                    <span> <?= $value->likes ?> </span>
-                                    <?php echo $this->Form->hidden('likes', ['value' => $value->likes]) ?>
-                                    <button class="fa fa-thumbs-o-down" style="font-size:16px;background-color: white;" name="dislikeA" id="likes"> </button>
-                                    <span> <?= $value->dislikes ?> </span>
-                                    <?php echo $this->Form->hidden('dislikes', ['value' => $value->dislikes]) ?>
+                                <button onclick="myFunction()" class="fa fa-thumbs-o-up" style="font-size:16px;background-color: white;" name="likeA" id="likes"> </button>
+                                <span> <?= $value->likes ?> </span>
+                                <?php echo $this->Form->hidden('likes', ['value' => $value->likes]) ?>
+                                <button class="fa fa-thumbs-o-down" style="font-size:16px;background-color: white;"name="dislikeA" id="likes"> </button>
+                                <span> <?= $value->dislikes ?> </span>
+                                <?php echo $this->Form->hidden('dislikes', ['value' => $value->dislikes]) ?>
                                 <?= $this->Form->end(); ?>
-                                    
+
                                 <!--<?= $this->request->session()->write('id_department', $value->id_department); ?>  -->
-                              <!--  <?= $this->request->session()->write('email_department', $value->department->email); ?> -->
+                                <!--  <?= $this->request->session()->write('email_department', $value->department->email); ?> -->
                                 <ul class="list-inline">
                                     <li><a href="#">Rate</a></li>
                                     <li> - </li>
@@ -91,9 +91,14 @@
                 <!---- Start tham gia ban ---->
                 <div class="widget wid-follow">
                     <div class="heading"><h4>Welcome to US </h4></div>
-                    <div class="content">
+                    <div class="content" style="float: left;">
                         <?= $this->Element('../departments/embarkdepart'); ?>
                     </div>
+                    <?php if ($userRole): ?>
+                        <div class="approval">
+                            <?= $this->Html->link(' Approval', ['action' => '../Approvals/approval'], array('class' => 'fa fa-bug', 'target' => '_blank')); ?>
+                        </div>
+                    <?php endif; ?>
                 </div>
                 <!---- Start Widget ---->
                 <div class="widget wid-follow">
@@ -223,4 +228,10 @@
     </div>
 
 </html>
+
+<script>
+    function myFunction() {
+        alert("Hello!Do you login!");
+    }
+</script>
 

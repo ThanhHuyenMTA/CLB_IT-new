@@ -17,7 +17,7 @@ class ArticlesController extends AppController {
     }
 
     public function home() {
-        $article = $this->Articles->find('all');
+        $article = $this->Articles->find('all')->where(['Articles.censorship' => 1]);
         $this->set('article', $this->paginate($article, [
                     'limit' => 4,
                     'order' => [
@@ -36,11 +36,11 @@ class ArticlesController extends AppController {
 //        $views+=1;
 //        $this->request->data['views']=$views;
         //pr($this->request->data);die();
-       // $articlenew = $this->Articles->newEntity($this->request->data);
-       // $this->Articles->save($articlenew);
-       // 
+        // $articlenew = $this->Articles->newEntity($this->request->data);
+        // $this->Articles->save($articlenew);
+        // 
         //propose comment
-        
+
         if ($this->loadModel('Comments')) {
             $id = $this->request->data['id'];
             $comment = $this->Comments->find('all', ['conditions' => ['Comments.id_article' => $id]])->contain(['Users']);
@@ -48,7 +48,7 @@ class ArticlesController extends AppController {
                         'order' => [
                             'Comments.id' => 'asc'
             ]]));
-        }                                                                              
+        }
 
         //related articles
 
@@ -81,7 +81,6 @@ class ArticlesController extends AppController {
         //pr($user);die();
         $this->set(compact('user'));
 
-        $this->loadModel('Embarks');
         $userdepart = $this->Embarks->find('all')
                 ->autofields(false)
                 ->where(['Embarks.id_depart' => $id])
@@ -116,12 +115,18 @@ class ArticlesController extends AppController {
                         ->where(['id_depart' => $id, 'id_user' => $id_user])->toArray();
         // pr($userEmbark);die();
         $this->set(compact('userEmbark'));
+//Kiem tra xem thanh vien la truong ban hay pho ban khong
+        $userRole = $this->Embarks->find('all')
+                ->where(['id_depart' => $id, 'id_user' => $id_user, 'role' => 1])
+                ->orWhere(['id_depart' => $id, 'id_user' => $id_user, 'role' => 2])
+                ->toArray();
+       // pr($userRole);die();
+        $this->set(compact('userRole'));
     }
 
     //like or dislike articles 
     public function likeArticle($id) {
         //$id is id_articles
-        $id_department = $this->request->session()->read('id_department');
         if (isset($_POST['likeA'])) {
             $Sessionname = $this->request->session()->read('Auth.User.username');
             if ($Sessionname) {
@@ -155,6 +160,7 @@ class ArticlesController extends AppController {
             }
         }
     }
+
 }
 
 ?>

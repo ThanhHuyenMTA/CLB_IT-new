@@ -47,7 +47,7 @@ class PagesController extends AppController {
         $this->loadModel('Articles'); //call model
         //load articles new
         $articleview = $this->Articles->find('all', [
-                    'condition' => ['Articles.views >=' => 10],
+                    'condition' => ['Articles.views >=' => 10,'Articles.censorship'=>1],
                     'order' => ['Articles.views' => 'DESC'],
                     'limit' => 4
                 ])->contain(['Users']);
@@ -55,28 +55,28 @@ class PagesController extends AppController {
 
         //load article in department
         $article1 = $this->Articles->find('all')
-                ->where(['Articles.id_department' => 1])
+                ->where(['Articles.id_department' => 1,'Articles.censorship'=>1])
                 ->order(['Articles.views' => 'DESC'])
                 ->limit(2)
                 ->contain(['Users']);
         $this->set(compact('article1'));
 
         $article2 = $this->Articles->find('all')
-                ->where(['Articles.id_department' => 2])
+                ->where(['Articles.id_department' => 2,'Articles.censorship'=>1])
                 ->order(['Articles.views' => 'DESC'])
                 ->limit(2)
                 ->contain(['Users']);
         $this->set(compact('article2'));
 
         $article3 = $this->Articles->find('all')
-                ->where(['Articles.id_department' => 3])
+                ->where(['Articles.id_department' => 3,'Articles.censorship'=>1])
                 ->order(['Articles.views' => 'DESC'])
                 ->limit(2)
                 ->contain(['Users']);
         $this->set(compact('article3'));
 
         $article4 = $this->Articles->find('all')
-                ->where(['Articles.id_department' => 4])
+                ->where(['Articles.id_department' => 4,'Articles.censorship'=>1])
                 ->order(['Articles.views' => 'DESC'])
                 ->limit(2)
                 ->contain(['Users']);

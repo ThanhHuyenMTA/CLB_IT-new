@@ -30,7 +30,7 @@ class ArticlesTable extends Table
 
     public function findalldl($id)
     {
-        $query = $this->find('all',['conditions' => ['Articles.id_department' =>$id]]);
+        $query = $this->find('all',['conditions' => ['Articles.id_department' =>$id,'Articles.censorship'=>1]]);
         return $query;
     }
 }
