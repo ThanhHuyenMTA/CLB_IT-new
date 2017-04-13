@@ -68,3 +68,29 @@ div.tab button.active {
     color: white;
     padding-left: 10px;
 }
+
+.featured{
+    display: none;
+}
+
+.col-sm-2 a{
+    color: black;
+}
+.col-sm-2 a:hover{
+    color:red;
+}
+
+.col-sm-2{
+   min-height:520px;
+   
+}
+.col-sm-10 {
+    min-height:520px;
+}
+.col-sm-9 .box{
+     min-height:520px;
+}
+.col-sm-3 .box{
+     min-height:520px;
+}
+

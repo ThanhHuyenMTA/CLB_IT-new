@@ -11,10 +11,6 @@ class User extends Entity {
         return (new DefaultPasswordHasher)->hash($password);
     }
 
-    protected $_accessible = [
-        'image_path' => true,
-    ];
-
 }
 
 ?>

@@ -12,22 +12,14 @@
                     <!-- load image -->
                     <div class="col-xs-4">
                         <?php if ($user->image): ?>
-                            <?= $this->Html->image('new/' . $user['image'], array('alt' => 'CakePHP', 'style' => 'height:150px;width:150px;')); ?><br><br>
+                            <?= $this->Html->image('new/' . $user['image'], array('alt' => 'CakePHP', 'style' => 'height:150px;width:182px;')); ?><br><br>
                         <?php else: ?>
-                            <?= $this->Html->image('new/39.png', array('alt' => 'CakePHP', 'style' => 'height:150px;width:150px;')); ?><br><br>
+                            <?= $this->Html->image('new/39.png', array('alt' => 'CakePHP', 'style' => 'height:150px;width:182px;')); ?><br><br>
                         <?php endif; ?>
 
 
                         <!-- edit picture user -->
-                        <?php echo $this->Form->create(null, ['type' => 'file'], ['action' => '../users/uploadimage'],
-                                ['name'=>'multiple_upload_form'],['id'=>'multiple_upload_form']); ?>
-                        <label class="btn btn-primary" f or="my-file-selector" style="color: black;background-color: #eff3f6;font-weight: bold;">
-                            <input id="my-file-selector" type="file" style="display:none;" name='uploadfile' multiple='multiple' onchange="$('#upload-file-info').html($(this).val());">
-                            <i class="fa fa-arrow-circle-o-up"></i> Upload new picture !
-                        </label>
-                        <!--<?= $this->Form->button('submit', ['type' => 'submit']); ?>-->
-                        <span class='label label-info ' id="upload-file-info"></span>
-                        <?php echo $this->Form->end(); ?>
+                        <?=$this->Element('../users/uploadimage')?>
                         <!-- end edit picture user -->
 
 
@@ -150,24 +142,7 @@
         CKEDITOR.replace('content', {
             language: 'vi',
         });
-        
-        
-        $(document).ready(function () {
-            $('#images').on('change', function () {
-                $('#multiple_upload_form').ajaxForm({
-                    //display the uploaded images
-                    target: '#images_preview',
-                    beforeSubmit: function (e) {
-                        $('.uploading').show();
-                    },
-                    success: function (e) {
-                        $('.uploading').hide();
-                    },
-                    error: function (e) {
-                    }
-                }).submit();
-            });
-        });
+
     </script>
 
 </html>

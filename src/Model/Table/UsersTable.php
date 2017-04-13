@@ -63,15 +63,6 @@ class UsersTable extends Table {
                     'rule' => 'email',
                     'message' => 'E-mail must be valid'
                 ])
-                ->requirePresence('image_path', 'create')
-                ->notEmpty('image_path')
-                ->add('processImageUpload', 'custom', [
-                    'rule' => 'processImageUpload'
-                ])
-
-
-
-
 
         ;
         return $validator;
@@ -96,16 +87,6 @@ class UsersTable extends Table {
         return $this->_findUser($username, $pass);
     }
 
-    public function processImageUpload($check = array()) {
-        if (!is_uploaded_file($check['image_path']['tmp_name'])) {
-            return FALSE;
-        }
-        if (!move_uploaded_file($check['image_path']['tmp_name'], WWW_ROOT . 'img' . DS . 'images' . DS . $check['image_path']['name'])) {
-            return FALSE;
-        }
-        $this->data[$this->alias]['image_path'] = 'images' . DS . $check['image_path']['name'];
-        return TRUE;
-    }
-
 }
+
 ?>

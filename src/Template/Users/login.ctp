@@ -56,4 +56,7 @@
     #top{
         position: inherit;
     }
+     footer{
+        display: none;
+    }
 </style>

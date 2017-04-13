@@ -59,7 +59,10 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
                                     <?= $this->Html->link('Home', ['action' => '../']) ?> 
                                 </li>
                                 <i class="fa fa-comments"></i>
-                                <li><?= $this->Html->link('Letter', ['action' => '../letters/gmail']) ?></li>
+                                <li>
+                                    <?= $this->Html->link('Letter', ['action' => '../letters/gmail']) ?>
+
+                                </li>
                                 <li><a href="#"><i class="fa fa-question-circle"></i> FAQ</a></li>
                             </ul>
                         </div>
@@ -92,7 +95,10 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
                             </div>
                         </li>
                         <li>
-                            <?= $this->Html->link(' Letter', ['action' => '../letters/inbox'], array('class' => 'fa fa-envelope')) ?></li>
+                            <?= $this->Html->link(' Letter', ['action' => '../letters/inbox'], array('class' => 'fa fa-envelope'))
+                            ?>
+                        </li>
+                        <li style="margin-top: 12px;margin-left: -16px;color: white;"><?php echo "(".$number.")";?></li>
                         <?php if ($loggedIn): ?>
                             <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                     <?php if ($image): ?>
@@ -100,9 +106,6 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
                                     <?php else: ?>
                                         <?= $this->Html->image('new/39.png', array('alt' => 'CakePHP', 'style' => 'height:20px;width:20px;border-radius: 50%;')); ?>     
                                     <?php endif; ?>
-
-
-
                                     <i class="fa fa-arrow-circle-o-down"></i></a>
                                 <div class="dropdown-menu">
                                     <div class="dropdown-inner">
@@ -322,23 +325,6 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
                 maxView: 1,
                 forceParse: 0
             });
-
-
-
-
-            //demo ajax
-            $(document).ready(function () {
-
-                $.ajax({
-                    type: "POST",
-                    url: url,
-                    data: dataString,
-                    success: function (data) {
-                        alert('success');
-                        return false;
-                    }
-                });
-            })
         </script>
     </body>
 </html>

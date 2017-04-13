@@ -19,7 +19,7 @@
                                 <span ><i class="fa fa-heart"></i><?= $value->views ?></span>
 
                                 <?= $this->Form->create(null, ['url' => ['action' => '../Articles/likeArticle', $value->id]]); ?>
-                                <button onclick="myFunction()" class="fa fa-thumbs-o-up" style="font-size:16px;background-color: white;" name="likeA" id="likes"> </button>
+                                <button class="fa fa-thumbs-o-up" style="font-size:16px;background-color: white;" name="likeA" id="likes"> </button>
                                 <span> <?= $value->likes ?> </span>
                                 <?php echo $this->Form->hidden('likes', ['value' => $value->likes]) ?>
                                 <button class="fa fa-thumbs-o-down" style="font-size:16px;background-color: white;"name="dislikeA" id="likes"> </button>
@@ -97,7 +97,9 @@
                     <?php if ($userRole): ?>
                         <div class="approval">
                             <?= $this->Html->link(' Approval', ['action' => '../Approvals/approval'], array('class' => 'fa fa-bug', 'target' => '_blank')); ?>
+                            (<?php print $numberarticle;?>/<?php print $numberuser;?>)
                         </div>
+
                     <?php endif; ?>
                 </div>
                 <!---- Start Widget ---->
@@ -228,10 +230,3 @@
     </div>
 
 </html>
-
-<script>
-    function myFunction() {
-        alert("Hello!Do you login!");
-    }
-</script>
-

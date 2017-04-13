@@ -44,8 +44,7 @@
                                 Girl
                                 <input type="checkbox" name="sex" value="femal" /> 
                             </label>
-
-
+                          
                         </div>
 
                         <div id="main-content" class="col-md-4">
@@ -102,3 +101,12 @@
         });
     });
 </script>
+
+<style>
+    #top{
+        display: none;
+    }
+    footer{
+        display: none;
+    }
+</style>

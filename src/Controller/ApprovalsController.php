@@ -30,9 +30,11 @@ class ApprovalsController extends AppController {
         $article = $this->Articles->find('all')
                 ->where(['Articles.censorship' => 0, 'Articles.id_department' => $id_depart])
                 ->contain(['Users'])
-                ->toArray();
+                ;
         //pr($article);die();
         $this->set(compact('article'));
+         
+        
         if (isset($_POST['YesM'])) {
             $id_user = $this->request->data['id_user'];
             // pr($id_user);die();

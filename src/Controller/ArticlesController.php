@@ -60,6 +60,19 @@ class ArticlesController extends AppController {
     }
 
     public function listarticle($id) {
+        //number articles and member not approvals
+        $numberarticle = $this->Articles->find('all')
+                        ->where(['Articles.censorship' => 0, 'Articles.id_department' => $id])
+                        ->contain(['Users'])->count();
+        // pr($numberarticle);die();
+        $this->set(compact('numberarticle'));
+        $this->loadModel('Embarks');
+        $numberuser = $this->Embarks->find('all')
+                        ->where(['Embarks.approval' => 0, 'Embarks.id_depart' => $id])
+                        ->contain(['Users'])->count();
+        $this->set(compact('numberuser'));
+
+
 //        listarticles
         $article = $this->Articles->findalldl($id)->contain(['Users', 'Departments']); //function is called in model
         $this->request->session()->write('id_department', $id);
@@ -97,6 +110,14 @@ class ArticlesController extends AppController {
             $id_user = $this->request->session()->read('Auth.User.id');
             $this->request->data['id_user'] = $id_user;
             $this->request->data['id_department'] = $id;
+            //TH la truong ban  thi kh can phe duyet
+            $userRole = $this->Embarks->find('all')
+                    ->where(['id_depart' => $id, 'id_user' => $id_user, 'role' => 1])
+                    ->orWhere(['id_depart' => $id, 'id_user' => $id_user, 'role' => 2])
+                    ->toArray();
+            if ($userRole) {
+                $this->request->data['censorship'] = 1;
+            }
             //find end
             $article = $this->Articles->newEntity($this->request->data);
             //pr($article);die();
@@ -120,7 +141,7 @@ class ArticlesController extends AppController {
                 ->where(['id_depart' => $id, 'id_user' => $id_user, 'role' => 1])
                 ->orWhere(['id_depart' => $id, 'id_user' => $id_user, 'role' => 2])
                 ->toArray();
-       // pr($userRole);die();
+        // pr($userRole);die();
         $this->set(compact('userRole'));
     }
 
@@ -159,6 +180,7 @@ class ArticlesController extends AppController {
                 return $this->redirect(['action' => '../users/login']);
             }
         }
+        //
     }
 
 }

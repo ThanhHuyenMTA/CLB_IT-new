@@ -11,18 +11,6 @@
                         <?php else: ?>
                             <?= $this->Html->image('new/39.png', array('alt' => 'CakePHP', 'style' => 'height:150px;width:150px;')); ?><br><br>
                         <?php endif; ?>
-                        <!-- edit picture user -->
-                        <?php echo $this->Form->create(null, ['type' => 'file']); ?>
-                        <label class="btn btn-primary" f or="my-file-selector" style="color: black;background-color: #eff3f6;font-weight: bold;width: 160px;">
-                            <input id="my-file-selector" type="file" style="display:none;" name='uploadfile' multiple='multiple' onchange="$('#upload-file-info').html($(this).val());">
-                            <i class="fa fa-arrow-circle-o-up"></i> Upload new picture !
-                        </label>
-                        <span class='label label-info ' id="upload-file-info"></span>
-                        <!-- <?= $this->Form->file('uploadfile', ['multiple']); ?> -->
-                        <!-- <?= $this->Form->button('submit', ['type' => 'submit']); ?> -->
-                        <?php echo $this->Form->end(); ?>
-                        <!-- end edit picture user -->
-                        <br>
                     </div>
                     <!-- function user -->
                     <div class="col-xs-9">
@@ -30,20 +18,19 @@
                             <div class="content">
                                 <?php echo $this->Form->create($user); ?>
                                 <?php echo $this->Form->input('name'); ?>
+                                <?php echo $this->Form->input('username'); ?>
                                 <?php echo $this->Form->input('birthday'); ?>
                                 <?php echo $this->Form->input('phone'); ?>
                                 <?php echo $this->Form->input('address'); ?>
                                 <?php echo $this->Form->input('job'); ?>
                                 <?php echo $this->Form->input('email'); ?>
-                                <?php echo $this->Form->input('username'); ?>
+                                <?php echo $this->Form->hidden('image'); ?>
                                 <?php echo $this->Form->input('password'); ?>
+
                                 <?php
-                                echo $this->Form->input('Boy', ['type' => 'checkbox', 'value' => 'male', 'name' => 'sex']
-                                );
-                                ?>
-                                <?php
-                                echo $this->Form->input('Girl', ['type' => 'checkbox', 'value' => 'femal', 'name' => 'sex']
-                                );
+                                echo $this->Form->input('sex', array(
+                                    'options' => array('male' => 'Boy', 'female' => 'Girl')
+                                ));
                                 ?>
                                 <?php echo $this->Form->button(__('Edit Profile')); ?>
                                 <?php echo $this->Form->end(); ?>

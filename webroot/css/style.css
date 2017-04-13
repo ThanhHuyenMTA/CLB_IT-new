@@ -555,7 +555,12 @@ div.tab button.active {
 
 
 .approval{
-    background-color: #285e8e;width:91px;margin-left:150px;border-radius: 4px;padding: 4px;
+    background-color: #285e8e;
+    width:120px;
+    margin-left:150px;
+    border-radius: 4px;
+    padding: 4px;
+    color: white;
 }
 .approval a{
     color:white;

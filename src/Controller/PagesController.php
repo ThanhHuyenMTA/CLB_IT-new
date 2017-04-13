@@ -94,6 +94,11 @@ class PagesController extends AppController {
         $this->set(compact('comment'));
         //end load
        
+       $this->loadModel('Users');
+       $top_user= $this->Users->find('all')->limit(8);
+       $this->set(compact('top_user'));
+        
+        
         
         $path = func_get_args();
 
