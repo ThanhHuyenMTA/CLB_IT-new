@@ -5,8 +5,10 @@
 </style>
 
 <div class="tab">
-  <button class="tablinks" onclick="openCity(event, 'Member')" id="defaultOpen">Member</button>
-  <button class="tablinks" onclick="openCity(event, 'Article')">Article</button>
+  <button class="tablinks" onclick="openCity(event, 'Member')" id="defaultOpen">Member(<?php echo $number_member;?>)
+  </button>
+  <button class="tablinks" onclick="openCity(event, 'Article')">Article(<?php echo $number_article;?>)
+  </button>
 </div>
 
 <div id="Member" class="tabcontent">

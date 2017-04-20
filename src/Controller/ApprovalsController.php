@@ -23,8 +23,10 @@ class ApprovalsController extends AppController {
         $member = $this->Embarks->find('all')
                 ->where(['Embarks.approval' => 0, 'Embarks.id_depart' => $id_depart])
                 ->contain(['Users']);
+        $number_member=$member->count();
+        //pr( $number_member);die();
         // pr($member);die();
-        $this->set(compact('member'));
+        $this->set(compact('member','number_member'));
         //Some article need approval
 
         $article = $this->Articles->find('all')
@@ -32,7 +34,9 @@ class ApprovalsController extends AppController {
                 ->contain(['Users'])
                 ;
         //pr($article);die();
-        $this->set(compact('article'));
+         $number_article=$article->count();
+       // pr( $number_article);die();
+        $this->set(compact('article','number_article'));
          
         
         if (isset($_POST['YesM'])) {

@@ -98,7 +98,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
                             <?= $this->Html->link(' Letter', ['action' => '../letters/inbox'], array('class' => 'fa fa-envelope'))
                             ?>
                         </li>
-                        <li style="margin-top: 12px;margin-left: -16px;color: white;"><?php echo "(".$number.")";?></li>
+                        <li style="margin-top: 12px;margin-left: -14px;color: white;"><?php echo "(".$number.")";?></li>
                         <?php if ($loggedIn): ?>
                             <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                     <?php if ($image): ?>

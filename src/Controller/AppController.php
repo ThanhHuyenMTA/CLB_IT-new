@@ -125,6 +125,9 @@ class AppController extends Controller {
             // pr($number);die();
         }
          $this->set(compact('number'));
+         
+         
+        
     }
 
 }

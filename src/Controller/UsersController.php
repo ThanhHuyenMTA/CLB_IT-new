@@ -26,7 +26,7 @@ class UsersController extends AppController {
             if ($user) {
                 $email = new Email('gmail');
                 $email
-                        ->to('thanhhuyen010695@gmail.com')
+                        ->to('huyen010695mta@gmail.com')
                         ->subject('Hello welcome to IT CLUB NEW From THANH HUYỀN @@@@@')
                         ->send('My message test');
                 $this->Auth->setUser($user);

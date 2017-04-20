@@ -14,6 +14,7 @@ class ArticlesController extends AppController {
         $this->Auth->allow();
         $this->loadModel('Departments');
         $this->loadModel('Users');
+        $this->loadModel('Like_unlikes');
     }
 
     public function home() {
@@ -25,22 +26,13 @@ class ArticlesController extends AppController {
         ]]));
     }
 
-//can xem lai
     public function view($id) {
         $this->request->data['id'] = $id;
         $article = $this->Articles->get($id);
         $this->set(compact('article'));
         $this->request->session()->write('id_article', $id);
 
-//        //pr($this->request->data);die();
-//        $views+=1;
-//        $this->request->data['views']=$views;
-        //pr($this->request->data);die();
-        // $articlenew = $this->Articles->newEntity($this->request->data);
-        // $this->Articles->save($articlenew);
-        // 
         //propose comment
-
         if ($this->loadModel('Comments')) {
             $id = $this->request->data['id'];
             $comment = $this->Comments->find('all', ['conditions' => ['Comments.id_article' => $id]])->contain(['Users']);
@@ -51,20 +43,18 @@ class ArticlesController extends AppController {
         }
 
         //related articles
-
         $id_department = $this->request->session()->read('id_department');
         $relatedarticle = $this->Articles->find('all', [
                     'conditions' => ['Articles.id_department' => $id_department, 'Articles.id <>' => $id]])->toArray();
-//        pr($relatedarticle);die();
         $this->set(compact('relatedarticle'));
     }
 
     public function listarticle($id) {
+
         //number articles and member not approvals
         $numberarticle = $this->Articles->find('all')
                         ->where(['Articles.censorship' => 0, 'Articles.id_department' => $id])
                         ->contain(['Users'])->count();
-        // pr($numberarticle);die();
         $this->set(compact('numberarticle'));
         $this->loadModel('Embarks');
         $numberuser = $this->Embarks->find('all')
@@ -73,17 +63,19 @@ class ArticlesController extends AppController {
         $this->set(compact('numberuser'));
 
 
-//        listarticles
-        $article = $this->Articles->findalldl($id)->contain(['Users', 'Departments']); //function is called in model
+        //listarticles
+        $article = $this->Articles
+                ->findalldl($id)
+                ->contain(['Users', 'Departments']);
+        //function is called in model
         $this->request->session()->write('id_department', $id);
-        //  pr($article);die();
         $this->set('article', $this->paginate($article, ['limit' => 3,
                     'order' => [
                         'Articles.id' => 'asc'
         ]]));
 
 
-//load member embark department
+        //load member embark department
         $this->loadModel('Embarks');
         $user = $this->Embarks->find('all')
                 ->autofields(false)
@@ -100,12 +92,12 @@ class ArticlesController extends AppController {
                 ->limit('20')
                 ->contain(['Users'])
                 ->toArray();
-        //pr($user);die();
         $this->set(compact('userdepart'));
 
 
-//add articles  
-        if ($this->request->is('post')) {
+        //add articles  
+        // if ($this->request->is('post')) {
+        if (isset($_POST['AddA'])) {
             //find id_user
             $id_user = $this->request->session()->read('Auth.User.id');
             $this->request->data['id_user'] = $id_user;
@@ -129,60 +121,167 @@ class ArticlesController extends AppController {
                 }
             }
         }
-//end add articles
-//Kiem tra xem thanh vien da tham gia ban hay chua
+
+        //Kiem tra xem thanh vien da tham gia ban hay chua
         $id_user = $this->request->session()->read('Auth.User.id');
         $userEmbark = $this->Embarks->find('all')
                         ->where(['id_depart' => $id, 'id_user' => $id_user])->toArray();
         // pr($userEmbark);die();
         $this->set(compact('userEmbark'));
-//Kiem tra xem thanh vien la truong ban hay pho ban khong
+
+        //Kiem tra xem thanh vien la truong ban hay pho ban khong
         $userRole = $this->Embarks->find('all')
                 ->where(['id_depart' => $id, 'id_user' => $id_user, 'role' => 1])
                 ->orWhere(['id_depart' => $id, 'id_user' => $id_user, 'role' => 2])
                 ->toArray();
-        // pr($userRole);die();
         $this->set(compact('userRole'));
     }
 
-    //like or dislike articles 
-    public function likeArticle($id) {
-        //$id is id_articles
-        if (isset($_POST['likeA'])) {
-            $Sessionname = $this->request->session()->read('Auth.User.username');
-            if ($Sessionname) {
-                //pr($id);die();
-                $like = $this->request->data['likes'];
-                $like+=1;
-                $this->request->data['id'] = $id;
-                $this->request->data['likes'] = $like;
-                $article = $this->Articles->newEntity($this->request->data);
-                if ($this->Articles->save($article)) {
-                    return $this->redirect($this->Auth->redirectUrl());
+    public function ajaxlike() {
+        // $this->request->allowMethod('ajax');
+        $this->autoRender = false;
+
+        //update table Like_unlikes
+        $this->loadModel('Like_unlikes');
+        $id_user = $this->request->session()->read('Auth.User.id');
+        $this->request->data['id_user'] = $id_user;
+        $this->request->data['id_article'] = $this->request->data['id'];
+
+        //check liked or disliked
+        $checklike = $this->Like_unlikes
+                ->find('all')
+                ->select(['Like_unlikes.type', 'Like_unlikes.idl'])
+                ->where(['Like_unlikes.id_user' => $id_user])
+                ->andWhere(['Like_unlikes.id_article' => $this->request->data['id']]);
+        $count1 = $checklike->count();
+        if ($count1 == 1) {
+            Foreach ($checklike as $value) {
+                $type = $value->type;
+                $idl = $value->idl;
+            }
+            if ($type == 0 OR $type == 2) {
+                $this->request->data['type'] = 1;
+                $this->request->data['likes'] = $this->request->data['likes'] + 1;
+                if ($type == 2) {
+                    $this->request->data['dislikes'] = $this->request->data['dislikes'] - 1;
                 }
             } else {
-                return $this->redirect(['action' => '../users/login']);
+                $this->request->data['type'] = 0;
+                $this->request->data['likes'] = $this->request->data['likes'] - 1 + 1;
             }
+            $this->request->data['idl'] = $idl;
+        } else {
+            $this->request->data['type'] = 1;
+            $this->request->data['likes'] = $this->request->data['likes'] + 1;
         }
-        if (isset($_POST['dislikeA'])) {
-            $Sessionname = $this->request->session()->read('Auth.User.username');
-            if ($Sessionname) {
-                //pr($id);die();
-                $dislike = $this->request->data['dislikes'];
-                $dislike+=1;
-                $this->request->data['id'] = $id;
-                $this->request->data['dislikes'] = $dislike;
-                $article = $this->Articles->newEntity($this->request->data);
-                if ($this->Articles->save($article)) {
-                    return $this->redirect($this->Auth->redirectUrl());
+
+        $addlike = $this->Like_unlikes->newEntity($this->request->data);
+        $this->Like_unlikes->save($addlike);
+        //update table Articles
+        $countlike = $this->Like_unlikes->find('all')
+                ->where(['Like_unlikes.type' => 1])
+                ->andWhere(['Like_unlikes.id_article' => $this->request->data['id']])
+                ->count();
+        $countdislike = $this->Like_unlikes->find('all')
+                ->where(['Like_unlikes.type' => 2])
+                ->andWhere(['Like_unlikes.id_article' => $this->request->data['id']])
+                ->count();
+        $this->request->data['likes'] = $countlike;
+        $this->request->data['dislikes'] = $countdislike;
+        $article = $this->Articles->newEntity($this->request->data);
+        $this->Articles->save($article);
+        //ham tra ve ben ajax
+        $this->response->body(json_encode($this->request->data));
+        return $this->response;
+    }
+
+    public function addAr() {
+         $this->autoRender = false;
+    }
+
+    public function ajaxdislike() {
+        $this->autoRender = false;
+
+        //update table Like_unlikes
+        $this->loadModel('Like_unlikes');
+        $id_user = $this->request->session()->read('Auth.User.id');
+        $this->request->data['id_user'] = $id_user;
+        $this->request->data['id_article'] = $this->request->data['id'];
+
+        //check liked or disliked
+        $checklike = $this->Like_unlikes
+                ->find('all')
+                ->select(['Like_unlikes.type', 'Like_unlikes.idl'])
+                ->where(['Like_unlikes.id_user' => $id_user])
+                ->andWhere(['Like_unlikes.id_article' => $this->request->data['id']]);
+
+        $count1 = $checklike->count();
+        if ($count1 == 1) {
+            Foreach ($checklike as $value) {
+                $type = $value->type;
+                $idl = $value->idl;
+            }
+            if ($type == 0 OR $type == 1) {
+                $this->request->data['type'] = 2;
+                $this->request->data['dislikes'] = $this->request->data['dislikes'] + 1;
+                if ($type == 1) {
+                    $this->request->data['likes'] = $this->request->data['likes'] - 1;
                 }
             } else {
-                return $this->redirect(['action' => '../users/login']);
+                $this->request->data['type'] = 0;
+                $this->request->data['dislikes'] = $this->request->data['dislikes'] - 1 + 1;
             }
+            $this->request->data['idl'] = $idl;
+        } else {
+            $this->request->data['type'] = 2;
+            $this->request->data['dislikes'] = $this->request->data['dislikes'] + 1;
         }
-        //
+        $addlike = $this->Like_unlikes->newEntity($this->request->data);
+        $this->Like_unlikes->save($addlike);
+
+        //update table Articles
+        $countlike = $this->Like_unlikes->find('all')
+                ->where(['Like_unlikes.type' => 1])
+                ->andWhere(['Like_unlikes.id_article' => $this->request->data['id']])
+                ->count();
+        $countdislike = $this->Like_unlikes->find('all')
+                ->where(['Like_unlikes.type' => 2])
+                ->andWhere(['Like_unlikes.id_article' => $this->request->data['id']])
+                ->count();
+        $this->request->data['likes'] = $countlike;
+        $this->request->data['dislikes'] = $countdislike;
+        $article = $this->Articles->newEntity($this->request->data);
+        $this->Articles->save($article);
+
+        //ham tra ve ben ajax
+        $this->response->body(json_encode($this->request->data));
+        return $this->response;
     }
 
 }
-
 ?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

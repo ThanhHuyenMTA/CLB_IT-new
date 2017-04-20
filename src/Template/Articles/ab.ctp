@@ -2,6 +2,7 @@
     <div class="">
         <div class="row">
             <div id="main-content" class="col-md-8">  
+
                 <!--load post articles-->
                 <?php if ($loggedIn && $userEmbark): ?>
                     <?= $this->Element('../articles/addarticle'); ?>
@@ -16,23 +17,24 @@
                                 <span><i class="fa fa-calendar"></i><?= $value->created ?></span> 
                                 <span><i class="fa fa-comment"></i> 0 Comments</span>
                                 <span ><i class="fa fa-heart"></i><?= $value->views ?></span>
-                                <br>
-                                <form method="post" id="fm_like<?= $value->id ?>" >
-                                    <input name="id" id="ida" type="hidden" value="<?php echo $value->id ?>" />
-                                    <input name="likes" id="like" type="hidden" value="<?php echo $value->likes ?>" />
-                                    <input name="created" type="hidden" value="<?php echo date("Y/m/d") ?>"/>
-                                    <input name="dislikes" id="dislike" type="hidden" value="<?php echo $value->dislikes ?>" />
 
-                                    <button type="button"  class="fa fa-thumbs-o-up postlike-<?php echo $value->id ?>" onclick="likea('<?php echo '#fm_like' . $value->id ?>', '<?php echo '#resultlike' . $value->id ?>', '<?php echo '#resultdislike' . $value->id ?>')" id="likes" title="Tôi thích post này !"> </button>
-                                    <div id="resultlike<?= $value->id ?>" style="float:left;width:50px;" > 
-                                        <?= $value->likes ?>
-                                    </div>
-                                    <button type="button" class="fa fa-thumbs-o-down postdislike-<?php echo $value->id ?>"onclick="dislikea('<?php echo '#fm_like' . $value->id ?>', '<?php echo '#resultdislike' . $value->id ?>', '<?php echo '#resultlike' . $value->id ?>')" id="likes" title="Tôi không thích post này !"> </button>
-                                    <div id="resultdislike<?= $value->id ?>" style="float:left;width:50px;">
-                                        <?= $value->dislikes ?>
-                                    </div>
-                                </form>
+
+
+
                                 <br>
+                                <button class="fa fa-thumbs-o-up" style="font-size:16px;background-color: white;float: left;" onclick="likea()" id="likes"> </button>
+                                <div id="result" style="float:left;width:50px;">
+                                    <?= $value->likes ?>
+                                    <input name="likes" id="like" type="hidden" value="<?php echo $value->likes ?>" />
+                                </div>
+                                <button class="fa fa-thumbs-o-down" style="font-size:16px;background-color: white; float: left;" onclick="dislikea()" id="likes"> </button>
+                                <div id="result" style="float:left;width:50px;">
+                                    <?= $value->dislikes ?>
+                                    <input name="dislikes" id="dislike" type="hidden" value="<?php echo $value->dislikes ?>" />
+                                </div>
+
+
+                                <!-- <?= $this->Element('../articles/likea') ?> -->
 
                                 <!--<?= $this->request->session()->write('id_department', $value->id_department); ?>  -->
                                 <!--  <?= $this->request->session()->write('email_department', $value->department->email); ?> -->
@@ -98,7 +100,7 @@
                 <!---- Start tham gia ban ---->
                 <div class="widget wid-follow">
                     <div class="heading"><h4>Welcome to US </h4></div>
-                    <div class="content">
+                    <div class="content" style="float: left;">
                         <?= $this->Element('../departments/embarkdepart'); ?>
                     </div>
                     <?php if ($userRole): ?>
@@ -106,6 +108,7 @@
                             <?= $this->Html->link(' Approval', ['action' => '../Approvals/approval'], array('class' => 'fa fa-bug', 'target' => '_blank')); ?>
                             (<?php print $numberarticle; ?>/<?php print $numberuser; ?>)
                         </div>
+
                     <?php endif; ?>
                 </div>
                 <!---- Start Widget ---->
@@ -168,6 +171,8 @@
 
                     </div>
                 </div>
+
+
 
                 <!---- Start Widget ---->
                 <div class="widget ">
@@ -232,74 +237,70 @@
             </div>
         </div>
     </div>
+
 </html>
 
-<script language="javascript">
 
-    function likea(formId, btnId, btnDL) {
+
+<script>
+    $(function () {
+        $('.like').click(function () {
+            likeFunction(this);
+        });
+        $('.dislike').click(function () {
+            dislikeFunction(this);
+        });
+    });
+
+
+    function likeFunction(caller) {
+        var postId = caller.parentElement.getAttribute('postid');
+        $.ajax({
+            type: "POST",
+            url: "likeArticle.php",
+            data: 'Action=LIKE&PostID=' + postId,
+            success: function () {}
+        });
+    }
+    function dislikeFunction(caller) {
+        var postId = caller.parentElement.getAttribute('postid');
+        $.ajax({
+            type: "POST",
+            url: "likeArticle.php",
+            data: 'Action=DISLIKE&PostID=' + postId,
+            success: function () {}
+        });
+    }
+
+    function likea() {
         $.ajax({
             url: "http://localhost/NewCLB/articles/ajaxlike",
-            type: "POST",
+            type: "post",
             dataType: "text",
-            data: $(formId).serialize(),
-            context: document.body,
-            //data: {like: $("#like").val(),id: $("#ida").val()},
+            data: $("#so").serialize(),
             success: function (result) {
-                console.log(result); //return ket qua
-                var data = $.parseJSON(result); //ham chuyen ve dang mang
-                $(btnId).html(data['likes']);
-                $(btnDL).html(data['dislikes']);
+                $('#result').html(result);
+            }
 
-                if (data.type == 1) {
-                    $('.postlike-' + data.id).css("color", "red");
-                    $('.postdislike-' + data.id).css("color", "black");
-                    console.log('vao day', data.id);
-                } else {
-                    $('.postlike-' + data.id).css("color", "black");
-                    console.log('vao day', data.id);
-                }
-                // $(btnDL).html(result);
-            },
-            //phan kiemtraloi
-            error: function (xhr, thrownError) {
-                alert(xhr.status);
-                alert(xhr.responseText);
-                alert(thrownError);
-            },
-            //$('form').removeClass('#fm_like')
         });
     }
 
-    function dislikea(formId, btnId, btnL) {
+    function dislikea() {
         $.ajax({
             url: "http://localhost/NewCLB/articles/ajaxdislike",
-            type: "POST",
+            type: "post",
             dataType: "text",
-            data: $(formId).serialize(),
-            context: document.body,
+            data: {},
             success: function (result) {
-                console.log(result); //return ket qua
-                var data = $.parseJSON(result); //ham chuyen ve dang mang
-                $(btnId).html(data['dislikes']);
-                $(btnL).html(data['likes']);
+                $('#result').html(result);
+            }
 
-                if (data.type == 2) {
-                    $('.postdislike-' + data.id).css("color", "blue");
-                    $('.postlike-' + data.id).css("color", "black");
-                    console.log('vao day', data.id);
-                } else {
-                    $('.postdislike-' + data.id).css("color", "black");
-                    console.log('vao day', data.id);
-                }
-
-            },
-            //phan kiemtraloi
-            error: function (xhr, thrownError) {
-                alert(xhr.status);
-                alert(xhr.responseText);
-                alert(thrownError);
-            },
         });
     }
-   
+
+
+
+
+
 </script>
+

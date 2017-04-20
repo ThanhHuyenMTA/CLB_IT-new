@@ -70,7 +70,7 @@ body.sub-page .logo {margin: 110px 0 80px;background: url(../images/bg.jpg) fixe
 #top {
     top: 0px;
     z-index: 9999;
-    margin-left: 90px;
+    width:100%;
     position: fixed;
 }
 .link{text-align:right}
@@ -561,7 +561,17 @@ div.tab button.active {
     border-radius: 4px;
     padding: 4px;
     color: white;
+    margin-top: -33px;
 }
 .approval a{
     color:white;
 }
+
+.fa-thumbs-o-up{font-size:16px;background-color: white;float: left;}
+.fa-thumbs-o-down{
+    font-size:16px;background-color: white; float: left;color: black;
+}
+
+/*#add{
+        display: none;
+    }*/

@@ -1,5 +1,5 @@
 <?php if ($loggedIn && $userEmbark): ?>
-    <div class="dropdown">
+<div class="dropdown" style="width:150px;">
         <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Đã tham gia
             <span class="caret"></span></button>
         <ul class="dropdown-menu">

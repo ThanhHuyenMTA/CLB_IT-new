@@ -31,6 +31,9 @@ class UsersTable extends Table {
             'className' => 'Transactions',
             'foreignKey' => 'id_receiver'
         ]);
+        $this->hasMany('Like_unlikes', [
+            'className' => 'Like_unlikes'
+        ]);
     }
 
     // phần check lỗi đăng ký
