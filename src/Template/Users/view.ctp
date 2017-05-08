@@ -1,9 +1,5 @@
 <html>
-    <style>
-        .featured {
-            display: none;
-        }
-    </style>
+    <div id="page-content" class="index-page container">
     <div class="">
         <div class="row">
             <div id="main-content" class="col-md-8">
@@ -98,5 +94,6 @@
                 </div>
             </div>
         </div>
+    </div>
     </div>
 </html>

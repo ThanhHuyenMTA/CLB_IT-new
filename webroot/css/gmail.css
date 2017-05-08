@@ -69,10 +69,6 @@ div.tab button.active {
     padding-left: 10px;
 }
 
-.featured{
-    display: none;
-}
-
 .col-sm-2 a{
     color: black;
 }

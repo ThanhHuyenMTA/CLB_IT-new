@@ -1,0 +1,80 @@
+<section class="content-header">
+    <h1>
+        Quản lý
+        <small>Khách hàng</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li>
+            <a href="/admin"><i class="fa fa-dashboard"></i> Trang chủ</a>
+        </li>
+        <li class="active">Quản lý Khách hàng</li>
+    </ol>
+</section>
+<!-- Main content -->
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <form method="post" accept-charset="utf-8" id="form_action" action="/admin/customers/process">
+                    <div class="box-header">
+                        <h3 class="box-title">
+                            <!--<div class="btn-group">-->
+                                <a href="/admin/customer/them-moi.html" class="btn btn-default btn-flat">Thêm mới</a>
+                                <!--<button type="button" class="btn btn-default btn-flat action_submit" value="4">Cập nhật</button>-->
+                                <button type="button" class="btn btn-default btn-flat action_submit" value="1">Kích hoạt</button>
+                                <button type="button" class="btn btn-default btn-flat action_submit" value="2">Hủy hoạt</button>
+                                <button type="button" class="btn btn-default btn-flat action_submit" value="3">Xóa</button>
+                            <!--</div>-->
+                        </h3>
+                        <input type="hidden" name="name_action">
+                    </div><!-- /.box-header -->
+                    <div class="box-body">
+                        <table id="example1" class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th align="center">STT</th>
+                                    <th>
+                                        <label>
+                                            <input type="checkbox" id="check_all">
+                                        </label>
+                                    </th>
+                                    <th>Role</th>
+                                    <th>Tên</th>
+                                    <th>Username</th>
+                                    <th>Email</th>
+                                    <th>SDT</th>
+                                    <th>Trạng thái</th>
+                                    <th>Ngày tạo</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let row of customers">
+                                    <td width="50" align="center">
+                                        {{row.id}}
+                                    </td>
+                                    <td width="50" align="center">
+                                        <label>
+                                            <input class="ids" type="checkbox" name="ids[]" value="<?php echo $row['id']; ?>">
+                                        </label>
+                                    </td>
+                                    <td>
+                                        {{row.role}}
+                                    </td>
+                                    <td>
+                                        {{row.full_name}}
+                                    </td>
+                                    <td> {{row.username}} </td>
+                                    <td> {{row.email}} </td>
+                                    <td> {{row.mobile}} </td>
+                                    <td align="center">
+                                        <i class="fa fa-check-circle-o"></i>
+                                    <td>{{row.created}} </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div><!-- /.box-body -->
+                </form>
+            </div><!-- /.box -->
+        </div><!-- /.col -->
+    </div><!-- /.row -->
+</section><!-- /.content -->

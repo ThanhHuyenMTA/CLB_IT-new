@@ -55,6 +55,12 @@ class AppController extends Controller {
                     'fields' => ['username' => 'email', 'password' => 'password']
                 ]
             ],
+            'loginRedirect' => [
+                'controller' => 'Pages',
+                'action' => 'display',
+                'home'
+            //khi thực hiện logout xong trang sẽ chuyển sang trang chủ 
+            ],
             'logoutRedirect' => [
                 'controller' => 'Pages',
                 'action' => 'display',
@@ -86,6 +92,7 @@ class AppController extends Controller {
         //check login user 
         if ($this->request->session()->read('Auth.User')) {
             $this->set('loggedIn', true);
+
             $image = $this->request->session()->read('Auth.User.image');
             $this->set(compact('image'));
             // pr($image);die();
@@ -95,12 +102,18 @@ class AppController extends Controller {
         } else {
             $this->set('loggedIn', false);
         }
-        //load Departments
+        //-------------load Admin----------------
+        $this->loadModel('Embarks');
+        $this->loadModel('Users');
+        $admin = $this->Embarks->find('all')->where(['role' => 3])->Contain(['Users'])->toArray();
+        $this->set(compact('admin'));
+        //-----------end load Admin--------------
+        //------------load Departments-----------
         if ($this->loadModel('Departments')) {
             $department = $this->Departments->Find('all');
             $this->set(compact('department'));
         }
-        //đưa ra số thư đã nhận(chưa đọc)
+        //------------đưa ra số thư đã nhận(chưa đọc)--------------
         $number = 0;
         if ($this->request->session()->read('Auth.User')) {
             $this->loadModel('Transactions');
@@ -124,10 +137,7 @@ class AppController extends Controller {
             }
             // pr($number);die();
         }
-         $this->set(compact('number'));
-         
-         
-        
+        $this->set(compact('number'));
     }
 
 }

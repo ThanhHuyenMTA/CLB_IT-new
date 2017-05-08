@@ -106,4 +106,10 @@ form button:hover {
     background-color: #1bc5b3;
     cursor: pointer;
 }
-
+.linklogin{ 
+    color: blue;
+}
+#log{
+    padding-right: 50px;
+    padding-left: 70px;
+}

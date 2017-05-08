@@ -1,0 +1,18 @@
+/**
+ * Description of ContactCss
+ * @author Nghiep
+ * @date Nov 01, 2016
+ * 
+ */
+
+ .contact .panel {
+    border-radius: 0
+ }
+ .contact .chat {
+    list-style: none;
+    max-height: 200px;
+    overflow: auto;
+ }
+ .contact .panel-body li {
+    border-top: 1px solid #eee;
+ }

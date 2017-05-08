@@ -2,7 +2,6 @@
 <!-- file css -->
 <?= $this->Html->css('Moicake.css') ;?>
 <!--end css-->
-
 <h1 style="text-align:left;font-weight: bold;"> Newest Posts </h1>
     <?php foreach ($baidang as $totl): ?>
     <div class="hometc">

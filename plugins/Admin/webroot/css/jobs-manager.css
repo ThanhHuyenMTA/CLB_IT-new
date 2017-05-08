@@ -1,0 +1,16 @@
+/* 
+    Created on : Nov 25, 2016
+    Author     : Xung
+*/
+.jobs-manager .box-title {
+    width: 100%;
+}
+.jobs-manager .links-group {
+    margin-bottom: 1em;
+    width: 100%;
+    display: inline;
+}
+.jobs-manager .links-group a {
+    padding: 6px;
+    margin-left: 10px;
+}  

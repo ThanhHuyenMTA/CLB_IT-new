@@ -1,0 +1,163 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Jul 18, 2016, 5:51:26 PM
+    Author     : Nguyen Van Huan
+*/
+.error-message{
+    color: red;
+    font-size: 12px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+.message.error{
+    color: #a94442;
+    background-color: #f2dede;
+    border-color: #ebccd1;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    text-align: center;
+}
+.message.success{
+    color: #3c763d;
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    text-align: center;
+}
+#customize-time{
+    display: none;
+}
+#add-row-time .pull-left{
+    margin-right: 5px;
+}
+i.fa-check-circle-o, i.fa-eye{
+    color: #4CAF50;
+    font-size: 20px;
+}
+i.fa-warning {
+    color: #FF8D00;
+    font-size: 20px;
+}
+i.fa-hdd-o {
+    color: #999;
+    font-size: 20px;
+}
+i.fa-power-off, i.fa-eye-slash{
+    color: #e23535;
+    font-size: 20px;
+}
+.bs-callout{
+    padding: 5px 20px;
+    margin: 20px 0 0 0;
+    border: 1px solid #eee;
+    border-left-width: 5px;
+    border-radius: 3px;
+}
+.bs-callout-info{
+    border-left-color: #4CAF50;
+}
+
+.image-preview-input {
+    position: relative;
+    overflow: hidden;
+    margin: 0px;
+    color: #333;
+    background-color: #fff;
+    border-color: #ccc;
+}
+.image-preview-input input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0;
+    filter: alpha(opacity=0);
+}
+.image-preview-input-title {
+    margin-left:2px;
+}
+.image-preview{
+    padding-right: 15px;
+    padding-left: 15px;
+}
+.required {
+    color: red;
+}
+
+/*     START Form Add CV Admin       */
+
+.cv-information {
+    background: #fff;
+}
+
+.create-cv .cv-information {
+    z-index: 0;
+    min-height: 240px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    padding: 20px 25px;
+    overflow: hidden;
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+.add-experience .cv-information-left {
+    display: none;
+}
+
+.cv-information-add-experience {
+    text-align: center;
+    margin-bottom: 2em;
+}
+
+.submit-created-cv {
+    text-align: center;
+    margin-bottom: 5em;
+}
+
+.salary select {
+    height: 34px;
+}
+
+.is-student {
+    text-align: center;
+    margin-top: 2em;
+}
+
+.cv-information-tittle {
+    font-size: 1.4em;
+    text-decoration: underline;
+}
+
+/*     END Form Add CV Admin       */
+
+.loader {
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #3498db;
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+  margin: 0 auto;
+}
+
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
